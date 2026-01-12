@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protocolo Fantekey2026</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #00ff00;
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        h1 {
+            border-bottom: 2px solid #00ff00;
+            padding-bottom: 10px;
+            animation: blink 2s infinite;
+        }
+        .status {
+            border: 1px solid #00ff00;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 0 10px #00ff00;
+        }
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        button {
+            background: #000;
+            color: #00ff00;
+            border: 1px solid #00ff00;
+            padding: 10px 20px;
+            margin-top: 20px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: bold;
+        }
+        button:hover {
+            background: #00ff00;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🖥️ SISTEMA CÉNIT DIETRIX</h1>
+
+    <div class="status">
+        <p>Estado del Proyecto: <strong>ACTIVO</strong></p>
+        <p>Conexión: <strong>ESTABLE</strong></p>
+        <p>Operador: <strong>Alejandro Téllez</strong></p>
+        <p>Frecuencia: <strong>38433</strong></p>
+    </div>
+
+    <button onclick="alert('Acceso Autorizado. Protocolo en línea.')">INICIAR ENLACE</button>
+
+</body>
+</html>
