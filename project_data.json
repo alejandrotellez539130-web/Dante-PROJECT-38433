@@ -1,18 +1,16 @@
 {
-  "system_config": {
-    "project_name": "Fantekey2026",
-    "architect": "Cénit Dietrix",
+  "configuracion_sistema": {
+    "nombre_proyecto": "Fantekey2026",
+    "arquitecto": "Cénit Dietrix",
     "version": "1.0.5",
-    "environment": "development",
-    "status": "active"
+    "entorno": "desarrollo",
+    "estado": "activo"
   },
-  "modules": [
+  "modulos": [
     "cenit_anchor.py",
     "index.html",
     "applet_access_history.json"
   ],
-  "security_level": "high",
-  "last_access": "2026-01-11"
+  "nivel_seguridad": "alto",
+  "ultimo_acceso": "2026-01-11"
 }
-
-
