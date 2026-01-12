@@ -1,6 +1,6 @@
 import json
-import os
 import datetime
+import os
 
 def load_config():
     """Carga la configuración desde project_data.json"""
@@ -16,24 +16,25 @@ def load_config():
 def run_cenit_protocol():
     print(f"\n--- INICIANDO PROTOCOLO CENIT DIETRIX ---")
     config = load_config()
-    
     if not config:
         return
 
-    # Verificación de Seguridad
-    print(f"Arquitecto: {config['system_config']['architect']}")
-    print(f"Nivel de Seguridad: {config['security_level']}")
-    
+    # Soporta claves en inglés o en español (¡Buena jugada arquitectónica!)
+    system = config.get('system_config') or config.get('configuracion_sistema') or {}
+    architect = system.get('architect') or system.get('arquitecto') or 'Desconocido'
+    security = config.get('security_level') or config.get('nivel_seguridad') or 'Desconocido'
+
+    print(f"Arquitecto: {architect}")
+    print(f"Nivel de Seguridad: {security}")
+
     try:
         llave = input("\nIntroduce la Frecuencia Maestra (38433) para anclar: ")
-        
         if llave == "38433":
             print("\n✅ [ACCESO CONCEDIDO] Frecuencia alineada.")
             print(f"Timestamp: {datetime.datetime.now()}")
             print(">> El sistema está listo para el despliegue final.")
         else:
             print("\n❌ [ACCESO DENEGADO] Frecuencia incorrecta.")
-            
     except ValueError:
         print("[ERROR] Entrada inválida.")
 
