@@ -7,19 +7,19 @@ def load_config():
     try:
         with open('project_data.json', 'r') as f:
             data = json.load(f)
-            print(">> [SISTEMA] Configuración cargada correctamente.")
             return data
     except FileNotFoundError:
         print(">> [ERROR] No se encuentra project_data.json")
         return None
 
 def run_cenit_protocol():
-    print(f"\n--- INICIANDO PROTOCOLO CENIT DIETRIX ---")
+    print(f"\n--- INICIANDO PROTOCOLO CENIT DIETRIX v1.1 ---")
     config = load_config()
+    
     if not config:
         return
 
-    # Soporta claves en inglés o en español (¡Buena jugada arquitectónica!)
+    # Carga de datos del JSON
     system = config.get('system_config') or config.get('configuracion_sistema') or {}
     architect = system.get('architect') or system.get('arquitecto') or 'Desconocido'
     security = config.get('security_level') or config.get('nivel_seguridad') or 'Desconocido'
@@ -28,13 +28,21 @@ def run_cenit_protocol():
     print(f"Nivel de Seguridad: {security}")
 
     try:
-        llave = input("\nIntroduce la Frecuencia Maestra (38433) para anclar: ")
-        if llave == "38433":
+        # Lógica del Proyecto Memorias (Integrada)
+        frecuencia_secreta = "38433"
+        input_usuario = input(f"\nIntroduce la Frecuencia Maestra ({frecuencia_secreta}) para anclar: ")
+        
+        if input_usuario == frecuencia_secreta:
+            # Cálculo Binario (Tu código adaptado)
+            binario_frecuencia = bin(int(frecuencia_secreta))[2:]
+            
             print("\n✅ [ACCESO CONCEDIDO] Frecuencia alineada.")
+            print(f">> [SISTEMA] Clave Binaria Decodificada: {binario_frecuencia}")
             print(f"Timestamp: {datetime.datetime.now()}")
             print(">> El sistema está listo para el despliegue final.")
         else:
-            print("\n❌ [ACCESO DENEGADO] Frecuencia incorrecta.")
+            print("\n❌ [ACCESO DENEGADO] Frecuencia incorrecta. Protocolo abortado.")
+            
     except ValueError:
         print("[ERROR] Entrada inválida.")
 
