@@ -1,110 +1,109 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Protocolo Fantekey2026 - ID 193</title>
-    <style>
-        body {
-            background-color: #0d1117;
-            color: #00ff41;
-            font-family: 'Courier New', Courier, monospace;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            margin: 0;
-            padding: 20px;
-        }
-        .container {
-            border: 1px solid #30363d;
-            background: #161b22;
-            padding: 2rem;
-            border-radius: 6px;
-            max-width: 400px;
-            width: 100%;
-            box-shadow: 0 0 20px rgba(0, 255, 65, 0.1);
-        }
-        h1 { font-size: 1.2rem; border-bottom: 1px solid #30363d; padding-bottom: 10px; }
-        input {
-            width: 100%;
-            padding: 10px;
-            background: #0d1117;
-            border: 1px solid #30363d;
-            color: #fff;
-            margin-top: 10px;
-            font-family: inherit;
-            box-sizing: border-box;
-        }
-        button {
-            width: 100%;
-            margin-top: 15px;
-            padding: 10px;
-            background: #238636;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-            font-weight: bold;
-        }
-        button:hover { background: #2ea043; }
-        #output {
-            margin-top: 20px;
-            font-size: 0.8rem;
-            white-space: pre-wrap; /* Mantiene formato JSON */
-            text-align: left;
-            background: #000;
-            padding: 10px;
-            display: none; /* Oculto hasta activar */
-            border-left: 3px solid #00ff41;
-        }
-        .error { color: #ff5555; border-left-color: #ff5555 !important; }
-    </style>
-</head>
-<body>
+import time
+import random
+import sys
+import os
+import json
 
-    <div class="container">
-        <h1>🛡️ ANCLAJE CENIT v2.0</h1>
-        <p>Program ID: 193 (Odu Irosun Okanran)</p>
+# --- CONFIGURACIÓN DE COLORES ---
+class Colors:
+    RESET = "\033[0m"
+    VERDE = "\033[92m"   # Ignorancia
+    ROSA = "\033[95m"    # Credulidad
+    AZUL = "\033[94m"    # Ego
+    AMARILLO = "\033[93m" # Virgilio
+    ROJO = "\033[91m"
+
+# --- EL CEREBRO (Base de Datos) ---
+MATRIZ_FILE = "dante_full_matrix_256.json"
+
+def cargar_matriz():
+    """Carga los 256 Odus generados por la Alquimia."""
+    if not os.path.exists(MATRIZ_FILE):
+        return None
+    with open(MATRIZ_FILE, 'r', encoding='utf-8') as f:
+        return json.load(f)
+
+# --- LA INTERFAZ (Virgilio) ---
+class VirgilioAI:
+    def __init__(self):
+        self.name = "VIRGILIO"
+    
+    def hablar(self, mensaje, color=Colors.AMARILLO):
+        print(f"{color}[{self.name}]: {mensaje}{Colors.RESET}")
+        time.sleep(1.5)
+
+    def analizar_input(self, texto):
+        t = texto.lower()
+        if any(x in t for x in ["no se", "duda", "miedo", "nose", "?"]): return "IGNORANCIA"
+        if any(x in t for x in ["feliz", "amor", "luz", "bien", "gracias"]): return "CREDULIDAD"
+        if any(x in t for x in ["poder", "yo soy", "dios", "mando", "control"]): return "EGO"
+        return "IGNORANCIA"
+
+# --- MOTOR PRINCIPAL ---
+class DanteSystem:
+    def __init__(self):
+        self.virgilio = VirgilioAI()
+        self.db = cargar_matriz()
+        self.bosses = {
+            "IGNORANCIA": {"dios": "Tezcatlipoca", "color": Colors.VERDE, "pecado": "Apatía"},
+            "CREDULIDAD": {"dios": "Dionisio", "color": Colors.ROSA, "pecado": "Falsa Felicidad"},
+            "EGO": {"dios": "Zeus", "color": Colors.AZUL, "pecado": "Soberbia"}
+        }
+
+    def obtener_odu_por_semilla(self, semilla):
+        """Usa la fecha de nacimiento para encontrar TU signo exacto entre los 256."""
+        if not self.db: return None
         
-        <label>Ingrese Frecuencia Maestra:</label>
-        <input type="number" id="freqInput" placeholder="Ej: 00000">
-        <button onclick="ejecutarProtocolo()">VALIDAR ANCLAJE</button>
+        # Convertimos la DB a una lista para poder elegir por índice
+        llaves = list(self.db.keys())
+        
+        # La magia matemática: Tu fecha decide el índice
+        random.seed(semilla)
+        indice = random.randint(0, 255)
+        odu_key = llaves[indice]
+        
+        return self.db[odu_key], odu_key
 
-        <div id="output"></div>
-    </div>
+    def iniciar(self):
+        os.system('cls' if os.name == 'nt' else 'clear')
+        self.virgilio.hablar("Sistema Dante v2.0 - Conexión establecida.")
+        
+        if not self.db:
+            self.virgilio.hablar("⚠️ ERROR CRÍTICO: No encuentro 'dante_full_matrix_256.json'.", Colors.ROJO)
+            return
 
-    <script>
-        // Lógica portada de Python a JavaScript para el navegador
-        const FRECUENCIA_SECRETA = 38433;
-        const BINARIO = "1001011000100001"; // Calculado previamente
-
-        function ejecutarProtocolo() {
-            const input = document.getElementById('freqInput').value;
-            const outputDiv = document.getElementById('output');
+        # 1. Identificación
+        fecha = input(f"{Colors.RESET}>> Ingresa tu Fecha de Nacimiento (YYYYMMDD) para escanear tu Alma: ")
+        
+        try:
+            semilla = int(fecha)
+            datos_odu, binario = self.obtener_odu_por_semilla(semilla)
             
-            if (parseInt(input) === FRECUENCIA_SECRETA) {
-                // ÉXITO
-                const logData = {
-                    "status": "Active",
-                    "timestamp": new Date().toISOString(),
-                    "repo": "Fantekey2026",
-                    "integrity": true,
-                    "program_id": 193,
-                    "binary_key": BINARIO,
-                    "message": "ACCESO CONCEDIDO"
-                };
-                
-                outputDiv.style.display = "block";
-                outputDiv.classList.remove("error");
-                outputDiv.innerHTML = ">> INICIANDO SECUENCIA...\n" + JSON.stringify(logData, null, 2);
-            } else {
-                // ERROR
-                outputDiv.style.display = "block";
-                outputDiv.classList.add("error");
-                outputDiv.innerHTML = ">> [ERROR] Frecuencia incorrecta.\n>> Acceso Denegado.";
-            }
-        }
-    </script>
-</body>
-</html>
+            print(f"\n{Colors.AMARILLO}--- ANÁLISIS DE ADN ESPIRITUAL ---{Colors.RESET}")
+            print(f"🆔 Odu Asignado: {datos_odu['nombre']}")
+            print(f"🧬 Código Binario: {binario}")
+            print(f"✨ Virtud (Tu Arma): {datos_odu['virtud_fusión']}")
+            print(f"💀 Sombra (Tu Debilidad): {datos_odu['defecto_fusión']}")
+            print(f"🔧 Función: {datos_odu['funcion_resultante']}")
+            print("-" * 50)
+            
+            self.virgilio.hablar(f"Interesante... naciste bajo el signo de {datos_odu['nombre']}.")
+            self.virgilio.hablar(f"Tu mayor peligro es caer en: '{datos_odu['defecto_fusión']}'.")
+            
+        except ValueError:
+            self.virgilio.hablar("Fecha inválida. Reinicia el sistema.", Colors.ROJO)
+            return
+
+        # 2. El Reto
+        self.virgilio.hablar("\nAhora dime... sabiendo esto, ¿cómo te sientes hoy?")
+        resp = input(f"{Colors.RESET}>> ")
+        
+        zona = self.virgilio.analizar_input(resp)
+        jefe = self.bosses[zona]
+        
+        print(f"\n{jefe['color']}!!! ALERTA DE SISTEMA: {jefe['dios']} TE HA CAPTURADO !!!{Colors.RESET}")
+        self.virgilio.hablar(f"Caíste en la {jefe['pecado']}. Usa tu virtud ({datos_odu['virtud_fusión']}) para escapar.", Colors.ROJO)
+
+if __name__ == "__main__":
+    app = DanteSystem()
+    app.iniciar()
