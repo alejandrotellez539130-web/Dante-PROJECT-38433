@@ -2,104 +2,108 @@ import time
 import random
 import sys
 import os
+import json
 
-# --- CONFIGURACIÓN DE COLORES (Capa Sensorial) ---
+# --- CONFIGURACIÓN DE COLORES ---
 class Colors:
     RESET = "\033[0m"
-    VERDE_MATRIX = "\033[92m"   # Ignorancia
-    ROSA_NEON = "\033[95m"      # Credulidad
-    AZUL_ELECTRICO = "\033[94m" # Ego
-    AMARILLO_VIRGILIO = "\033[93m" 
-    ROJO_ALERTA = "\033[91m"
+    VERDE = "\033[92m"   # Ignorancia
+    ROSA = "\033[95m"    # Credulidad
+    AZUL = "\033[94m"    # Ego
+    AMARILLO = "\033[93m" # Virgilio
+    ROJO = "\033[91m"
 
-# --- CAPA: VIRGILIO (La Interfaz con Actitud) ---
+# --- EL CEREBRO (Base de Datos) ---
+MATRIZ_FILE = "dante_full_matrix_256.json"
+
+def cargar_matriz():
+    """Carga los 256 Odus generados por la Alquimia."""
+    if not os.path.exists(MATRIZ_FILE):
+        return None
+    with open(MATRIZ_FILE, 'r', encoding='utf-8') as f:
+        return json.load(f)
+
+# --- LA INTERFAZ (Virgilio) ---
 class VirgilioAI:
     def __init__(self):
         self.name = "VIRGILIO"
     
-    def hablar(self, mensaje):
-        print(f"{Colors.AMARILLO_VIRGILIO}[{self.name}]: {mensaje}{Colors.RESET}")
-        time.sleep(1)
+    def hablar(self, mensaje, color=Colors.AMARILLO):
+        print(f"{color}[{self.name}]: {mensaje}{Colors.RESET}")
+        time.sleep(1.5)
 
-    def analizar_input(self, texto_usuario):
-        """
-        Virgilio juzga tu respuesta y decide a qué fosa te tira.
-        """
-        texto = texto_usuario.lower()
-        
-        # Lógica de Jefes v1.5
-        if any(x in texto for x in ["no se", "duda", "miedo", "nose", "quizas", "?"]):
-            return "IGNORANCIA"
-        elif any(x in texto for x in ["feliz", "amor", "vibra alto", "luz", "bonito", "gracias"]):
-            return "CREDULIDAD"
-        elif any(x in texto for x in ["poder", "yo soy", "mando", "dios", "mejor", "control"]):
-            return "EGO"
-        else:
-            return "IGNORANCIA" # Default al caos
+    def analizar_input(self, texto):
+        t = texto.lower()
+        if any(x in t for x in ["no se", "duda", "miedo", "nose", "?"]): return "IGNORANCIA"
+        if any(x in t for x in ["feliz", "amor", "luz", "bien", "gracias"]): return "CREDULIDAD"
+        if any(x in t for x in ["poder", "yo soy", "dios", "mando", "control"]): return "EGO"
+        return "IGNORANCIA"
 
-# --- CAPA: SISTEMA CENTRAL (Semilla y Odus) ---
+# --- MOTOR PRINCIPAL ---
 class DanteSystem:
     def __init__(self):
         self.virgilio = VirgilioAI()
+        self.db = cargar_matriz()
         self.bosses = {
-            "IGNORANCIA": {"dios": "Tezcatlipoca", "color": Colors.VERDE_MATRIX, "pecado": "Apatía/Duda"},
-            "CREDULIDAD": {"dios": "Dionisio", "color": Colors.ROSA_NEON, "pecado": "Falsa Felicidad"},
-            "EGO": {"dios": "Zeus/Huitzilopochtli", "color": Colors.AZUL_ELECTRICO, "pecado": "Soberbia"}
-        }
-        
-        # Matriz Binaria (Ejemplo reducido)
-        self.odu_matrix = {
-            0: {"name": "Ogbé (Camino Abierto)", "bit": "00000000"},
-            1: {"name": "Oyekun (La Muerte)", "bit": "11111111"},
-            2: {"name": "Iwori (El Cortador)", "bit": "01010101"},
-            3: {"name": "Odi (El Nudo)", "bit": "10101010"}
+            "IGNORANCIA": {"dios": "Tezcatlipoca", "color": Colors.VERDE, "pecado": "Apatía"},
+            "CREDULIDAD": {"dios": "Dionisio", "color": Colors.ROSA, "pecado": "Falsa Felicidad"},
+            "EGO": {"dios": "Zeus", "color": Colors.AZUL, "pecado": "Soberbia"}
         }
 
-    def configurar_semilla(self):
-        """
-        Pide la fecha de nacimiento para crear un universo único.
-        """
+    def obtener_odu_por_semilla(self, semilla):
+        """Usa la fecha de nacimiento para encontrar TU signo exacto entre los 256."""
+        if not self.db: return None
+        
+        # Convertimos la DB a una lista para poder elegir por índice
+        llaves = list(self.db.keys())
+        
+        # La magia matemática: Tu fecha decide el índice
+        random.seed(semilla)
+        indice = random.randint(0, 255)
+        odu_key = llaves[indice]
+        
+        return self.db[odu_key], odu_key
+
+    def iniciar(self):
         os.system('cls' if os.name == 'nt' else 'clear')
-        print(f"{Colors.AMARILLO_VIRGILIO}--- PROYECTO DANTE: INICIANDO PROTOCOLO ---{Colors.RESET}")
+        self.virgilio.hablar("Sistema Dante v2.0 - Conexión establecida.")
+        
+        if not self.db:
+            self.virgilio.hablar("⚠️ ERROR CRÍTICO: No encuentro 'dante_full_matrix_256.json'.", Colors.ROJO)
+            return
+
+        # 1. Identificación
+        fecha = input(f"{Colors.RESET}>> Ingresa tu Fecha de Nacimiento (YYYYMMDD) para escanear tu Alma: ")
         
         try:
-            fecha = input("Ingresa tu fecha de nacimiento (YYYYMMDD) para calibrar el Tablero: ")
-            seed_value = int(fecha)
-            random.seed(seed_value) # <--- AQUÍ OCURRE LA MAGIA MATEMÁTICA
-            print(f"\n>> Semilla de Caos establecida: {seed_value}")
-            print(">> Reordenando la Matriz de Odus para ti...")
-            time.sleep(2)
+            semilla = int(fecha)
+            datos_odu, binario = self.obtener_odu_por_semilla(semilla)
+            
+            print(f"\n{Colors.AMARILLO}--- ANÁLISIS DE ADN ESPIRITUAL ---{Colors.RESET}")
+            print(f"🆔 Odu Asignado: {datos_odu['nombre']}")
+            print(f"🧬 Código Binario: {binario}")
+            print(f"✨ Virtud (Tu Arma): {datos_odu['virtud_fusión']}")
+            print(f"💀 Sombra (Tu Debilidad): {datos_odu['defecto_fusión']}")
+            print(f"🔧 Función: {datos_odu['funcion_resultante']}")
+            print("-" * 50)
+            
+            self.virgilio.hablar(f"Interesante... naciste bajo el signo de {datos_odu['nombre']}.")
+            self.virgilio.hablar(f"Tu mayor peligro es caer en: '{datos_odu['defecto_fusión']}'.")
+            
         except ValueError:
-            print(">> Error: Formato inválido. Usando semilla de emergencia.")
-            random.seed(38433)
+            self.virgilio.hablar("Fecha inválida. Reinicia el sistema.", Colors.ROJO)
+            return
 
-    def iniciar_sesion(self):
-        self.configurar_semilla()
+        # 2. El Reto
+        self.virgilio.hablar("\nAhora dime... sabiendo esto, ¿cómo te sientes hoy?")
+        resp = input(f"{Colors.RESET}>> ")
         
-        self.virgilio.hablar("Qué onda, viajero. Soy Virgilio.")
-        self.virgilio.hablar("No soy tu niñera, soy el que te va a sacar de aquí.")
-        self.virgilio.hablar("Dime la neta... ¿Cómo te sientes ahora mismo?")
-        
-        respuesta = input(f"\n{Colors.RESET}>> Tu Respuesta: ")
-        
-        # Análisis
-        zona = self.virgilio.analizar_input(respuesta)
+        zona = self.virgilio.analizar_input(resp)
         jefe = self.bosses[zona]
         
-        # Selección de Odu basada en la semilla (Determinista)
-        odu_id = random.choice(list(self.odu_matrix.keys()))
-        odu_data = self.odu_matrix[odu_id]
-        
-        # Renderizado de la Zona
-        print(f"\n{jefe['color']}" + "█"*40)
-        print(f" ZONA ACTIVADA: {jefe['dios'].upper()}")
-        print(f" TENTACIÓN: {jefe['pecado']}")
-        print(f" ODU REINANTE: {odu_data['name']} [{odu_data['bit']}]")
-        print("█"*40 + f"{Colors.RESET}\n")
-        
-        self.virgilio.hablar(f"Te caché. {jefe['dios']} te quiere atrapar.")
-        self.virgilio.hablar(f"Ese código binario {odu_data['bit']} es tu llave... o tu tumba.")
+        print(f"\n{jefe['color']}!!! ALERTA DE SISTEMA: {jefe['dios']} TE HA CAPTURADO !!!{Colors.RESET}")
+        self.virgilio.hablar(f"Caíste en la {jefe['pecado']}. Usa tu virtud ({datos_odu['virtud_fusión']}) para escapar.", Colors.ROJO)
 
 if __name__ == "__main__":
     app = DanteSystem()
-    app.iniciar_sesion()
+    app.iniciar()
