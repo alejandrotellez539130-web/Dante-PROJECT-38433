@@ -3,64 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Protocolo Fantekey2026</title>
+    <title>Protocolo Fantekey2026 - ID 193</title>
     <style>
         body {
-            background-color: #000;
-            color: #00ff00;
+            background-color: #0d1117;
+            color: #00ff41;
             font-family: 'Courier New', Courier, monospace;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            min-height: 100vh;
             margin: 0;
-            text-align: center;
-        }
-        h1 {
-            border-bottom: 2px solid #00ff00;
-            padding-bottom: 10px;
-            animation: blink 2s infinite;
-        }
-        .status {
-            border: 1px solid #00ff00;
             padding: 20px;
-            margin-top: 20px;
-            box-shadow: 0 0 10px #00ff00;
         }
-        @keyframes blink {
-            0% { opacity: 1; }
-            50% { opacity: 0.5; }
-            100% { opacity: 1; }
+        .container {
+            border: 1px solid #30363d;
+            background: #161b22;
+            padding: 2rem;
+            border-radius: 6px;
+            max-width: 400px;
+            width: 100%;
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.1);
+        }
+        h1 { font-size: 1.2rem; border-bottom: 1px solid #30363d; padding-bottom: 10px; }
+        input {
+            width: 100%;
+            padding: 10px;
+            background: #0d1117;
+            border: 1px solid #30363d;
+            color: #fff;
+            margin-top: 10px;
+            font-family: inherit;
+            box-sizing: border-box;
         }
         button {
-            background: #000;
-            color: #00ff00;
-            border: 1px solid #00ff00;
-            padding: 10px 20px;
-            margin-top: 20px;
+            width: 100%;
+            margin-top: 15px;
+            padding: 10px;
+            background: #238636;
+            color: #fff;
+            border: none;
             cursor: pointer;
-            font-family: inherit;
             font-weight: bold;
         }
-        button:hover {
-            background: #00ff00;
-            color: #000;
+        button:hover { background: #2ea043; }
+        #output {
+            margin-top: 20px;
+            font-size: 0.8rem;
+            white-space: pre-wrap; /* Mantiene formato JSON */
+            text-align: left;
+            background: #000;
+            padding: 10px;
+            display: none; /* Oculto hasta activar */
+            border-left: 3px solid #00ff41;
         }
+        .error { color: #ff5555; border-left-color: #ff5555 !important; }
     </style>
 </head>
 <body>
 
-    <h1>🖥️ SISTEMA CÉNIT DIETRIX</h1>
+    <div class="container">
+        <h1>🛡️ ANCLAJE CENIT v2.0</h1>
+        <p>Program ID: 193 (Odu Irosun Okanran)</p>
+        
+        <label>Ingrese Frecuencia Maestra:</label>
+        <input type="number" id="freqInput" placeholder="Ej: 00000">
+        <button onclick="ejecutarProtocolo()">VALIDAR ANCLAJE</button>
 
-    <div class="status">
-        <p>Estado del Proyecto: <strong>ACTIVO</strong></p>
-        <p>Conexión: <strong>ESTABLE</strong></p>
-        <p>Operador: <strong>Alejandro Téllez</strong></p>
-        <p>Frecuencia: <strong>38433</strong></p>
+        <div id="output"></div>
     </div>
 
-    <button onclick="alert('Acceso Autorizado. Protocolo en línea.')">INICIAR ENLACE</button>
+    <script>
+        // Lógica portada de Python a JavaScript para el navegador
+        const FRECUENCIA_SECRETA = 38433;
+        const BINARIO = "1001011000100001"; // Calculado previamente
 
+        function ejecutarProtocolo() {
+            const input = document.getElementById('freqInput').value;
+            const outputDiv = document.getElementById('output');
+            
+            if (parseInt(input) === FRECUENCIA_SECRETA) {
+                // ÉXITO
+                const logData = {
+                    "status": "Active",
+                    "timestamp": new Date().toISOString(),
+                    "repo": "Fantekey2026",
+                    "integrity": true,
+                    "program_id": 193,
+                    "binary_key": BINARIO,
+                    "message": "ACCESO CONCEDIDO"
+                };
+                
+                outputDiv.style.display = "block";
+                outputDiv.classList.remove("error");
+                outputDiv.innerHTML = ">> INICIANDO SECUENCIA...\n" + JSON.stringify(logData, null, 2);
+            } else {
+                // ERROR
+                outputDiv.style.display = "block";
+                outputDiv.classList.add("error");
+                outputDiv.innerHTML = ">> [ERROR] Frecuencia incorrecta.\n>> Acceso Denegado.";
+            }
+        }
+    </script>
 </body>
 </html>
