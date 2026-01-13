@@ -1,50 +1,61 @@
 import json
-import datetime
-import os
+from datetime import datetime
 
-def load_config():
-    """Carga la configuración desde project_data.json"""
+# --- CONFIGURACIÓN CENIT ---
+# Frecuencia base del proyecto Fantekey2026
+FRECUENCIA_SECRETA = 38433
+BINARIO_FRECUENCIA = bin(FRECUENCIA_SECRETA)[2:] # 1001011000100001
+REPO_NAME = "Fantekey2026"
+
+def validar_frecuencia(input_usuario):
+    """
+    Verifica si el usuario tiene la llave maestra (38433).
+    """
     try:
-        with open('project_data.json', 'r') as f:
-            data = json.load(f)
-            return data
-    except FileNotFoundError:
-        print(">> [ERROR] No se encuentra project_data.json")
-        return None
-
-def run_cenit_protocol():
-    print(f"\n--- INICIANDO PROTOCOLO CENIT DIETRIX v1.1 ---")
-    config = load_config()
-    
-    if not config:
-        return
-
-    # Carga de datos del JSON
-    system = config.get('system_config') or config.get('configuracion_sistema') or {}
-    architect = system.get('architect') or system.get('arquitecto') or 'Desconocido'
-    security = config.get('security_level') or config.get('nivel_seguridad') or 'Desconocido'
-
-    print(f"Arquitecto: {architect}")
-    print(f"Nivel de Seguridad: {security}")
-
-    try:
-        # Lógica del Proyecto Memorias (Integrada)
-        frecuencia_secreta = "38433"
-        input_usuario = input(f"\nIntroduce la Frecuencia Maestra ({frecuencia_secreta}) para anclar: ")
-        
-        if input_usuario == frecuencia_secreta:
-            # Cálculo Binario (Tu código adaptado)
-            binario_frecuencia = bin(int(frecuencia_secreta))[2:]
-            
-            print("\n✅ [ACCESO CONCEDIDO] Frecuencia alineada.")
-            print(f">> [SISTEMA] Clave Binaria Decodificada: {binario_frecuencia}")
-            print(f"Timestamp: {datetime.datetime.now()}")
-            print(">> El sistema está listo para el despliegue final.")
+        val = int(input_usuario)
+        if val == FRECUENCIA_SECRETA:
+            return True, f"Acceso Concedido. Frecuencia alineada: {BINARIO_FRECUENCIA}"
         else:
-            print("\n❌ [ACCESO DENEGADO] Frecuencia incorrecta. Protocolo abortado.")
+            return False, "Error de Frecuencia: Acceso Denegado."
+    except ValueError:
+        return False, "Error: Entrada no numérica."
+
+def generar_log_cenit(status="Standby"):
+    """
+    Genera el log de acceso para el repositorio.
+    Program ID 193 = Odu Irosun Okanran (Fuego y Vacío).
+    """
+    timestamp = datetime.now().isoformat()
+    return {
+        "cenit_status": status,
+        "last_check": timestamp,
+        "repo": REPO_NAME,
+        "integrity_check": True,
+        "program_id": 193, 
+        "message": "Protocolo de Anclaje Activo"
+    }
+
+# --- EJECUCIÓN DEL ANCLAJE ---
+def run_cenit_protocol():
+    print(f"--- INICIANDO PROTOCOLO CENIT EN {REPO_NAME} ---")
+    
+    # 1. Verificación de Llave
+    try:
+        llave = input("Introduce la Frecuencia Maestra para anclar: ")
+        acceso, mensaje = validar_frecuencia(llave)
+        print(mensaje)
+        
+        if acceso:
+            # 2. Generación del Log
+            log = generar_log_cenit(status="Active")
+            print("\n[SUCCESS] Anclaje exitoso. Generando reporte JSON...")
+            print(json.dumps(log, indent=4))
+            print("\n--- SISTEMA LISTO PARA GITHUB ---")
+        else:
+            print("\n[FAILURE] No se pudo anclar.")
             
     except ValueError:
-        print("[ERROR] Entrada inválida.")
+        print("\n[ERROR] Entrada inválida.")
 
 if __name__ == "__main__":
     run_cenit_protocol()
