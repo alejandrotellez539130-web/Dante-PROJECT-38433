@@ -1,0 +1,2253 @@
+
+{
+    "11111111": {
+        "nombre": "Ogbe Meji (Puro)",
+        "padres": [
+            "Ogbe",
+            "Ogbe"
+        ],
+        "virtud_fusión": "Claridad Absoluta (Potenciada)",
+        "defecto_fusión": "Inflación Total (Colapso)",
+        "funcion_resultante": "Intersección entre Conciencia y Conciencia"
+    },
+    "11110000": {
+        "nombre": "Ogbe-Oyekun",
+        "padres": [
+            "Ogbe",
+            "Oyekun"
+        ],
+        "virtud_fusión": "Claridad guiada por Profundidad",
+        "defecto_fusión": "Inflación alimentando a Vacío",
+        "funcion_resultante": "Intersección entre Conciencia y Inconsciente"
+    },
+    "11110110": {
+        "nombre": "Ogbe-Iwori",
+        "padres": [
+            "Ogbe",
+            "Iwori"
+        ],
+        "virtud_fusión": "Claridad guiada por Análisis",
+        "defecto_fusión": "Inflación alimentando a Rumiación",
+        "funcion_resultante": "Intersección entre Conciencia y Intelecto"
+    },
+    "11111001": {
+        "nombre": "Ogbe-Odi",
+        "padres": [
+            "Ogbe",
+            "Odi"
+        ],
+        "virtud_fusión": "Claridad guiada por Autocontrol",
+        "defecto_fusión": "Inflación alimentando a Bloqueo",
+        "funcion_resultante": "Intersección entre Conciencia y Control"
+    },
+    "11110101": {
+        "nombre": "Ogbe-Irosun",
+        "padres": [
+            "Ogbe",
+            "Irosun"
+        ],
+        "virtud_fusión": "Claridad guiada por Creatividad",
+        "defecto_fusión": "Inflación alimentando a Impulsividad",
+        "funcion_resultante": "Intersección entre Conciencia y Energía"
+    },
+    "11111010": {
+        "nombre": "Ogbe-Owonrin",
+        "padres": [
+            "Ogbe",
+            "Owonrin"
+        ],
+        "virtud_fusión": "Claridad guiada por Adaptación",
+        "defecto_fusión": "Inflación alimentando a Caos",
+        "funcion_resultante": "Intersección entre Conciencia y Cambio"
+    },
+    "11110111": {
+        "nombre": "Ogbe-Obara",
+        "padres": [
+            "Ogbe",
+            "Obara"
+        ],
+        "virtud_fusión": "Claridad guiada por Comunicación",
+        "defecto_fusión": "Inflación alimentando a Manipulación",
+        "funcion_resultante": "Intersección entre Conciencia y Lenguaje"
+    },
+    "11111000": {
+        "nombre": "Ogbe-Ose",
+        "padres": [
+            "Ogbe",
+            "Ose"
+        ],
+        "virtud_fusión": "Claridad guiada por Empatía",
+        "defecto_fusión": "Inflación alimentando a Dependencia",
+        "funcion_resultante": "Intersección entre Conciencia y Vínculo"
+    },
+    "11111110": {
+        "nombre": "Ogbe-Ogunda",
+        "padres": [
+            "Ogbe",
+            "Ogunda"
+        ],
+        "virtud_fusión": "Claridad guiada por Determinación",
+        "defecto_fusión": "Inflación alimentando a Brutalidad",
+        "funcion_resultante": "Intersección entre Conciencia y Acción"
+    },
+    "11110100": {
+        "nombre": "Ogbe-Osa",
+        "padres": [
+            "Ogbe",
+            "Osa"
+        ],
+        "virtud_fusión": "Claridad guiada por Sensibilidad",
+        "defecto_fusión": "Inflación alimentando a Ansiedad",
+        "funcion_resultante": "Intersección entre Conciencia y Emoción"
+    },
+    "11111100": {
+        "nombre": "Ogbe-Ika",
+        "padres": [
+            "Ogbe",
+            "Ika"
+        ],
+        "virtud_fusión": "Claridad guiada por Astucia",
+        "defecto_fusión": "Inflación alimentando a Paranoia",
+        "funcion_resultante": "Intersección entre Conciencia y Estrategia"
+    },
+    "11110011": {
+        "nombre": "Ogbe-Oturupon",
+        "padres": [
+            "Ogbe",
+            "Oturupon"
+        ],
+        "virtud_fusión": "Claridad guiada por Resiliencia",
+        "defecto_fusión": "Inflación alimentando a Victimismo",
+        "funcion_resultante": "Intersección entre Conciencia y Resistencia"
+    },
+    "11111011": {
+        "nombre": "Ogbe-Otura",
+        "padres": [
+            "Ogbe",
+            "Otura"
+        ],
+        "virtud_fusión": "Claridad guiada por Evolución",
+        "defecto_fusión": "Inflación alimentando a Dogma",
+        "funcion_resultante": "Intersección entre Conciencia y Aprendizaje"
+    },
+    "11110010": {
+        "nombre": "Ogbe-Irete",
+        "padres": [
+            "Ogbe",
+            "Irete"
+        ],
+        "virtud_fusión": "Claridad guiada por Orden",
+        "defecto_fusión": "Inflación alimentando a Control Excesivo",
+        "funcion_resultante": "Intersección entre Conciencia y Estructura"
+    },
+    "11110001": {
+        "nombre": "Ogbe-Ofun",
+        "padres": [
+            "Ogbe",
+            "Ofun"
+        ],
+        "virtud_fusión": "Claridad guiada por Sabiduría",
+        "defecto_fusión": "Inflación alimentando a Disociación",
+        "funcion_resultante": "Intersección entre Conciencia y Síntesis"
+    },
+    "00001111": {
+        "nombre": "Oyekun-Ogbe",
+        "padres": [
+            "Oyekun",
+            "Ogbe"
+        ],
+        "virtud_fusión": "Profundidad guiada por Claridad",
+        "defecto_fusión": "Vacío alimentando a Inflación",
+        "funcion_resultante": "Intersección entre Inconsciente y Conciencia"
+    },
+    "00000000": {
+        "nombre": "Oyekun Meji (Puro)",
+        "padres": [
+            "Oyekun",
+            "Oyekun"
+        ],
+        "virtud_fusión": "Profundidad Absoluta (Potenciada)",
+        "defecto_fusión": "Vacío Total (Colapso)",
+        "funcion_resultante": "Intersección entre Inconsciente y Inconsciente"
+    },
+    "00000110": {
+        "nombre": "Oyekun-Iwori",
+        "padres": [
+            "Oyekun",
+            "Iwori"
+        ],
+        "virtud_fusión": "Profundidad guiada por Análisis",
+        "defecto_fusión": "Vacío alimentando a Rumiación",
+        "funcion_resultante": "Intersección entre Inconsciente y Intelecto"
+    },
+    "00001001": {
+        "nombre": "Oyekun-Odi",
+        "padres": [
+            "Oyekun",
+            "Odi"
+        ],
+        "virtud_fusión": "Profundidad guiada por Autocontrol",
+        "defecto_fusión": "Vacío alimentando a Bloqueo",
+        "funcion_resultante": "Intersección entre Inconsciente y Control"
+    },
+    "00000101": {
+        "nombre": "Oyekun-Irosun",
+        "padres": [
+            "Oyekun",
+            "Irosun"
+        ],
+        "virtud_fusión": "Profundidad guiada por Creatividad",
+        "defecto_fusión": "Vacío alimentando a Impulsividad",
+        "funcion_resultante": "Intersección entre Inconsciente y Energía"
+    },
+    "00001010": {
+        "nombre": "Oyekun-Owonrin",
+        "padres": [
+            "Oyekun",
+            "Owonrin"
+        ],
+        "virtud_fusión": "Profundidad guiada por Adaptación",
+        "defecto_fusión": "Vacío alimentando a Caos",
+        "funcion_resultante": "Intersección entre Inconsciente y Cambio"
+    },
+    "00000111": {
+        "nombre": "Oyekun-Obara",
+        "padres": [
+            "Oyekun",
+            "Obara"
+        ],
+        "virtud_fusión": "Profundidad guiada por Comunicación",
+        "defecto_fusión": "Vacío alimentando a Manipulación",
+        "funcion_resultante": "Intersección entre Inconsciente y Lenguaje"
+    },
+    "00001000": {
+        "nombre": "Oyekun-Ose",
+        "padres": [
+            "Oyekun",
+            "Ose"
+        ],
+        "virtud_fusión": "Profundidad guiada por Empatía",
+        "defecto_fusión": "Vacío alimentando a Dependencia",
+        "funcion_resultante": "Intersección entre Inconsciente y Vínculo"
+    },
+    "00001110": {
+        "nombre": "Oyekun-Ogunda",
+        "padres": [
+            "Oyekun",
+            "Ogunda"
+        ],
+        "virtud_fusión": "Profundidad guiada por Determinación",
+        "defecto_fusión": "Vacío alimentando a Brutalidad",
+        "funcion_resultante": "Intersección entre Inconsciente y Acción"
+    },
+    "00000100": {
+        "nombre": "Oyekun-Osa",
+        "padres": [
+            "Oyekun",
+            "Osa"
+        ],
+        "virtud_fusión": "Profundidad guiada por Sensibilidad",
+        "defecto_fusión": "Vacío alimentando a Ansiedad",
+        "funcion_resultante": "Intersección entre Inconsciente y Emoción"
+    },
+    "00001100": {
+        "nombre": "Oyekun-Ika",
+        "padres": [
+            "Oyekun",
+            "Ika"
+        ],
+        "virtud_fusión": "Profundidad guiada por Astucia",
+        "defecto_fusión": "Vacío alimentando a Paranoia",
+        "funcion_resultante": "Intersección entre Inconsciente y Estrategia"
+    },
+    "00000011": {
+        "nombre": "Oyekun-Oturupon",
+        "padres": [
+            "Oyekun",
+            "Oturupon"
+        ],
+        "virtud_fusión": "Profundidad guiada por Resiliencia",
+        "defecto_fusión": "Vacío alimentando a Victimismo",
+        "funcion_resultante": "Intersección entre Inconsciente y Resistencia"
+    },
+    "00001011": {
+        "nombre": "Oyekun-Otura",
+        "padres": [
+            "Oyekun",
+            "Otura"
+        ],
+        "virtud_fusión": "Profundidad guiada por Evolución",
+        "defecto_fusión": "Vacío alimentando a Dogma",
+        "funcion_resultante": "Intersección entre Inconsciente y Aprendizaje"
+    },
+    "00000010": {
+        "nombre": "Oyekun-Irete",
+        "padres": [
+            "Oyekun",
+            "Irete"
+        ],
+        "virtud_fusión": "Profundidad guiada por Orden",
+        "defecto_fusión": "Vacío alimentando a Control Excesivo",
+        "funcion_resultante": "Intersección entre Inconsciente y Estructura"
+    },
+    "00000001": {
+        "nombre": "Oyekun-Ofun",
+        "padres": [
+            "Oyekun",
+            "Ofun"
+        ],
+        "virtud_fusión": "Profundidad guiada por Sabiduría",
+        "defecto_fusión": "Vacío alimentando a Disociación",
+        "funcion_resultante": "Intersección entre Inconsciente y Síntesis"
+    },
+    "01101111": {
+        "nombre": "Iwori-Ogbe",
+        "padres": [
+            "Iwori",
+            "Ogbe"
+        ],
+        "virtud_fusión": "Análisis guiada por Claridad",
+        "defecto_fusión": "Rumiación alimentando a Inflación",
+        "funcion_resultante": "Intersección entre Intelecto y Conciencia"
+    },
+    "01100000": {
+        "nombre": "Iwori-Oyekun",
+        "padres": [
+            "Iwori",
+            "Oyekun"
+        ],
+        "virtud_fusión": "Análisis guiada por Profundidad",
+        "defecto_fusión": "Rumiación alimentando a Vacío",
+        "funcion_resultante": "Intersección entre Intelecto y Inconsciente"
+    },
+    "01100110": {
+        "nombre": "Iwori Meji (Puro)",
+        "padres": [
+            "Iwori",
+            "Iwori"
+        ],
+        "virtud_fusión": "Análisis Absoluta (Potenciada)",
+        "defecto_fusión": "Rumiación Total (Colapso)",
+        "funcion_resultante": "Intersección entre Intelecto y Intelecto"
+    },
+    "01101001": {
+        "nombre": "Iwori-Odi",
+        "padres": [
+            "Iwori",
+            "Odi"
+        ],
+        "virtud_fusión": "Análisis guiada por Autocontrol",
+        "defecto_fusión": "Rumiación alimentando a Bloqueo",
+        "funcion_resultante": "Intersección entre Intelecto y Control"
+    },
+    "01100101": {
+        "nombre": "Iwori-Irosun",
+        "padres": [
+            "Iwori",
+            "Irosun"
+        ],
+        "virtud_fusión": "Análisis guiada por Creatividad",
+        "defecto_fusión": "Rumiación alimentando a Impulsividad",
+        "funcion_resultante": "Intersección entre Intelecto y Energía"
+    },
+    "01101010": {
+        "nombre": "Iwori-Owonrin",
+        "padres": [
+            "Iwori",
+            "Owonrin"
+        ],
+        "virtud_fusión": "Análisis guiada por Adaptación",
+        "defecto_fusión": "Rumiación alimentando a Caos",
+        "funcion_resultante": "Intersección entre Intelecto y Cambio"
+    },
+    "01100111": {
+        "nombre": "Iwori-Obara",
+        "padres": [
+            "Iwori",
+            "Obara"
+        ],
+        "virtud_fusión": "Análisis guiada por Comunicación",
+        "defecto_fusión": "Rumiación alimentando a Manipulación",
+        "funcion_resultante": "Intersección entre Intelecto y Lenguaje"
+    },
+    "01101000": {
+        "nombre": "Iwori-Ose",
+        "padres": [
+            "Iwori",
+            "Ose"
+        ],
+        "virtud_fusión": "Análisis guiada por Empatía",
+        "defecto_fusión": "Rumiación alimentando a Dependencia",
+        "funcion_resultante": "Intersección entre Intelecto y Vínculo"
+    },
+    "01101110": {
+        "nombre": "Iwori-Ogunda",
+        "padres": [
+            "Iwori",
+            "Ogunda"
+        ],
+        "virtud_fusión": "Análisis guiada por Determinación",
+        "defecto_fusión": "Rumiación alimentando a Brutalidad",
+        "funcion_resultante": "Intersección entre Intelecto y Acción"
+    },
+    "01100100": {
+        "nombre": "Iwori-Osa",
+        "padres": [
+            "Iwori",
+            "Osa"
+        ],
+        "virtud_fusión": "Análisis guiada por Sensibilidad",
+        "defecto_fusión": "Rumiación alimentando a Ansiedad",
+        "funcion_resultante": "Intersección entre Intelecto y Emoción"
+    },
+    "01101100": {
+        "nombre": "Iwori-Ika",
+        "padres": [
+            "Iwori",
+            "Ika"
+        ],
+        "virtud_fusión": "Análisis guiada por Astucia",
+        "defecto_fusión": "Rumiación alimentando a Paranoia",
+        "funcion_resultante": "Intersección entre Intelecto y Estrategia"
+    },
+    "01100011": {
+        "nombre": "Iwori-Oturupon",
+        "padres": [
+            "Iwori",
+            "Oturupon"
+        ],
+        "virtud_fusión": "Análisis guiada por Resiliencia",
+        "defecto_fusión": "Rumiación alimentando a Victimismo",
+        "funcion_resultante": "Intersección entre Intelecto y Resistencia"
+    },
+    "01101011": {
+        "nombre": "Iwori-Otura",
+        "padres": [
+            "Iwori",
+            "Otura"
+        ],
+        "virtud_fusión": "Análisis guiada por Evolución",
+        "defecto_fusión": "Rumiación alimentando a Dogma",
+        "funcion_resultante": "Intersección entre Intelecto y Aprendizaje"
+    },
+    "01100010": {
+        "nombre": "Iwori-Irete",
+        "padres": [
+            "Iwori",
+            "Irete"
+        ],
+        "virtud_fusión": "Análisis guiada por Orden",
+        "defecto_fusión": "Rumiación alimentando a Control Excesivo",
+        "funcion_resultante": "Intersección entre Intelecto y Estructura"
+    },
+    "01100001": {
+        "nombre": "Iwori-Ofun",
+        "padres": [
+            "Iwori",
+            "Ofun"
+        ],
+        "virtud_fusión": "Análisis guiada por Sabiduría",
+        "defecto_fusión": "Rumiación alimentando a Disociación",
+        "funcion_resultante": "Intersección entre Intelecto y Síntesis"
+    },
+    "10011111": {
+        "nombre": "Odi-Ogbe",
+        "padres": [
+            "Odi",
+            "Ogbe"
+        ],
+        "virtud_fusión": "Autocontrol guiada por Claridad",
+        "defecto_fusión": "Bloqueo alimentando a Inflación",
+        "funcion_resultante": "Intersección entre Control y Conciencia"
+    },
+    "10010000": {
+        "nombre": "Odi-Oyekun",
+        "padres": [
+            "Odi",
+            "Oyekun"
+        ],
+        "virtud_fusión": "Autocontrol guiada por Profundidad",
+        "defecto_fusión": "Bloqueo alimentando a Vacío",
+        "funcion_resultante": "Intersección entre Control y Inconsciente"
+    },
+    "10010110": {
+        "nombre": "Odi-Iwori",
+        "padres": [
+            "Odi",
+            "Iwori"
+        ],
+        "virtud_fusión": "Autocontrol guiada por Análisis",
+        "defecto_fusión": "Bloqueo alimentando a Rumiación",
+        "funcion_resultante": "Intersección entre Control y Intelecto"
+    },
+    "10011001": {
+        "nombre": "Odi Meji (Puro)",
+        "padres": [
+            "Odi",
+            "Odi"
+        ],
+        "virtud_fusión": "Autocontrol Absoluta (Potenciada)",
+        "defecto_fusión": "Bloqueo Total (Colapso)",
+        "funcion_resultante": "Intersección entre Control y Control"
+    },
+    "10010101": {
+        "nombre": "Odi-Irosun",
+        "padres": [
+            "Odi",
+            "Irosun"
+        ],
+        "virtud_fusión": "Autocontrol guiada por Creatividad",
+        "defecto_fusión": "Bloqueo alimentando a Impulsividad",
+        "funcion_resultante": "Intersección entre Control y Energía"
+    },
+    "10011010": {
+        "nombre": "Odi-Owonrin",
+        "padres": [
+            "Odi",
+            "Owonrin"
+        ],
+        "virtud_fusión": "Autocontrol guiada por Adaptación",
+        "defecto_fusión": "Bloqueo alimentando a Caos",
+        "funcion_resultante": "Intersección entre Control y Cambio"
+    },
+    "10010111": {
+        "nombre": "Odi-Obara",
+        "padres": [
+            "Odi",
+            "Obara"
+        ],
+        "virtud_fusión": "Autocontrol guiada por Comunicación",
+        "defecto_fusión": "Bloqueo alimentando a Manipulación",
+        "funcion_resultante": "Intersección entre Control y Lenguaje"
+    },
+    "10011000": {
+        "nombre": "Odi-Ose",
+        "padres": [
+            "Odi",
+            "Ose"
+        ],
+        "virtud_fusión": "Autocontrol guiada por Empatía",
+        "defecto_fusión": "Bloqueo alimentando a Dependencia",
+        "funcion_resultante": "Intersección entre Control y Vínculo"
+    },
+    "10011110": {
+        "nombre": "Odi-Ogunda",
+        "padres": [
+            "Odi",
+            "Ogunda"
+        ],
+        "virtud_fusión": "Autocontrol guiada por Determinación",
+        "defecto_fusión": "Bloqueo alimentando a Brutalidad",
+        "funcion_resultante": "Intersección entre Control y Acción"
+    },
+    "10010100": {
+        "nombre": "Odi-Osa",
+        "padres": [
+            "Odi",
+            "Osa"
+        ],
+        "virtud_fusión": "Autocontrol guiada por Sensibilidad",
+        "defecto_fusión": "Bloqueo alimentando a Ansiedad",
+        "funcion_resultante": "Intersección entre Control y Emoción"
+    },
+    "10011100": {
+        "nombre": "Odi-Ika",
+        "padres": [
+            "Odi",
+            "Ika"
+        ],
+        "virtud_fusión": "Autocontrol guiada por Astucia",
+        "defecto_fusión": "Bloqueo alimentando a Paranoia",
+        "funcion_resultante": "Intersección entre Control y Estrategia"
+    },
+    "10010011": {
+        "nombre": "Odi-Oturupon",
+        "padres": [
+            "Odi",
+            "Oturupon"
+        ],
+        "virtud_fusión": "Autocontrol guiada por Resiliencia",
+        "defecto_fusión": "Bloqueo alimentando a Victimismo",
+        "funcion_resultante": "Intersección entre Control y Resistencia"
+    },
+    "10011011": {
+        "nombre": "Odi-Otura",
+        "padres": [
+            "Odi",
+            "Otura"
+        ],
+        "virtud_fusión": "Autocontrol guiada por Evolución",
+        "defecto_fusión": "Bloqueo alimentando a Dogma",
+        "funcion_resultante": "Intersección entre Control y Aprendizaje"
+    },
+    "10010010": {
+        "nombre": "Odi-Irete",
+        "padres": [
+            "Odi",
+            "Irete"
+        ],
+        "virtud_fusión": "Autocontrol guiada por Orden",
+        "defecto_fusión": "Bloqueo alimentando a Control Excesivo",
+        "funcion_resultante": "Intersección entre Control y Estructura"
+    },
+    "10010001": {
+        "nombre": "Odi-Ofun",
+        "padres": [
+            "Odi",
+            "Ofun"
+        ],
+        "virtud_fusión": "Autocontrol guiada por Sabiduría",
+        "defecto_fusión": "Bloqueo alimentando a Disociación",
+        "funcion_resultante": "Intersección entre Control y Síntesis"
+    },
+    "01011111": {
+        "nombre": "Irosun-Ogbe",
+        "padres": [
+            "Irosun",
+            "Ogbe"
+        ],
+        "virtud_fusión": "Creatividad guiada por Claridad",
+        "defecto_fusión": "Impulsividad alimentando a Inflación",
+        "funcion_resultante": "Intersección entre Energía y Conciencia"
+    },
+    "01010000": {
+        "nombre": "Irosun-Oyekun",
+        "padres": [
+            "Irosun",
+            "Oyekun"
+        ],
+        "virtud_fusión": "Creatividad guiada por Profundidad",
+        "defecto_fusión": "Impulsividad alimentando a Vacío",
+        "funcion_resultante": "Intersección entre Energía y Inconsciente"
+    },
+    "01010110": {
+        "nombre": "Irosun-Iwori",
+        "padres": [
+            "Irosun",
+            "Iwori"
+        ],
+        "virtud_fusión": "Creatividad guiada por Análisis",
+        "defecto_fusión": "Impulsividad alimentando a Rumiación",
+        "funcion_resultante": "Intersección entre Energía y Intelecto"
+    },
+    "01011001": {
+        "nombre": "Irosun-Odi",
+        "padres": [
+            "Irosun",
+            "Odi"
+        ],
+        "virtud_fusión": "Creatividad guiada por Autocontrol",
+        "defecto_fusión": "Impulsividad alimentando a Bloqueo",
+        "funcion_resultante": "Intersección entre Energía y Control"
+    },
+    "01010101": {
+        "nombre": "Irosun Meji (Puro)",
+        "padres": [
+            "Irosun",
+            "Irosun"
+        ],
+        "virtud_fusión": "Creatividad Absoluta (Potenciada)",
+        "defecto_fusión": "Impulsividad Total (Colapso)",
+        "funcion_resultante": "Intersección entre Energía y Energía"
+    },
+    "01011010": {
+        "nombre": "Irosun-Owonrin",
+        "padres": [
+            "Irosun",
+            "Owonrin"
+        ],
+        "virtud_fusión": "Creatividad guiada por Adaptación",
+        "defecto_fusión": "Impulsividad alimentando a Caos",
+        "funcion_resultante": "Intersección entre Energía y Cambio"
+    },
+    "01010111": {
+        "nombre": "Irosun-Obara",
+        "padres": [
+            "Irosun",
+            "Obara"
+        ],
+        "virtud_fusión": "Creatividad guiada por Comunicación",
+        "defecto_fusión": "Impulsividad alimentando a Manipulación",
+        "funcion_resultante": "Intersección entre Energía y Lenguaje"
+    },
+    "01011000": {
+        "nombre": "Irosun-Ose",
+        "padres": [
+            "Irosun",
+            "Ose"
+        ],
+        "virtud_fusión": "Creatividad guiada por Empatía",
+        "defecto_fusión": "Impulsividad alimentando a Dependencia",
+        "funcion_resultante": "Intersección entre Energía y Vínculo"
+    },
+    "01011110": {
+        "nombre": "Irosun-Ogunda",
+        "padres": [
+            "Irosun",
+            "Ogunda"
+        ],
+        "virtud_fusión": "Creatividad guiada por Determinación",
+        "defecto_fusión": "Impulsividad alimentando a Brutalidad",
+        "funcion_resultante": "Intersección entre Energía y Acción"
+    },
+    "01010100": {
+        "nombre": "Irosun-Osa",
+        "padres": [
+            "Irosun",
+            "Osa"
+        ],
+        "virtud_fusión": "Creatividad guiada por Sensibilidad",
+        "defecto_fusión": "Impulsividad alimentando a Ansiedad",
+        "funcion_resultante": "Intersección entre Energía y Emoción"
+    },
+    "01011100": {
+        "nombre": "Irosun-Ika",
+        "padres": [
+            "Irosun",
+            "Ika"
+        ],
+        "virtud_fusión": "Creatividad guiada por Astucia",
+        "defecto_fusión": "Impulsividad alimentando a Paranoia",
+        "funcion_resultante": "Intersección entre Energía y Estrategia"
+    },
+    "01010011": {
+        "nombre": "Irosun-Oturupon",
+        "padres": [
+            "Irosun",
+            "Oturupon"
+        ],
+        "virtud_fusión": "Creatividad guiada por Resiliencia",
+        "defecto_fusión": "Impulsividad alimentando a Victimismo",
+        "funcion_resultante": "Intersección entre Energía y Resistencia"
+    },
+    "01011011": {
+        "nombre": "Irosun-Otura",
+        "padres": [
+            "Irosun",
+            "Otura"
+        ],
+        "virtud_fusión": "Creatividad guiada por Evolución",
+        "defecto_fusión": "Impulsividad alimentando a Dogma",
+        "funcion_resultante": "Intersección entre Energía y Aprendizaje"
+    },
+    "01010010": {
+        "nombre": "Irosun-Irete",
+        "padres": [
+            "Irosun",
+            "Irete"
+        ],
+        "virtud_fusión": "Creatividad guiada por Orden",
+        "defecto_fusión": "Impulsividad alimentando a Control Excesivo",
+        "funcion_resultante": "Intersección entre Energía y Estructura"
+    },
+    "01010001": {
+        "nombre": "Irosun-Ofun",
+        "padres": [
+            "Irosun",
+            "Ofun"
+        ],
+        "virtud_fusión": "Creatividad guiada por Sabiduría",
+        "defecto_fusión": "Impulsividad alimentando a Disociación",
+        "funcion_resultante": "Intersección entre Energía y Síntesis"
+    },
+    "10101111": {
+        "nombre": "Owonrin-Ogbe",
+        "padres": [
+            "Owonrin",
+            "Ogbe"
+        ],
+        "virtud_fusión": "Adaptación guiada por Claridad",
+        "defecto_fusión": "Caos alimentando a Inflación",
+        "funcion_resultante": "Intersección entre Cambio y Conciencia"
+    },
+    "10100000": {
+        "nombre": "Owonrin-Oyekun",
+        "padres": [
+            "Owonrin",
+            "Oyekun"
+        ],
+        "virtud_fusión": "Adaptación guiada por Profundidad",
+        "defecto_fusión": "Caos alimentando a Vacío",
+        "funcion_resultante": "Intersección entre Cambio y Inconsciente"
+    },
+    "10100110": {
+        "nombre": "Owonrin-Iwori",
+        "padres": [
+            "Owonrin",
+            "Iwori"
+        ],
+        "virtud_fusión": "Adaptación guiada por Análisis",
+        "defecto_fusión": "Caos alimentando a Rumiación",
+        "funcion_resultante": "Intersección entre Cambio y Intelecto"
+    },
+    "10101001": {
+        "nombre": "Owonrin-Odi",
+        "padres": [
+            "Owonrin",
+            "Odi"
+        ],
+        "virtud_fusión": "Adaptación guiada por Autocontrol",
+        "defecto_fusión": "Caos alimentando a Bloqueo",
+        "funcion_resultante": "Intersección entre Cambio y Control"
+    },
+    "10100101": {
+        "nombre": "Owonrin-Irosun",
+        "padres": [
+            "Owonrin",
+            "Irosun"
+        ],
+        "virtud_fusión": "Adaptación guiada por Creatividad",
+        "defecto_fusión": "Caos alimentando a Impulsividad",
+        "funcion_resultante": "Intersección entre Cambio y Energía"
+    },
+    "10101010": {
+        "nombre": "Owonrin Meji (Puro)",
+        "padres": [
+            "Owonrin",
+            "Owonrin"
+        ],
+        "virtud_fusión": "Adaptación Absoluta (Potenciada)",
+        "defecto_fusión": "Caos Total (Colapso)",
+        "funcion_resultante": "Intersección entre Cambio y Cambio"
+    },
+    "10100111": {
+        "nombre": "Owonrin-Obara",
+        "padres": [
+            "Owonrin",
+            "Obara"
+        ],
+        "virtud_fusión": "Adaptación guiada por Comunicación",
+        "defecto_fusión": "Caos alimentando a Manipulación",
+        "funcion_resultante": "Intersección entre Cambio y Lenguaje"
+    },
+    "10101000": {
+        "nombre": "Owonrin-Ose",
+        "padres": [
+            "Owonrin",
+            "Ose"
+        ],
+        "virtud_fusión": "Adaptación guiada por Empatía",
+        "defecto_fusión": "Caos alimentando a Dependencia",
+        "funcion_resultante": "Intersección entre Cambio y Vínculo"
+    },
+    "10101110": {
+        "nombre": "Owonrin-Ogunda",
+        "padres": [
+            "Owonrin",
+            "Ogunda"
+        ],
+        "virtud_fusión": "Adaptación guiada por Determinación",
+        "defecto_fusión": "Caos alimentando a Brutalidad",
+        "funcion_resultante": "Intersección entre Cambio y Acción"
+    },
+    "10100100": {
+        "nombre": "Owonrin-Osa",
+        "padres": [
+            "Owonrin",
+            "Osa"
+        ],
+        "virtud_fusión": "Adaptación guiada por Sensibilidad",
+        "defecto_fusión": "Caos alimentando a Ansiedad",
+        "funcion_resultante": "Intersección entre Cambio y Emoción"
+    },
+    "10101100": {
+        "nombre": "Owonrin-Ika",
+        "padres": [
+            "Owonrin",
+            "Ika"
+        ],
+        "virtud_fusión": "Adaptación guiada por Astucia",
+        "defecto_fusión": "Caos alimentando a Paranoia",
+        "funcion_resultante": "Intersección entre Cambio y Estrategia"
+    },
+    "10100011": {
+        "nombre": "Owonrin-Oturupon",
+        "padres": [
+            "Owonrin",
+            "Oturupon"
+        ],
+        "virtud_fusión": "Adaptación guiada por Resiliencia",
+        "defecto_fusión": "Caos alimentando a Victimismo",
+        "funcion_resultante": "Intersección entre Cambio y Resistencia"
+    },
+    "10101011": {
+        "nombre": "Owonrin-Otura",
+        "padres": [
+            "Owonrin",
+            "Otura"
+        ],
+        "virtud_fusión": "Adaptación guiada por Evolución",
+        "defecto_fusión": "Caos alimentando a Dogma",
+        "funcion_resultante": "Intersección entre Cambio y Aprendizaje"
+    },
+    "10100010": {
+        "nombre": "Owonrin-Irete",
+        "padres": [
+            "Owonrin",
+            "Irete"
+        ],
+        "virtud_fusión": "Adaptación guiada por Orden",
+        "defecto_fusión": "Caos alimentando a Control Excesivo",
+        "funcion_resultante": "Intersección entre Cambio y Estructura"
+    },
+    "10100001": {
+        "nombre": "Owonrin-Ofun",
+        "padres": [
+            "Owonrin",
+            "Ofun"
+        ],
+        "virtud_fusión": "Adaptación guiada por Sabiduría",
+        "defecto_fusión": "Caos alimentando a Disociación",
+        "funcion_resultante": "Intersección entre Cambio y Síntesis"
+    },
+    "01111111": {
+        "nombre": "Obara-Ogbe",
+        "padres": [
+            "Obara",
+            "Ogbe"
+        ],
+        "virtud_fusión": "Comunicación guiada por Claridad",
+        "defecto_fusión": "Manipulación alimentando a Inflación",
+        "funcion_resultante": "Intersección entre Lenguaje y Conciencia"
+    },
+    "01110000": {
+        "nombre": "Obara-Oyekun",
+        "padres": [
+            "Obara",
+            "Oyekun"
+        ],
+        "virtud_fusión": "Comunicación guiada por Profundidad",
+        "defecto_fusión": "Manipulación alimentando a Vacío",
+        "funcion_resultante": "Intersección entre Lenguaje y Inconsciente"
+    },
+    "01110110": {
+        "nombre": "Obara-Iwori",
+        "padres": [
+            "Obara",
+            "Iwori"
+        ],
+        "virtud_fusión": "Comunicación guiada por Análisis",
+        "defecto_fusión": "Manipulación alimentando a Rumiación",
+        "funcion_resultante": "Intersección entre Lenguaje y Intelecto"
+    },
+    "01111001": {
+        "nombre": "Obara-Odi",
+        "padres": [
+            "Obara",
+            "Odi"
+        ],
+        "virtud_fusión": "Comunicación guiada por Autocontrol",
+        "defecto_fusión": "Manipulación alimentando a Bloqueo",
+        "funcion_resultante": "Intersección entre Lenguaje y Control"
+    },
+    "01110101": {
+        "nombre": "Obara-Irosun",
+        "padres": [
+            "Obara",
+            "Irosun"
+        ],
+        "virtud_fusión": "Comunicación guiada por Creatividad",
+        "defecto_fusión": "Manipulación alimentando a Impulsividad",
+        "funcion_resultante": "Intersección entre Lenguaje y Energía"
+    },
+    "01111010": {
+        "nombre": "Obara-Owonrin",
+        "padres": [
+            "Obara",
+            "Owonrin"
+        ],
+        "virtud_fusión": "Comunicación guiada por Adaptación",
+        "defecto_fusión": "Manipulación alimentando a Caos",
+        "funcion_resultante": "Intersección entre Lenguaje y Cambio"
+    },
+    "01110111": {
+        "nombre": "Obara Meji (Puro)",
+        "padres": [
+            "Obara",
+            "Obara"
+        ],
+        "virtud_fusión": "Comunicación Absoluta (Potenciada)",
+        "defecto_fusión": "Manipulación Total (Colapso)",
+        "funcion_resultante": "Intersección entre Lenguaje y Lenguaje"
+    },
+    "01111000": {
+        "nombre": "Obara-Ose",
+        "padres": [
+            "Obara",
+            "Ose"
+        ],
+        "virtud_fusión": "Comunicación guiada por Empatía",
+        "defecto_fusión": "Manipulación alimentando a Dependencia",
+        "funcion_resultante": "Intersección entre Lenguaje y Vínculo"
+    },
+    "01111110": {
+        "nombre": "Obara-Ogunda",
+        "padres": [
+            "Obara",
+            "Ogunda"
+        ],
+        "virtud_fusión": "Comunicación guiada por Determinación",
+        "defecto_fusión": "Manipulación alimentando a Brutalidad",
+        "funcion_resultante": "Intersección entre Lenguaje y Acción"
+    },
+    "01110100": {
+        "nombre": "Obara-Osa",
+        "padres": [
+            "Obara",
+            "Osa"
+        ],
+        "virtud_fusión": "Comunicación guiada por Sensibilidad",
+        "defecto_fusión": "Manipulación alimentando a Ansiedad",
+        "funcion_resultante": "Intersección entre Lenguaje y Emoción"
+    },
+    "01111100": {
+        "nombre": "Obara-Ika",
+        "padres": [
+            "Obara",
+            "Ika"
+        ],
+        "virtud_fusión": "Comunicación guiada por Astucia",
+        "defecto_fusión": "Manipulación alimentando a Paranoia",
+        "funcion_resultante": "Intersección entre Lenguaje y Estrategia"
+    },
+    "01110011": {
+        "nombre": "Obara-Oturupon",
+        "padres": [
+            "Obara",
+            "Oturupon"
+        ],
+        "virtud_fusión": "Comunicación guiada por Resiliencia",
+        "defecto_fusión": "Manipulación alimentando a Victimismo",
+        "funcion_resultante": "Intersección entre Lenguaje y Resistencia"
+    },
+    "01111011": {
+        "nombre": "Obara-Otura",
+        "padres": [
+            "Obara",
+            "Otura"
+        ],
+        "virtud_fusión": "Comunicación guiada por Evolución",
+        "defecto_fusión": "Manipulación alimentando a Dogma",
+        "funcion_resultante": "Intersección entre Lenguaje y Aprendizaje"
+    },
+    "01110010": {
+        "nombre": "Obara-Irete",
+        "padres": [
+            "Obara",
+            "Irete"
+        ],
+        "virtud_fusión": "Comunicación guiada por Orden",
+        "defecto_fusión": "Manipulación alimentando a Control Excesivo",
+        "funcion_resultante": "Intersección entre Lenguaje y Estructura"
+    },
+    "01110001": {
+        "nombre": "Obara-Ofun",
+        "padres": [
+            "Obara",
+            "Ofun"
+        ],
+        "virtud_fusión": "Comunicación guiada por Sabiduría",
+        "defecto_fusión": "Manipulación alimentando a Disociación",
+        "funcion_resultante": "Intersección entre Lenguaje y Síntesis"
+    },
+    "10001111": {
+        "nombre": "Ose-Ogbe",
+        "padres": [
+            "Ose",
+            "Ogbe"
+        ],
+        "virtud_fusión": "Empatía guiada por Claridad",
+        "defecto_fusión": "Dependencia alimentando a Inflación",
+        "funcion_resultante": "Intersección entre Vínculo y Conciencia"
+    },
+    "10000000": {
+        "nombre": "Ose-Oyekun",
+        "padres": [
+            "Ose",
+            "Oyekun"
+        ],
+        "virtud_fusión": "Empatía guiada por Profundidad",
+        "defecto_fusión": "Dependencia alimentando a Vacío",
+        "funcion_resultante": "Intersección entre Vínculo y Inconsciente"
+    },
+    "10000110": {
+        "nombre": "Ose-Iwori",
+        "padres": [
+            "Ose",
+            "Iwori"
+        ],
+        "virtud_fusión": "Empatía guiada por Análisis",
+        "defecto_fusión": "Dependencia alimentando a Rumiación",
+        "funcion_resultante": "Intersección entre Vínculo y Intelecto"
+    },
+    "10001001": {
+        "nombre": "Ose-Odi",
+        "padres": [
+            "Ose",
+            "Odi"
+        ],
+        "virtud_fusión": "Empatía guiada por Autocontrol",
+        "defecto_fusión": "Dependencia alimentando a Bloqueo",
+        "funcion_resultante": "Intersección entre Vínculo y Control"
+    },
+    "10000101": {
+        "nombre": "Ose-Irosun",
+        "padres": [
+            "Ose",
+            "Irosun"
+        ],
+        "virtud_fusión": "Empatía guiada por Creatividad",
+        "defecto_fusión": "Dependencia alimentando a Impulsividad",
+        "funcion_resultante": "Intersección entre Vínculo y Energía"
+    },
+    "10001010": {
+        "nombre": "Ose-Owonrin",
+        "padres": [
+            "Ose",
+            "Owonrin"
+        ],
+        "virtud_fusión": "Empatía guiada por Adaptación",
+        "defecto_fusión": "Dependencia alimentando a Caos",
+        "funcion_resultante": "Intersección entre Vínculo y Cambio"
+    },
+    "10000111": {
+        "nombre": "Ose-Obara",
+        "padres": [
+            "Ose",
+            "Obara"
+        ],
+        "virtud_fusión": "Empatía guiada por Comunicación",
+        "defecto_fusión": "Dependencia alimentando a Manipulación",
+        "funcion_resultante": "Intersección entre Vínculo y Lenguaje"
+    },
+    "10001000": {
+        "nombre": "Ose Meji (Puro)",
+        "padres": [
+            "Ose",
+            "Ose"
+        ],
+        "virtud_fusión": "Empatía Absoluta (Potenciada)",
+        "defecto_fusión": "Dependencia Total (Colapso)",
+        "funcion_resultante": "Intersección entre Vínculo y Vínculo"
+    },
+    "10001110": {
+        "nombre": "Ose-Ogunda",
+        "padres": [
+            "Ose",
+            "Ogunda"
+        ],
+        "virtud_fusión": "Empatía guiada por Determinación",
+        "defecto_fusión": "Dependencia alimentando a Brutalidad",
+        "funcion_resultante": "Intersección entre Vínculo y Acción"
+    },
+    "10000100": {
+        "nombre": "Ose-Osa",
+        "padres": [
+            "Ose",
+            "Osa"
+        ],
+        "virtud_fusión": "Empatía guiada por Sensibilidad",
+        "defecto_fusión": "Dependencia alimentando a Ansiedad",
+        "funcion_resultante": "Intersección entre Vínculo y Emoción"
+    },
+    "10001100": {
+        "nombre": "Ose-Ika",
+        "padres": [
+            "Ose",
+            "Ika"
+        ],
+        "virtud_fusión": "Empatía guiada por Astucia",
+        "defecto_fusión": "Dependencia alimentando a Paranoia",
+        "funcion_resultante": "Intersección entre Vínculo y Estrategia"
+    },
+    "10000011": {
+        "nombre": "Ose-Oturupon",
+        "padres": [
+            "Ose",
+            "Oturupon"
+        ],
+        "virtud_fusión": "Empatía guiada por Resiliencia",
+        "defecto_fusión": "Dependencia alimentando a Victimismo",
+        "funcion_resultante": "Intersección entre Vínculo y Resistencia"
+    },
+    "10001011": {
+        "nombre": "Ose-Otura",
+        "padres": [
+            "Ose",
+            "Otura"
+        ],
+        "virtud_fusión": "Empatía guiada por Evolución",
+        "defecto_fusión": "Dependencia alimentando a Dogma",
+        "funcion_resultante": "Intersección entre Vínculo y Aprendizaje"
+    },
+    "10000010": {
+        "nombre": "Ose-Irete",
+        "padres": [
+            "Ose",
+            "Irete"
+        ],
+        "virtud_fusión": "Empatía guiada por Orden",
+        "defecto_fusión": "Dependencia alimentando a Control Excesivo",
+        "funcion_resultante": "Intersección entre Vínculo y Estructura"
+    },
+    "10000001": {
+        "nombre": "Ose-Ofun",
+        "padres": [
+            "Ose",
+            "Ofun"
+        ],
+        "virtud_fusión": "Empatía guiada por Sabiduría",
+        "defecto_fusión": "Dependencia alimentando a Disociación",
+        "funcion_resultante": "Intersección entre Vínculo y Síntesis"
+    },
+    "11101111": {
+        "nombre": "Ogunda-Ogbe",
+        "padres": [
+            "Ogunda",
+            "Ogbe"
+        ],
+        "virtud_fusión": "Determinación guiada por Claridad",
+        "defecto_fusión": "Brutalidad alimentando a Inflación",
+        "funcion_resultante": "Intersección entre Acción y Conciencia"
+    },
+    "11100000": {
+        "nombre": "Ogunda-Oyekun",
+        "padres": [
+            "Ogunda",
+            "Oyekun"
+        ],
+        "virtud_fusión": "Determinación guiada por Profundidad",
+        "defecto_fusión": "Brutalidad alimentando a Vacío",
+        "funcion_resultante": "Intersección entre Acción y Inconsciente"
+    },
+    "11100110": {
+        "nombre": "Ogunda-Iwori",
+        "padres": [
+            "Ogunda",
+            "Iwori"
+        ],
+        "virtud_fusión": "Determinación guiada por Análisis",
+        "defecto_fusión": "Brutalidad alimentando a Rumiación",
+        "funcion_resultante": "Intersección entre Acción y Intelecto"
+    },
+    "11101001": {
+        "nombre": "Ogunda-Odi",
+        "padres": [
+            "Ogunda",
+            "Odi"
+        ],
+        "virtud_fusión": "Determinación guiada por Autocontrol",
+        "defecto_fusión": "Brutalidad alimentando a Bloqueo",
+        "funcion_resultante": "Intersección entre Acción y Control"
+    },
+    "11100101": {
+        "nombre": "Ogunda-Irosun",
+        "padres": [
+            "Ogunda",
+            "Irosun"
+        ],
+        "virtud_fusión": "Determinación guiada por Creatividad",
+        "defecto_fusión": "Brutalidad alimentando a Impulsividad",
+        "funcion_resultante": "Intersección entre Acción y Energía"
+    },
+    "11101010": {
+        "nombre": "Ogunda-Owonrin",
+        "padres": [
+            "Ogunda",
+            "Owonrin"
+        ],
+        "virtud_fusión": "Determinación guiada por Adaptación",
+        "defecto_fusión": "Brutalidad alimentando a Caos",
+        "funcion_resultante": "Intersección entre Acción y Cambio"
+    },
+    "11100111": {
+        "nombre": "Ogunda-Obara",
+        "padres": [
+            "Ogunda",
+            "Obara"
+        ],
+        "virtud_fusión": "Determinación guiada por Comunicación",
+        "defecto_fusión": "Brutalidad alimentando a Manipulación",
+        "funcion_resultante": "Intersección entre Acción y Lenguaje"
+    },
+    "11101000": {
+        "nombre": "Ogunda-Ose",
+        "padres": [
+            "Ogunda",
+            "Ose"
+        ],
+        "virtud_fusión": "Determinación guiada por Empatía",
+        "defecto_fusión": "Brutalidad alimentando a Dependencia",
+        "funcion_resultante": "Intersección entre Acción y Vínculo"
+    },
+    "11101110": {
+        "nombre": "Ogunda Meji (Puro)",
+        "padres": [
+            "Ogunda",
+            "Ogunda"
+        ],
+        "virtud_fusión": "Determinación Absoluta (Potenciada)",
+        "defecto_fusión": "Brutalidad Total (Colapso)",
+        "funcion_resultante": "Intersección entre Acción y Acción"
+    },
+    "11100100": {
+        "nombre": "Ogunda-Osa",
+        "padres": [
+            "Ogunda",
+            "Osa"
+        ],
+        "virtud_fusión": "Determinación guiada por Sensibilidad",
+        "defecto_fusión": "Brutalidad alimentando a Ansiedad",
+        "funcion_resultante": "Intersección entre Acción y Emoción"
+    },
+    "11101100": {
+        "nombre": "Ogunda-Ika",
+        "padres": [
+            "Ogunda",
+            "Ika"
+        ],
+        "virtud_fusión": "Determinación guiada por Astucia",
+        "defecto_fusión": "Brutalidad alimentando a Paranoia",
+        "funcion_resultante": "Intersección entre Acción y Estrategia"
+    },
+    "11100011": {
+        "nombre": "Ogunda-Oturupon",
+        "padres": [
+            "Ogunda",
+            "Oturupon"
+        ],
+        "virtud_fusión": "Determinación guiada por Resiliencia",
+        "defecto_fusión": "Brutalidad alimentando a Victimismo",
+        "funcion_resultante": "Intersección entre Acción y Resistencia"
+    },
+    "11101011": {
+        "nombre": "Ogunda-Otura",
+        "padres": [
+            "Ogunda",
+            "Otura"
+        ],
+        "virtud_fusión": "Determinación guiada por Evolución",
+        "defecto_fusión": "Brutalidad alimentando a Dogma",
+        "funcion_resultante": "Intersección entre Acción y Aprendizaje"
+    },
+    "11100010": {
+        "nombre": "Ogunda-Irete",
+        "padres": [
+            "Ogunda",
+            "Irete"
+        ],
+        "virtud_fusión": "Determinación guiada por Orden",
+        "defecto_fusión": "Brutalidad alimentando a Control Excesivo",
+        "funcion_resultante": "Intersección entre Acción y Estructura"
+    },
+    "11100001": {
+        "nombre": "Ogunda-Ofun",
+        "padres": [
+            "Ogunda",
+            "Ofun"
+        ],
+        "virtud_fusión": "Determinación guiada por Sabiduría",
+        "defecto_fusión": "Brutalidad alimentando a Disociación",
+        "funcion_resultante": "Intersección entre Acción y Síntesis"
+    },
+    "01001111": {
+        "nombre": "Osa-Ogbe",
+        "padres": [
+            "Osa",
+            "Ogbe"
+        ],
+        "virtud_fusión": "Sensibilidad guiada por Claridad",
+        "defecto_fusión": "Ansiedad alimentando a Inflación",
+        "funcion_resultante": "Intersección entre Emoción y Conciencia"
+    },
+    "01000000": {
+        "nombre": "Osa-Oyekun",
+        "padres": [
+            "Osa",
+            "Oyekun"
+        ],
+        "virtud_fusión": "Sensibilidad guiada por Profundidad",
+        "defecto_fusión": "Ansiedad alimentando a Vacío",
+        "funcion_resultante": "Intersección entre Emoción y Inconsciente"
+    },
+    "01000110": {
+        "nombre": "Osa-Iwori",
+        "padres": [
+            "Osa",
+            "Iwori"
+        ],
+        "virtud_fusión": "Sensibilidad guiada por Análisis",
+        "defecto_fusión": "Ansiedad alimentando a Rumiación",
+        "funcion_resultante": "Intersección entre Emoción y Intelecto"
+    },
+    "01001001": {
+        "nombre": "Osa-Odi",
+        "padres": [
+            "Osa",
+            "Odi"
+        ],
+        "virtud_fusión": "Sensibilidad guiada por Autocontrol",
+        "defecto_fusión": "Ansiedad alimentando a Bloqueo",
+        "funcion_resultante": "Intersección entre Emoción y Control"
+    },
+    "01000101": {
+        "nombre": "Osa-Irosun",
+        "padres": [
+            "Osa",
+            "Irosun"
+        ],
+        "virtud_fusión": "Sensibilidad guiada por Creatividad",
+        "defecto_fusión": "Ansiedad alimentando a Impulsividad",
+        "funcion_resultante": "Intersección entre Emoción y Energía"
+    },
+    "01001010": {
+        "nombre": "Osa-Owonrin",
+        "padres": [
+            "Osa",
+            "Owonrin"
+        ],
+        "virtud_fusión": "Sensibilidad guiada por Adaptación",
+        "defecto_fusión": "Ansiedad alimentando a Caos",
+        "funcion_resultante": "Intersección entre Emoción y Cambio"
+    },
+    "01000111": {
+        "nombre": "Osa-Obara",
+        "padres": [
+            "Osa",
+            "Obara"
+        ],
+        "virtud_fusión": "Sensibilidad guiada por Comunicación",
+        "defecto_fusión": "Ansiedad alimentando a Manipulación",
+        "funcion_resultante": "Intersección entre Emoción y Lenguaje"
+    },
+    "01001000": {
+        "nombre": "Osa-Ose",
+        "padres": [
+            "Osa",
+            "Ose"
+        ],
+        "virtud_fusión": "Sensibilidad guiada por Empatía",
+        "defecto_fusión": "Ansiedad alimentando a Dependencia",
+        "funcion_resultante": "Intersección entre Emoción y Vínculo"
+    },
+    "01001110": {
+        "nombre": "Osa-Ogunda",
+        "padres": [
+            "Osa",
+            "Ogunda"
+        ],
+        "virtud_fusión": "Sensibilidad guiada por Determinación",
+        "defecto_fusión": "Ansiedad alimentando a Brutalidad",
+        "funcion_resultante": "Intersección entre Emoción y Acción"
+    },
+    "01000100": {
+        "nombre": "Osa Meji (Puro)",
+        "padres": [
+            "Osa",
+            "Osa"
+        ],
+        "virtud_fusión": "Sensibilidad Absoluta (Potenciada)",
+        "defecto_fusión": "Ansiedad Total (Colapso)",
+        "funcion_resultante": "Intersección entre Emoción y Emoción"
+    },
+    "01001100": {
+        "nombre": "Osa-Ika",
+        "padres": [
+            "Osa",
+            "Ika"
+        ],
+        "virtud_fusión": "Sensibilidad guiada por Astucia",
+        "defecto_fusión": "Ansiedad alimentando a Paranoia",
+        "funcion_resultante": "Intersección entre Emoción y Estrategia"
+    },
+    "01000011": {
+        "nombre": "Osa-Oturupon",
+        "padres": [
+            "Osa",
+            "Oturupon"
+        ],
+        "virtud_fusión": "Sensibilidad guiada por Resiliencia",
+        "defecto_fusión": "Ansiedad alimentando a Victimismo",
+        "funcion_resultante": "Intersección entre Emoción y Resistencia"
+    },
+    "01001011": {
+        "nombre": "Osa-Otura",
+        "padres": [
+            "Osa",
+            "Otura"
+        ],
+        "virtud_fusión": "Sensibilidad guiada por Evolución",
+        "defecto_fusión": "Ansiedad alimentando a Dogma",
+        "funcion_resultante": "Intersección entre Emoción y Aprendizaje"
+    },
+    "01000010": {
+        "nombre": "Osa-Irete",
+        "padres": [
+            "Osa",
+            "Irete"
+        ],
+        "virtud_fusión": "Sensibilidad guiada por Orden",
+        "defecto_fusión": "Ansiedad alimentando a Control Excesivo",
+        "funcion_resultante": "Intersección entre Emoción y Estructura"
+    },
+    "01000001": {
+        "nombre": "Osa-Ofun",
+        "padres": [
+            "Osa",
+            "Ofun"
+        ],
+        "virtud_fusión": "Sensibilidad guiada por Sabiduría",
+        "defecto_fusión": "Ansiedad alimentando a Disociación",
+        "funcion_resultante": "Intersección entre Emoción y Síntesis"
+    },
+    "11001111": {
+        "nombre": "Ika-Ogbe",
+        "padres": [
+            "Ika",
+            "Ogbe"
+        ],
+        "virtud_fusión": "Astucia guiada por Claridad",
+        "defecto_fusión": "Paranoia alimentando a Inflación",
+        "funcion_resultante": "Intersección entre Estrategia y Conciencia"
+    },
+    "11000000": {
+        "nombre": "Ika-Oyekun",
+        "padres": [
+            "Ika",
+            "Oyekun"
+        ],
+        "virtud_fusión": "Astucia guiada por Profundidad",
+        "defecto_fusión": "Paranoia alimentando a Vacío",
+        "funcion_resultante": "Intersección entre Estrategia y Inconsciente"
+    },
+    "11000110": {
+        "nombre": "Ika-Iwori",
+        "padres": [
+            "Ika",
+            "Iwori"
+        ],
+        "virtud_fusión": "Astucia guiada por Análisis",
+        "defecto_fusión": "Paranoia alimentando a Rumiación",
+        "funcion_resultante": "Intersección entre Estrategia y Intelecto"
+    },
+    "11001001": {
+        "nombre": "Ika-Odi",
+        "padres": [
+            "Ika",
+            "Odi"
+        ],
+        "virtud_fusión": "Astucia guiada por Autocontrol",
+        "defecto_fusión": "Paranoia alimentando a Bloqueo",
+        "funcion_resultante": "Intersección entre Estrategia y Control"
+    },
+    "11000101": {
+        "nombre": "Ika-Irosun",
+        "padres": [
+            "Ika",
+            "Irosun"
+        ],
+        "virtud_fusión": "Astucia guiada por Creatividad",
+        "defecto_fusión": "Paranoia alimentando a Impulsividad",
+        "funcion_resultante": "Intersección entre Estrategia y Energía"
+    },
+    "11001010": {
+        "nombre": "Ika-Owonrin",
+        "padres": [
+            "Ika",
+            "Owonrin"
+        ],
+        "virtud_fusión": "Astucia guiada por Adaptación",
+        "defecto_fusión": "Paranoia alimentando a Caos",
+        "funcion_resultante": "Intersección entre Estrategia y Cambio"
+    },
+    "11000111": {
+        "nombre": "Ika-Obara",
+        "padres": [
+            "Ika",
+            "Obara"
+        ],
+        "virtud_fusión": "Astucia guiada por Comunicación",
+        "defecto_fusión": "Paranoia alimentando a Manipulación",
+        "funcion_resultante": "Intersección entre Estrategia y Lenguaje"
+    },
+    "11001000": {
+        "nombre": "Ika-Ose",
+        "padres": [
+            "Ika",
+            "Ose"
+        ],
+        "virtud_fusión": "Astucia guiada por Empatía",
+        "defecto_fusión": "Paranoia alimentando a Dependencia",
+        "funcion_resultante": "Intersección entre Estrategia y Vínculo"
+    },
+    "11001110": {
+        "nombre": "Ika-Ogunda",
+        "padres": [
+            "Ika",
+            "Ogunda"
+        ],
+        "virtud_fusión": "Astucia guiada por Determinación",
+        "defecto_fusión": "Paranoia alimentando a Brutalidad",
+        "funcion_resultante": "Intersección entre Estrategia y Acción"
+    },
+    "11000100": {
+        "nombre": "Ika-Osa",
+        "padres": [
+            "Ika",
+            "Osa"
+        ],
+        "virtud_fusión": "Astucia guiada por Sensibilidad",
+        "defecto_fusión": "Paranoia alimentando a Ansiedad",
+        "funcion_resultante": "Intersección entre Estrategia y Emoción"
+    },
+    "11001100": {
+        "nombre": "Ika Meji (Puro)",
+        "padres": [
+            "Ika",
+            "Ika"
+        ],
+        "virtud_fusión": "Astucia Absoluta (Potenciada)",
+        "defecto_fusión": "Paranoia Total (Colapso)",
+        "funcion_resultante": "Intersección entre Estrategia y Estrategia"
+    },
+    "11000011": {
+        "nombre": "Ika-Oturupon",
+        "padres": [
+            "Ika",
+            "Oturupon"
+        ],
+        "virtud_fusión": "Astucia guiada por Resiliencia",
+        "defecto_fusión": "Paranoia alimentando a Victimismo",
+        "funcion_resultante": "Intersección entre Estrategia y Resistencia"
+    },
+    "11001011": {
+        "nombre": "Ika-Otura",
+        "padres": [
+            "Ika",
+            "Otura"
+        ],
+        "virtud_fusión": "Astucia guiada por Evolución",
+        "defecto_fusión": "Paranoia alimentando a Dogma",
+        "funcion_resultante": "Intersección entre Estrategia y Aprendizaje"
+    },
+    "11000010": {
+        "nombre": "Ika-Irete",
+        "padres": [
+            "Ika",
+            "Irete"
+        ],
+        "virtud_fusión": "Astucia guiada por Orden",
+        "defecto_fusión": "Paranoia alimentando a Control Excesivo",
+        "funcion_resultante": "Intersección entre Estrategia y Estructura"
+    },
+    "11000001": {
+        "nombre": "Ika-Ofun",
+        "padres": [
+            "Ika",
+            "Ofun"
+        ],
+        "virtud_fusión": "Astucia guiada por Sabiduría",
+        "defecto_fusión": "Paranoia alimentando a Disociación",
+        "funcion_resultante": "Intersección entre Estrategia y Síntesis"
+    },
+    "00111111": {
+        "nombre": "Oturupon-Ogbe",
+        "padres": [
+            "Oturupon",
+            "Ogbe"
+        ],
+        "virtud_fusión": "Resiliencia guiada por Claridad",
+        "defecto_fusión": "Victimismo alimentando a Inflación",
+        "funcion_resultante": "Intersección entre Resistencia y Conciencia"
+    },
+    "00110000": {
+        "nombre": "Oturupon-Oyekun",
+        "padres": [
+            "Oturupon",
+            "Oyekun"
+        ],
+        "virtud_fusión": "Resiliencia guiada por Profundidad",
+        "defecto_fusión": "Victimismo alimentando a Vacío",
+        "funcion_resultante": "Intersección entre Resistencia y Inconsciente"
+    },
+    "00110110": {
+        "nombre": "Oturupon-Iwori",
+        "padres": [
+            "Oturupon",
+            "Iwori"
+        ],
+        "virtud_fusión": "Resiliencia guiada por Análisis",
+        "defecto_fusión": "Victimismo alimentando a Rumiación",
+        "funcion_resultante": "Intersección entre Resistencia y Intelecto"
+    },
+    "00111001": {
+        "nombre": "Oturupon-Odi",
+        "padres": [
+            "Oturupon",
+            "Odi"
+        ],
+        "virtud_fusión": "Resiliencia guiada por Autocontrol",
+        "defecto_fusión": "Victimismo alimentando a Bloqueo",
+        "funcion_resultante": "Intersección entre Resistencia y Control"
+    },
+    "00110101": {
+        "nombre": "Oturupon-Irosun",
+        "padres": [
+            "Oturupon",
+            "Irosun"
+        ],
+        "virtud_fusión": "Resiliencia guiada por Creatividad",
+        "defecto_fusión": "Victimismo alimentando a Impulsividad",
+        "funcion_resultante": "Intersección entre Resistencia y Energía"
+    },
+    "00111010": {
+        "nombre": "Oturupon-Owonrin",
+        "padres": [
+            "Oturupon",
+            "Owonrin"
+        ],
+        "virtud_fusión": "Resiliencia guiada por Adaptación",
+        "defecto_fusión": "Victimismo alimentando a Caos",
+        "funcion_resultante": "Intersección entre Resistencia y Cambio"
+    },
+    "00110111": {
+        "nombre": "Oturupon-Obara",
+        "padres": [
+            "Oturupon",
+            "Obara"
+        ],
+        "virtud_fusión": "Resiliencia guiada por Comunicación",
+        "defecto_fusión": "Victimismo alimentando a Manipulación",
+        "funcion_resultante": "Intersección entre Resistencia y Lenguaje"
+    },
+    "00111000": {
+        "nombre": "Oturupon-Ose",
+        "padres": [
+            "Oturupon",
+            "Ose"
+        ],
+        "virtud_fusión": "Resiliencia guiada por Empatía",
+        "defecto_fusión": "Victimismo alimentando a Dependencia",
+        "funcion_resultante": "Intersección entre Resistencia y Vínculo"
+    },
+    "00111110": {
+        "nombre": "Oturupon-Ogunda",
+        "padres": [
+            "Oturupon",
+            "Ogunda"
+        ],
+        "virtud_fusión": "Resiliencia guiada por Determinación",
+        "defecto_fusión": "Victimismo alimentando a Brutalidad",
+        "funcion_resultante": "Intersección entre Resistencia y Acción"
+    },
+    "00110100": {
+        "nombre": "Oturupon-Osa",
+        "padres": [
+            "Oturupon",
+            "Osa"
+        ],
+        "virtud_fusión": "Resiliencia guiada por Sensibilidad",
+        "defecto_fusión": "Victimismo alimentando a Ansiedad",
+        "funcion_resultante": "Intersección entre Resistencia y Emoción"
+    },
+    "00111100": {
+        "nombre": "Oturupon-Ika",
+        "padres": [
+            "Oturupon",
+            "Ika"
+        ],
+        "virtud_fusión": "Resiliencia guiada por Astucia",
+        "defecto_fusión": "Victimismo alimentando a Paranoia",
+        "funcion_resultante": "Intersección entre Resistencia y Estrategia"
+    },
+    "00110011": {
+        "nombre": "Oturupon Meji (Puro)",
+        "padres": [
+            "Oturupon",
+            "Oturupon"
+        ],
+        "virtud_fusión": "Resiliencia Absoluta (Potenciada)",
+        "defecto_fusión": "Victimismo Total (Colapso)",
+        "funcion_resultante": "Intersección entre Resistencia y Resistencia"
+    },
+    "00111011": {
+        "nombre": "Oturupon-Otura",
+        "padres": [
+            "Oturupon",
+            "Otura"
+        ],
+        "virtud_fusión": "Resiliencia guiada por Evolución",
+        "defecto_fusión": "Victimismo alimentando a Dogma",
+        "funcion_resultante": "Intersección entre Resistencia y Aprendizaje"
+    },
+    "00110010": {
+        "nombre": "Oturupon-Irete",
+        "padres": [
+            "Oturupon",
+            "Irete"
+        ],
+        "virtud_fusión": "Resiliencia guiada por Orden",
+        "defecto_fusión": "Victimismo alimentando a Control Excesivo",
+        "funcion_resultante": "Intersección entre Resistencia y Estructura"
+    },
+    "00110001": {
+        "nombre": "Oturupon-Ofun",
+        "padres": [
+            "Oturupon",
+            "Ofun"
+        ],
+        "virtud_fusión": "Resiliencia guiada por Sabiduría",
+        "defecto_fusión": "Victimismo alimentando a Disociación",
+        "funcion_resultante": "Intersección entre Resistencia y Síntesis"
+    },
+    "10111111": {
+        "nombre": "Otura-Ogbe",
+        "padres": [
+            "Otura",
+            "Ogbe"
+        ],
+        "virtud_fusión": "Evolución guiada por Claridad",
+        "defecto_fusión": "Dogma alimentando a Inflación",
+        "funcion_resultante": "Intersección entre Aprendizaje y Conciencia"
+    },
+    "10110000": {
+        "nombre": "Otura-Oyekun",
+        "padres": [
+            "Otura",
+            "Oyekun"
+        ],
+        "virtud_fusión": "Evolución guiada por Profundidad",
+        "defecto_fusión": "Dogma alimentando a Vacío",
+        "funcion_resultante": "Intersección entre Aprendizaje y Inconsciente"
+    },
+    "10110110": {
+        "nombre": "Otura-Iwori",
+        "padres": [
+            "Otura",
+            "Iwori"
+        ],
+        "virtud_fusión": "Evolución guiada por Análisis",
+        "defecto_fusión": "Dogma alimentando a Rumiación",
+        "funcion_resultante": "Intersección entre Aprendizaje y Intelecto"
+    },
+    "10111001": {
+        "nombre": "Otura-Odi",
+        "padres": [
+            "Otura",
+            "Odi"
+        ],
+        "virtud_fusión": "Evolución guiada por Autocontrol",
+        "defecto_fusión": "Dogma alimentando a Bloqueo",
+        "funcion_resultante": "Intersección entre Aprendizaje y Control"
+    },
+    "10110101": {
+        "nombre": "Otura-Irosun",
+        "padres": [
+            "Otura",
+            "Irosun"
+        ],
+        "virtud_fusión": "Evolución guiada por Creatividad",
+        "defecto_fusión": "Dogma alimentando a Impulsividad",
+        "funcion_resultante": "Intersección entre Aprendizaje y Energía"
+    },
+    "10111010": {
+        "nombre": "Otura-Owonrin",
+        "padres": [
+            "Otura",
+            "Owonrin"
+        ],
+        "virtud_fusión": "Evolución guiada por Adaptación",
+        "defecto_fusión": "Dogma alimentando a Caos",
+        "funcion_resultante": "Intersección entre Aprendizaje y Cambio"
+    },
+    "10110111": {
+        "nombre": "Otura-Obara",
+        "padres": [
+            "Otura",
+            "Obara"
+        ],
+        "virtud_fusión": "Evolución guiada por Comunicación",
+        "defecto_fusión": "Dogma alimentando a Manipulación",
+        "funcion_resultante": "Intersección entre Aprendizaje y Lenguaje"
+    },
+    "10111000": {
+        "nombre": "Otura-Ose",
+        "padres": [
+            "Otura",
+            "Ose"
+        ],
+        "virtud_fusión": "Evolución guiada por Empatía",
+        "defecto_fusión": "Dogma alimentando a Dependencia",
+        "funcion_resultante": "Intersección entre Aprendizaje y Vínculo"
+    },
+    "10111110": {
+        "nombre": "Otura-Ogunda",
+        "padres": [
+            "Otura",
+            "Ogunda"
+        ],
+        "virtud_fusión": "Evolución guiada por Determinación",
+        "defecto_fusión": "Dogma alimentando a Brutalidad",
+        "funcion_resultante": "Intersección entre Aprendizaje y Acción"
+    },
+    "10110100": {
+        "nombre": "Otura-Osa",
+        "padres": [
+            "Otura",
+            "Osa"
+        ],
+        "virtud_fusión": "Evolución guiada por Sensibilidad",
+        "defecto_fusión": "Dogma alimentando a Ansiedad",
+        "funcion_resultante": "Intersección entre Aprendizaje y Emoción"
+    },
+    "10111100": {
+        "nombre": "Otura-Ika",
+        "padres": [
+            "Otura",
+            "Ika"
+        ],
+        "virtud_fusión": "Evolución guiada por Astucia",
+        "defecto_fusión": "Dogma alimentando a Paranoia",
+        "funcion_resultante": "Intersección entre Aprendizaje y Estrategia"
+    },
+    "10110011": {
+        "nombre": "Otura-Oturupon",
+        "padres": [
+            "Otura",
+            "Oturupon"
+        ],
+        "virtud_fusión": "Evolución guiada por Resiliencia",
+        "defecto_fusión": "Dogma alimentando a Victimismo",
+        "funcion_resultante": "Intersección entre Aprendizaje y Resistencia"
+    },
+    "10111011": {
+        "nombre": "Otura Meji (Puro)",
+        "padres": [
+            "Otura",
+            "Otura"
+        ],
+        "virtud_fusión": "Evolución Absoluta (Potenciada)",
+        "defecto_fusión": "Dogma Total (Colapso)",
+        "funcion_resultante": "Intersección entre Aprendizaje y Aprendizaje"
+    },
+    "10110010": {
+        "nombre": "Otura-Irete",
+        "padres": [
+            "Otura",
+            "Irete"
+        ],
+        "virtud_fusión": "Evolución guiada por Orden",
+        "defecto_fusión": "Dogma alimentando a Control Excesivo",
+        "funcion_resultante": "Intersección entre Aprendizaje y Estructura"
+    },
+    "10110001": {
+        "nombre": "Otura-Ofun",
+        "padres": [
+            "Otura",
+            "Ofun"
+        ],
+        "virtud_fusión": "Evolución guiada por Sabiduría",
+        "defecto_fusión": "Dogma alimentando a Disociación",
+        "funcion_resultante": "Intersección entre Aprendizaje y Síntesis"
+    },
+    "00101111": {
+        "nombre": "Irete-Ogbe",
+        "padres": [
+            "Irete",
+            "Ogbe"
+        ],
+        "virtud_fusión": "Orden guiada por Claridad",
+        "defecto_fusión": "Control Excesivo alimentando a Inflación",
+        "funcion_resultante": "Intersección entre Estructura y Conciencia"
+    },
+    "00100000": {
+        "nombre": "Irete-Oyekun",
+        "padres": [
+            "Irete",
+            "Oyekun"
+        ],
+        "virtud_fusión": "Orden guiada por Profundidad",
+        "defecto_fusión": "Control Excesivo alimentando a Vacío",
+        "funcion_resultante": "Intersección entre Estructura y Inconsciente"
+    },
+    "00100110": {
+        "nombre": "Irete-Iwori",
+        "padres": [
+            "Irete",
+            "Iwori"
+        ],
+        "virtud_fusión": "Orden guiada por Análisis",
+        "defecto_fusión": "Control Excesivo alimentando a Rumiación",
+        "funcion_resultante": "Intersección entre Estructura y Intelecto"
+    },
+    "00101001": {
+        "nombre": "Irete-Odi",
+        "padres": [
+            "Irete",
+            "Odi"
+        ],
+        "virtud_fusión": "Orden guiada por Autocontrol",
+        "defecto_fusión": "Control Excesivo alimentando a Bloqueo",
+        "funcion_resultante": "Intersección entre Estructura y Control"
+    },
+    "00100101": {
+        "nombre": "Irete-Irosun",
+        "padres": [
+            "Irete",
+            "Irosun"
+        ],
+        "virtud_fusión": "Orden guiada por Creatividad",
+        "defecto_fusión": "Control Excesivo alimentando a Impulsividad",
+        "funcion_resultante": "Intersección entre Estructura y Energía"
+    },
+    "00101010": {
+        "nombre": "Irete-Owonrin",
+        "padres": [
+            "Irete",
+            "Owonrin"
+        ],
+        "virtud_fusión": "Orden guiada por Adaptación",
+        "defecto_fusión": "Control Excesivo alimentando a Caos",
+        "funcion_resultante": "Intersección entre Estructura y Cambio"
+    },
+    "00100111": {
+        "nombre": "Irete-Obara",
+        "padres": [
+            "Irete",
+            "Obara"
+        ],
+        "virtud_fusión": "Orden guiada por Comunicación",
+        "defecto_fusión": "Control Excesivo alimentando a Manipulación",
+        "funcion_resultante": "Intersección entre Estructura y Lenguaje"
+    },
+    "00101000": {
+        "nombre": "Irete-Ose",
+        "padres": [
+            "Irete",
+            "Ose"
+        ],
+        "virtud_fusión": "Orden guiada por Empatía",
+        "defecto_fusión": "Control Excesivo alimentando a Dependencia",
+        "funcion_resultante": "Intersección entre Estructura y Vínculo"
+    },
+    "00101110": {
+        "nombre": "Irete-Ogunda",
+        "padres": [
+            "Irete",
+            "Ogunda"
+        ],
+        "virtud_fusión": "Orden guiada por Determinación",
+        "defecto_fusión": "Control Excesivo alimentando a Brutalidad",
+        "funcion_resultante": "Intersección entre Estructura y Acción"
+    },
+    "00100100": {
+        "nombre": "Irete-Osa",
+        "padres": [
+            "Irete",
+            "Osa"
+        ],
+        "virtud_fusión": "Orden guiada por Sensibilidad",
+        "defecto_fusión": "Control Excesivo alimentando a Ansiedad",
+        "funcion_resultante": "Intersección entre Estructura y Emoción"
+    },
+    "00101100": {
+        "nombre": "Irete-Ika",
+        "padres": [
+            "Irete",
+            "Ika"
+        ],
+        "virtud_fusión": "Orden guiada por Astucia",
+        "defecto_fusión": "Control Excesivo alimentando a Paranoia",
+        "funcion_resultante": "Intersección entre Estructura y Estrategia"
+    },
+    "00100011": {
+        "nombre": "Irete-Oturupon",
+        "padres": [
+            "Irete",
+            "Oturupon"
+        ],
+        "virtud_fusión": "Orden guiada por Resiliencia",
+        "defecto_fusión": "Control Excesivo alimentando a Victimismo",
+        "funcion_resultante": "Intersección entre Estructura y Resistencia"
+    },
+    "00101011": {
+        "nombre": "Irete-Otura",
+        "padres": [
+            "Irete",
+            "Otura"
+        ],
+        "virtud_fusión": "Orden guiada por Evolución",
+        "defecto_fusión": "Control Excesivo alimentando a Dogma",
+        "funcion_resultante": "Intersección entre Estructura y Aprendizaje"
+    },
+    "00100010": {
+        "nombre": "Irete Meji (Puro)",
+        "padres": [
+            "Irete",
+            "Irete"
+        ],
+        "virtud_fusión": "Orden Absoluta (Potenciada)",
+        "defecto_fusión": "Control Excesivo Total (Colapso)",
+        "funcion_resultante": "Intersección entre Estructura y Estructura"
+    },
+    "00100001": {
+        "nombre": "Irete-Ofun",
+        "padres": [
+            "Irete",
+            "Ofun"
+        ],
+        "virtud_fusión": "Orden guiada por Sabiduría",
+        "defecto_fusión": "Control Excesivo alimentando a Disociación",
+        "funcion_resultante": "Intersección entre Estructura y Síntesis"
+    },
+    "00011111": {
+        "nombre": "Ofun-Ogbe",
+        "padres": [
+            "Ofun",
+            "Ogbe"
+        ],
+        "virtud_fusión": "Sabiduría guiada por Claridad",
+        "defecto_fusión": "Disociación alimentando a Inflación",
+        "funcion_resultante": "Intersección entre Síntesis y Conciencia"
+    },
+    "00010000": {
+        "nombre": "Ofun-Oyekun",
+        "padres": [
+            "Ofun",
+            "Oyekun"
+        ],
+        "virtud_fusión": "Sabiduría guiada por Profundidad",
+        "defecto_fusión": "Disociación alimentando a Vacío",
+        "funcion_resultante": "Intersección entre Síntesis y Inconsciente"
+    },
+    "00010110": {
+        "nombre": "Ofun-Iwori",
+        "padres": [
+            "Ofun",
+            "Iwori"
+        ],
+        "virtud_fusión": "Sabiduría guiada por Análisis",
+        "defecto_fusión": "Disociación alimentando a Rumiación",
+        "funcion_resultante": "Intersección entre Síntesis y Intelecto"
+    },
+    "00011001": {
+        "nombre": "Ofun-Odi",
+        "padres": [
+            "Ofun",
+            "Odi"
+        ],
+        "virtud_fusión": "Sabiduría guiada por Autocontrol",
+        "defecto_fusión": "Disociación alimentando a Bloqueo",
+        "funcion_resultante": "Intersección entre Síntesis y Control"
+    },
+    "00010101": {
+        "nombre": "Ofun-Irosun",
+        "padres": [
+            "Ofun",
+            "Irosun"
+        ],
+        "virtud_fusión": "Sabiduría guiada por Creatividad",
+        "defecto_fusión": "Disociación alimentando a Impulsividad",
+        "funcion_resultante": "Intersección entre Síntesis y Energía"
+    },
+    "00011010": {
+        "nombre": "Ofun-Owonrin",
+        "padres": [
+            "Ofun",
+            "Owonrin"
+        ],
+        "virtud_fusión": "Sabiduría guiada por Adaptación",
+        "defecto_fusión": "Disociación alimentando a Caos",
+        "funcion_resultante": "Intersección entre Síntesis y Cambio"
+    },
+    "00010111": {
+        "nombre": "Ofun-Obara",
+        "padres": [
+            "Ofun",
+            "Obara"
+        ],
+        "virtud_fusión": "Sabiduría guiada por Comunicación",
+        "defecto_fusión": "Disociación alimentando a Manipulación",
+        "funcion_resultante": "Intersección entre Síntesis y Lenguaje"
+    },
+    "00011000": {
+        "nombre": "Ofun-Ose",
+        "padres": [
+            "Ofun",
+            "Ose"
+        ],
+        "virtud_fusión": "Sabiduría guiada por Empatía",
+        "defecto_fusión": "Disociación alimentando a Dependencia",
+        "funcion_resultante": "Intersección entre Síntesis y Vínculo"
+    },
+    "00011110": {
+        "nombre": "Ofun-Ogunda",
+        "padres": [
+            "Ofun",
+            "Ogunda"
+        ],
+        "virtud_fusión": "Sabiduría guiada por Determinación",
+        "defecto_fusión": "Disociación alimentando a Brutalidad",
+        "funcion_resultante": "Intersección entre Síntesis y Acción"
+    },
+    "00010100": {
+        "nombre": "Ofun-Osa",
+        "padres": [
+            "Ofun",
+            "Osa"
+        ],
+        "virtud_fusión": "Sabiduría guiada por Sensibilidad",
+        "defecto_fusión": "Disociación alimentando a Ansiedad",
+        "funcion_resultante": "Intersección entre Síntesis y Emoción"
+    },
+    "00011100": {
+        "nombre": "Ofun-Ika",
+        "padres": [
+            "Ofun",
+            "Ika"
+        ],
+        "virtud_fusión": "Sabiduría guiada por Astucia",
+        "defecto_fusión": "Disociación alimentando a Paranoia",
+        "funcion_resultante": "Intersección entre Síntesis y Estrategia"
+    },
+    "00010011": {
+        "nombre": "Ofun-Oturupon",
+        "padres": [
+            "Ofun",
+            "Oturupon"
+        ],
+        "virtud_fusión": "Sabiduría guiada por Resiliencia",
+        "defecto_fusión": "Disociación alimentando a Victimismo",
+        "funcion_resultante": "Intersección entre Síntesis y Resistencia"
+    },
+    "00011011": {
+        "nombre": "Ofun-Otura",
+        "padres": [
+            "Ofun",
+            "Otura"
+        ],
+        "virtud_fusión": "Sabiduría guiada por Evolución",
+        "defecto_fusión": "Disociación alimentando a Dogma",
+        "funcion_resultante": "Intersección entre Síntesis y Aprendizaje"
+    },
+    "00010010": {
+        "nombre": "Ofun-Irete",
+        "padres": [
+            "Ofun",
+            "Irete"
+        ],
+        "virtud_fusión": "Sabiduría guiada por Orden",
+        "defecto_fusión": "Disociación alimentando a Control Excesivo",
+        "funcion_resultante": "Intersección entre Síntesis y Estructura"
+    },
+    "00010001": {
+        "nombre": "Ofun Meji (Puro)",
+        "padres": [
+            "Ofun",
+            "Ofun"
+        ],
+        "virtud_fusión": "Sabiduría Absoluta (Potenciada)",
+        "defecto_fusión": "Disociación Total (Colapso)",
+        "funcion_resultante": "Intersección entre Síntesis y Síntesis"
+    }
+}
