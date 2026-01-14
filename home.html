@@ -3,53 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SISTEMA DANTE - ADN ESPIRITUAL</title>
+    <title>SISTEMA DANTE v3.0 - ADN ESPIRITUAL</title>
     <style>
-        :root {
-            --bg: #05070a;
-            --green: #00ff41; --pink: #ff00ff; --blue: #00d4ff; --yellow: #f1c40f;
-        }
-        body {
-            background-color: var(--bg);
-            color: var(--green);
-            font-family: 'Courier New', monospace;
-            display: flex; justify-content: center; padding: 20px; transition: 0.5s;
-        }
-        .terminal {
-            border: 1px solid #333; background: #0a0f14; padding: 20px;
-            max-width: 600px; width: 100%; box-shadow: 0 0 15px rgba(0,255,65,0.1);
-        }
-        input, button {
-            width: 100%; padding: 12px; margin: 10px 0;
-            background: #000; border: 1px solid #333; color: #fff; outline: none;
-        }
+        :root { --bg: #05070a; --green: #00ff41; --pink: #ff00ff; --blue: #00d4ff; --yellow: #f1c40f; }
+        body { background-color: var(--bg); color: var(--green); font-family: 'Courier New', monospace; padding: 20px; transition: 0.5s; text-align: center; }
+        .terminal { border: 1px solid #333; background: #0a0f14; padding: 20px; max-width: 600px; margin: auto; box-shadow: 0 0 15px rgba(0,255,65,0.1); }
+        input, button { width: 100%; padding: 12px; margin: 10px 0; background: #000; border: 1px solid #333; color: #fff; outline: none; }
         button { background: #1a4d2e; cursor: pointer; font-weight: bold; border-color: var(--green); }
-        #output { 
-            margin-top: 20px; padding: 15px; border-left: 4px solid var(--yellow);
-            display: none; background: #000; font-size: 0.9rem; line-height: 1.4;
-        }
-        .flash-ver { color: var(--green); } .flash-ros { color: var(--pink); } .flash-azu { color: var(--blue); }
+        #output { margin-top: 20px; padding: 15px; border-left: 4px solid var(--yellow); display: none; background: #000; text-align: left; }
     </style>
 </head>
 <body>
-
 <div class="terminal">
-    <h2 id="header">🛡️ SISTEMA DANTE v3.0</h2>
-    <p style="color: #666; font-size: 0.8rem;">[GUÍA: VIRGILIO_AI_CONNECTED]</p>
-
+    <h2>🛡️ SISTEMA DANTE v3.0</h2>
+    <p style="color: #666; font-size: 0.8rem;">[GUÍA: VIRGILIO_JS_MASTER]</p>
     <label>FECHA DE NACIMIENTO (YYYYMMDD):</label>
     <input type="number" id="seed" placeholder="Ej: 19910305">
-
     <label>¿CÓMO TE SIENTES? (Dile la neta):</label>
     <input type="text" id="mood" placeholder="Escribe tu estado actual...">
-
-    <button onclick="ejecutarAlquimia()">ANCLAR ALMA</button>
-
+    <button onclick="ejecutarDante()">ANCLAR ALMA</button>
     <div id="output"></div>
 </div>
 
 <script>
-    // --- DICCIONARIO MAESTRO (Traducción de odu_dna.py) ---
     const ODU_DNA = {
         "Ogbe": {bits:"1111", func:"Conciencia", buff:"Claridad", nerf:"Inflación"},
         "Yekun": {bits:"0000", func:"Inconsciente", buff:"Profundidad", nerf:"Vacío"},
@@ -69,40 +45,23 @@
         "Ofun": {bits:"0001", func:"Síntesis", buff:"Sabiduría", nerf:"Disociación"}
     };
 
-    function ejecutarAlquimia() {
+    function ejecutarDante() {
         const seedVal = document.getElementById('seed').value;
         const moodVal = document.getElementById('mood').value.toLowerCase();
         const out = document.getElementById('output');
-
         if(seedVal.length < 8) return alert("Ingresa fecha completa.");
-
-        // 1. Lógica de Semilla (Basado en dante_seed.py)
         const keys = Object.keys(ODU_DNA);
         const p1 = keys[parseInt(seedVal.slice(-2)) % 16];
         const p2 = keys[parseInt(seedVal.slice(4,6)) % 16];
-        
-        // 2. Análisis de Virgilio (Traducción de VirgilioAI.analizar_input)
-        let zona = "IGNORANCIA", jefe = "Tezcatlipoca", color = "var(--green)", cl = "flash-ver";
-        if(moodVal.match(/feliz|amor|bien|paz/)) {
-            zona="CREDULIDAD"; jefe="Dionisio"; color="var(--pink)"; cl="flash-ros";
-        } else if(moodVal.match(/dios|poder|mando|yo soy/)) {
-            zona="EGO"; jefe="Zeus"; color="var(--blue)"; cl="flash-azu";
-        }
-
-        // 3. Resultado Sensorial
+        let zona = "IGNORANCIA", jefe = "Tezcatlipoca", color = "var(--green)";
+        if(moodVal.match(/feliz|amor|bien|paz/)) { zona="CREDULIDAD"; jefe="Dionisio"; color="var(--pink)"; }
+        else if(moodVal.match(/dios|poder|mando|yo soy/)) { zona="EGO"; jefe="Zeus"; color="var(--blue)"; }
         document.body.style.borderColor = color;
         out.style.display = "block";
-        out.innerHTML = `
-<span class="${cl}">[VIRGILIO]: Qué onda. Analizando tu código...</span>
---------------------------------------------------
-🆔 ODU REGENTE: ${p1}-${p2}
-🧬 BINARIO: ${ODU_DNA[p1].bits}${ODU_DNA[p2].bits}
-✨ VIRTUD: ${ODU_DNA[p1].buff} y ${ODU_DNA[p2].buff}
-💀 SOMBRA: ${ODU_DNA[p1].nerf} con ${ODU_DNA[p2].nerf}
---------------------------------------------------
-⚠️ ALERTA: Has caído en la fosa de <b>${jefe}</b> (${zona}).
-[VIRGILIO]: Tu ${ODU_DNA[p1].nerf} te delató. Usa tu ${ODU_DNA[p1].buff} para salir.
-        `;
+        out.innerHTML = `[VIRGILIO]: Analizando patrones...<br>----------------------------------<br>
+        🆔 ODU REGENTE: ${p1}-${p2}<br>🧬 BINARIO: ${ODU_DNA[p1].bits}${ODU_DNA[p2].bits}<br>
+        ✨ VIRTUD: ${ODU_DNA[p1].buff} y ${ODU_DNA[p2].buff}<br>💀 SOMBRA: ${ODU_DNA[p1].nerf} con ${ODU_DNA[p2].nerf}<br>
+        ----------------------------------<br>⚠️ ALERTA: Has caído ante <b>${jefe}</b> en la ZONA ${zona}.`;
     }
 </script>
 </body>
