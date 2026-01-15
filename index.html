@@ -1,8 +1,118 @@
-/dante
- ├── index.html
- └── js/
-      ├── dante_db.js        ← Vectores base (16)
-      ├── dante_engine.js   ← Vector hijo + seed
-      ├── dante_zones.js    ← Zonas + Jefes
-      ├── dante_bubble.js   ← Burbuja Roja (estado)
-      └── main.js           ← Orquestador
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SISTEMA DANTE – ORÁCULO</title>
+<style>
+body {
+  background:#05070a;
+  color:#00ff41;
+  font-family: Courier New, monospace;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+}
+#box {
+  width:100%;
+  max-width:480px;
+  background:#0a0f14;
+  border:1px solid #333;
+  padding:20px;
+}
+input,button {
+  width:100%;
+  margin-top:10px;
+  padding:10px;
+  background:#000;
+  color:#fff;
+  border:1px solid #333;
+}
+button {
+  background:#00ff41;
+  color:#000;
+  cursor:pointer;
+}
+#out {
+  white-space:pre-wrap;
+  margin-top:15px;
+}
+</style>
+</head>
+
+<body>
+<div id="box">
+<h3>SISTEMA DANTE</h3>
+
+<input id="fecha" placeholder="YYYYMMDD">
+<input id="mood" placeholder="¿Cómo te sientes?">
+<button onclick="run()">ANCLAR</button>
+
+<div id="out"></div>
+</div>
+
+<script>
+/* ===============================
+   BASE CANÓNICA – 16 MEYIS
+================================ */
+const DB = [
+ {id:"V_CLARIDAD", b:"1111", v:"Claridad", d:"Ego"},
+ {id:"V_VACIO", b:"0000", v:"Profundidad", d:"Colapso"},
+ {id:"V_LOGICA", b:"0110", v:"Lógica", d:"Duda"},
+ {id:"V_LIBERTAD", b:"1001", v:"Libertad", d:"Bloqueo"},
+ {id:"V_VISION", b:"0101", v:"Visión", d:"Ilusión"},
+ {id:"V_CAMBIO", b:"1010", v:"Cambio", d:"Caos"},
+ {id:"V_VOZ", b:"0111", v:"Voz", d:"Mentira"},
+ {id:"V_JUSTICIA", b:"1000", v:"Justicia", d:"Ira"},
+ {id:"V_FUERZA", b:"1110", v:"Fuerza", d:"Violencia"},
+ {id:"V_VIENTO", b:"0100", v:"Movimiento", d:"Miedo"},
+ {id:"V_PODER", b:"1100", v:"Poder", d:"Maldad"},
+ {id:"V_SALUD", b:"0011", v:"Vitalidad", d:"Enfermedad"},
+ {id:"V_VERDAD", b:"1011", v:"Verdad", d:"Confusión"},
+ {id:"V_PRESION", b:"0010", v:"Resistencia", d:"Crueldad"},
+ {id:"V_AMOR", b:"1101", v:"Conexión", d:"Celos"},
+ {id:"V_MILAGRO", b:"0001", v:"Creación", d:"Avaricia"}
+];
+
+/* ===============================
+   ZONAS / JEFES
+================================ */
+function zona(txt){
+ txt=txt.toLowerCase();
+ if(/feliz|amor|bien/.test(txt)) return "ROSA – DIONISIO";
+ if(/yo|poder|control/.test(txt)) return "AZUL – ZEUS";
+ if(/miedo|duda|triste/.test(txt)) return "VERDE – TEZCATLIPOCA";
+ return "UMBRAL – VIRGILIO";
+}
+
+/* ===============================
+   MAIN
+================================ */
+function run(){
+ const f=document.getElementById("fecha").value;
+ const m=document.getElementById("mood").value;
+ const o=document.getElementById("out");
+
+ if(f.length!==8){
+   o.textContent="ERROR: fecha inválida";
+   return;
+ }
+
+ const a=DB[parseInt(f.slice(-2))%16];
+ const b=DB[parseInt(f.slice(4,6))%16];
+
+ o.textContent =
+`VECTOR PADRE: ${a.id}
+VECTOR MADRE: ${b.id}
+
+BINARIO: ${a.b} :: ${b.b}
+VIRTUD: ${a.v} + ${b.v}
+SOMBRA: ${a.d} + ${b.d}
+
+ZONA ACTIVA: ${zona(m)}
+OBJETIVO: ROMPER LA BURBUJA ROSA`;
+}
+</script>
+</body>
+</html>
