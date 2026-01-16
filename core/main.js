@@ -1,13 +1,9 @@
-import { revelarOdu } from "./core/oracle.js";
-import { renderChi } from "./core/chi.js";
-import { vectorHijo } from "./core/vectors.js";
+import { DanteEngine } from "./core/engine.js";
 
-document.getElementById("start").onclick = () => {
-  const odu = revelarOdu();
-  const vector = vectorHijo(odu);
+const output = document.getElementById("output");
+const start = document.getElementById("start");
 
-  document.getElementById("output").innerText =
-    `Oráculo: ${odu.nombre}\nVector: ${vector.decision}`;
-
-  renderChi("chiCanvas", odu);
-};
+start.addEventListener("click", () => {
+  const engine = new DanteEngine(output);
+  engine.iniciar();
+});
