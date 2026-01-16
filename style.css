@@ -21,3 +21,42 @@ body {
     width: 100%;
     max-width: 480px;
     border: 1px solid #
+
+/* ================================
+   DANTE SYSTEM — TERMINAL RETRO
+   ================================ */
+
+:root {
+  --bg: #000000;
+  --green: #00ff41;
+  --dark-green: #003b1f;
+  --border: #00aa33;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--green);
+  font-family: "Courier New", Courier, monospace;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* CONTENEDOR PRINCIPAL */
+#terminal {
+  width: 90%;
+  max-width: 700px;
+  min-height: 420px;
+  background: #000;
+  border: 3px solid var(--border);
+  padding: 20px;
+  box-shadow:
+    0 0 20px rgba(0, 255, 65, 0.4),
+    inset 0
