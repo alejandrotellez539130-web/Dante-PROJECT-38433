@@ -8,8 +8,26 @@ const startButton = document.getElementById("start");
 const output = document.getElementById("output");
 
 // Verificación básica (evita que el juego no corra)
-if (!startButton || !output) {
-  throw new Error("DANTE ERROR: Elementos HTML no encontrados.");
+startButton.addEventListener("click", () => {
+  const vectorU = generarVectorU();
+  const vectorHijo = generarVectorHijo(vectorU);
+
+  output.textContent = mensajeInicial(vectorU) + `
+
+[SISTEMA]: Vector hijo generado.
+Pulso interno: ${vectorHijo.pulso.toFixed(3)}
+Nivel de colapso: ${vectorHijo.intensidad.toFixed(3)}
+
+La Burbuja Roja ha sido activada.
+`;
+
+  dibujarBurbuja(
+    canvas.width / 2,
+    canvas.height / 2,
+    30 + vectorHijo.pulso * 40,
+    vectorHijo.intensidad
+  );
+});
 }
 
 // Vector U — estado mínimo del observador
