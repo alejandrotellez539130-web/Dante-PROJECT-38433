@@ -1,0 +1,23 @@
+/* ===============================
+   SISTEMA DANTE — ESTILO MATRIX
+   =============================== */
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background: #000000;
+    color: #00ff41;
+    font-family: "Courier New", Courier, monospace;
+    height: 100%;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#box {
+    width: 100%;
+    max-width: 480px;
+    border: 1px solid #
