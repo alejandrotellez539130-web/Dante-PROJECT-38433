@@ -26,3 +26,9 @@ Para ejecutar el Oráculo en entorno local (LM Studio o terminal Python):
 3. **Ejecutar:**
    ```bash
    python dante_core.py
+
+👁️ ADVERTENCIA DEL JUEZ DE HIERRO
+​"La verdadera sabiduría está en reconocer la propia ignorancia." - Sócrates
+​Zona EGO detectada: El sistema activará protocolos de saturación.
+​Zona CREDULIDAD detectada: Bloqueo de puertos emocionales activado.
+​© 1991-2026 PROYECTO DANTE. TODOS LOS DERECHOS ENCRIPTADOS.
