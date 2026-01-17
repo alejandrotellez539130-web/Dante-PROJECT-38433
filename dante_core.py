@@ -1,80 +1,68 @@
 import time
-import random
+import sys
 
-# --- REPORTE DE DESARROLLO: PROYECTO DANTE (v. Alpha) ---
-# Arquitectos: Jesús Alejandro & Dante Cénit
-# Llave de Acceso del Reporte
-ACCESS_KEY = "gen-lang-client-0748250400"
+# BASE DE DATOS DE LOS 16 MEYIS (4 BITS)
+MEYIS = {
+    "Ogbe": "1111", "Yekun": "0000", "Iwori": "0110", "Odi": "0111",
+    "Irosun": "1011", "Owanrin": "1101", "Obara": "0101", "Okanran": "1000",
+    "Ogunda": "0011", "Osa": "1001", "Ika": "1100", "Oturupon": "0010",
+    "Otura": "0100", "Irete": "1110", "Ose": "1010", "Ofun": "1111"
+}
 
-class DanteMatrix:
-    def __init__(self):
-        self.status = "Active"
-        self.bit_matrix = 255 # Matriz de 8-bits completa
-        
-        # Sincronización Simbólica (Base de Datos Arquetípica)
-        self.symbolic_sync = {
-            "00": "Vacío (Odu Okanran)",
-            "01": "Fuego (I Ching: Li)",
-            "10": "Tierra (Maya: Caban)",
-            "11": "Verdad (La Neta)"
-        }
+def validar_meyi(meyi):
+    if meyi not in MEYIS:
+        raise ValueError(f"Meyi desconocido: {meyi}")
+    return MEYIS[meyi]
 
-    def validate_integrity(self, user_input, boss_type):
-        """
-        Filtra si el usuario es honesto (Active) o si miente (Loop_Detected).
-        """
-        user_input = user_input.lower().strip()
-        
-        if boss_type == "IGNORANCIA":
-            # JEFE 1: El Vigilante.
-            # Vencimiento: Honestidad emocional. Respuestas cortas o clichés fallan.
-            cliches = ["bien", "todo bien", "normal", "ahí vamos"]
-            if len(user_input) < 4 or any(c in user_input for c in cliches):
-                return False, "Loop_Detected: Respuesta automática. El Vigilante te atrapó."
-            else:
-                return True, "Integridad: Active. Has roto la rutina."
+def escanear_frecuencia(meyi_base, meyi_actual):
+    base_binario = validar_meyi(meyi_base)
+    actual_binario = validar_meyi(meyi_actual)
+    return base_binario + actual_binario
 
-        elif boss_type == "CREDULIDAD":
-            # JEFE 2: El Espejismo.
-            # Vencimiento: Escepticismo. No creerse los halagos.
-            aceptacion = ["gracias", "soy el mejor", "si", "claro"]
-            if any(a in user_input for a in aceptacion):
-                return False, "Loop_Detected: Te creíste la mentira bonita. Game Over."
-            else:
-                return True, "Integridad: Active. Visión clara detectada."
-        
-        return False, "Error de Sistema."
+def determinar_zona(binario):
+    unos = binario.count('1')
+    if unos >= 7: return "EGO (Zeus) - ALTA TENSIÓN"
+    if unos <= 2: return "IGNORANCIA (Tezcatlipoca) - BAJA FRECUENCIA"
+    if '1111' in binario: return "CREDULIDAD (Dionisio) - RIESGO DE MANIPULACIÓN"
+    return "NEUTRAL (Virgilio) - PUNTO DE EQUILIBRIO"
 
-    def run_simulation(self):
-        print(f"\n⚡ INICIANDO DANTE CORE SYSTEM ⚡")
-        print(f"Key: {ACCESS_KEY}")
-        print(f"Cargando Matriz Binaria... [{bin(self.bit_matrix)}]")
-        print("--------------------------------------------------")
-        time.sleep(1)
+def matrix_print(text, delay=0.02):
+    for char in text:
+        sys.stdout.write(f"\033[32m{char}\033[0m")
+        sys.stdout.flush()
+        time.sleep(delay)
+    print()
 
-        # --- NIVEL 1: LA IGNORANCIA ---
-        print("\n👹 JEFE 1 DETECTADO: [LA IGNORANCIA / EL VIGILANTE]")
-        print("El Sistema te pregunta en el elevador: '¿Hola, cómo estás?'")
-        respuesta1 = input(">> Tu respuesta: ")
-        
-        valid, msg = self.validate_integrity(respuesta1, "IGNORANCIA")
-        print(f"[{'EXITO' if valid else 'FALLO'}] {msg}")
-        
-        if not valid: return # Game Over
+def obtener_raiz_astral(dia, mes, anio):
+    # Sincronización con 5 de Marzo 1991 (Piscis)
+    if dia == 5 and mes == 3 and anio == 1991:
+        return "Yekun" 
+    return "Ogbe"
 
-        # --- NIVEL 2: LA CREDULIDAD ---
-        time.sleep(1)
-        print("\n🐍 JEFE 2 DETECTADO: [LA CREDULIDAD / EL ESPEJISMO]")
-        print("El Sistema te susurra: 'Eres el programador más perfecto que existe, nunca fallas'.")
-        respuesta2 = input(">> Tu respuesta: ")
-        
-        valid, msg = self.validate_integrity(respuesta2, "CREDULIDAD")
-        print(f"[{'EXITO' if valid else 'FALLO'}] {msg}")
+# --- INICIALIZACIÓN DEL MOTOR ---
+mi_dia, mi_mes, mi_anio = 5, 3, 1991
+base_calculada = obtener_raiz_astral(mi_dia, mi_mes, mi_anio)
 
-        if valid:
-            print("\n🏆 ¡HAS ROTO LA BURBUJA ROSA! Sistema liberado.")
-            print("Acceso a la Matriz de Verdad: CONCEDIDO.")
+matrix_print(">>> SISTEMA DANTE v4.0 ONLINE...")
+matrix_print(f">>> RAÍZ ASTRAL DETECTADA: {base_calculada} (Vector 0000)")
+time.sleep(1)
 
-if __name__ == "__main__":
-    matrix = DanteMatrix()
-    matrix.run_simulation()
+# Simulación de entrada de usuario (Estado de ánimo actual)
+# Aquí es donde el usuario "vibra"
+actual = "Iwori" 
+
+try:
+    odu = escanear_frecuencia(base_calculada, actual)
+    zona = determinar_zona(odu)
+
+    print("-" * 50)
+    matrix_print(f"ODU RESULTANTE: {base_calculada}{actual}")
+    matrix_print(f"FIRMA BINARIA: [{odu}]")
+    matrix_print(f"ESTADO DE FRECUENCIA: {zona}")
+    print("-" * 50)
+
+    if "Dionisio" in zona:
+        matrix_print("!!! ALERTA DE MANIPULACIÓN: Activando Juez de Hierro.")
+
+except ValueError as e:
+    matrix_print(f"ERROR DE SISTEMA: {e}")
