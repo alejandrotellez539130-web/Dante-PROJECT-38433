@@ -1,62 +1,71 @@
-/* ===============================
-   SISTEMA DANTE — ESTILO MATRIX
-   =============================== */
-
-html, body {
-    margin: 0;
-    padding: 0;
-    background: #000000;
+body {
+    background-color: #05070a;
     color: #00ff41;
-    font-family: "Courier New", Courier, monospace;
-    height: 100%;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 20px;
+    overflow-x: hidden;
+    font-size: 14px;
+    padding-bottom: 60px;
 }
-
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    border: 1px solid #004400;
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.15);
+    background-color: rgba(5, 7, 10, 0.95);
 }
+h1 { 
+    text-align: center; 
+    text-shadow: 0 0 5px #00ff41; 
+    letter-spacing: 2px; 
+    border-bottom: 1px solid #004400; 
+    padding-bottom: 15px; 
+    font-size: 1.5em;
+    text-transform: uppercase;
+}
+.subtitle { font-size: 0.6em; color: #00aa22; display: block; margin-top: 5px; }
+.output { margin-top: 20px; white-space: pre-wrap; line-height: 1.4; min-height: 100px; max-height: 300px; overflow-y: auto; }
+.input-zone { margin-top: 20px; border-top: 1px dashed #004400; padding-top: 15px; }
 
-#box {
+input, button {
+    background: #000;
+    color: #00ff41;
+    border: 1px solid #00ff41;
+    padding: 12px;
+    font-family: inherit;
     width: 100%;
-    max-width: 480px;
-    border: 1px solid #
-
-/* ================================
-   DANTE SYSTEM — TERMINAL RETRO
-   ================================ */
-
-:root {
-  --bg: #000000;
-  --green: #00ff41;
-  --dark-green: #003b1f;
-  --border: #00aa33;
+    margin-bottom: 12px;
+    font-size: 16px;
+    box-sizing: border-box;
 }
+input:focus, button:focus { outline: none; box-shadow: 0 0 10px #00ff41; }
+button { font-weight: bold; text-transform: uppercase; transition: 0.3s; cursor: pointer; }
+button:hover { background: #00ff41; color: #000; }
+button:disabled { border-color: #333; color: #555; cursor: not-allowed; background: #111; }
 
-* {
-  box-sizing: border-box;
+.hidden { display: none !important; }
+.alert { color: #ff3333; font-weight: bold; }
+.success { color: #00ffff; font-weight: bold; }
+.metadata { font-size: 0.75em; color: #005500; display: block; margin-top: 5px; letter-spacing: 1px; }
+.separator { color: #004400; margin: 15px 0; border-bottom: 1px dotted #004400; }
+.quote-box { border-left: 3px solid #00ff41; padding-left: 15px; margin: 15px 0; color: #fff; font-style: italic; font-size: 1.1em; }
+
+.next-chapter-btn {
+    border: 1px solid #00ffff; color: #00ffff;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+    margin-top: 20px; padding: 15px;
 }
+.next-chapter-btn:hover { background: #00ffff; color: #000; }
 
-body {
-  margin: 0;
-  padding: 0;
-  background: var(--bg);
-  color: var(--green);
-  font-family: "Courier New", Courier, monospace;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+/* Modal Styles */
+.modal {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.95); z-index: 100;
+    display: flex; justify-content: center; align-items: center;
 }
-
-/* CONTENEDOR PRINCIPAL */
-#terminal {
-  width: 90%;
-  max-width: 700px;
-  min-height: 420px;
-  background: #000;
-  border: 3px solid var(--border);
-  padding: 20px;
-  box-shadow:
-    0 0 20px rgba(0, 255, 65, 0.4),
-    inset 0
+.modal-content {
+    background: #05070a; border: 2px solid #00ff41; padding: 30px;
+    text-align: center; box-shadow: 0 0 30px rgba(0,255,65,0.3);
+    max-width: 90%; width: 400px;
+}
