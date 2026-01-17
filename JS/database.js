@@ -1,0 +1,21 @@
+// [js/database.js]
+// Repositorio de conocimientos del Sistema Dante v8.0
+
+export const LIBRERIA_DANTE = {
+    "0000": {autor: "Edgar Allan Poe", frase: "Nada más.", libro: "El Cuervo"},
+    "0001": {autor: "Fyodor Dostoievski", frase: "Soy un hombre enfermo... Un hombre malo.", libro: "Memorias del subsuelo"},
+    "0010": {autor: "Mary Shelley", frase: "Nada es tan desalentador para el espíritu como un cambio repentino.", libro: "Frankenstein"},
+    "0011": {autor: "H.P. Lovecraft", frase: "En su morada de R'lyeh, el muerto Cthulhu espera soñando.", libro: "La llamada de Cthulhu"},
+    "0100": {autor: "Franz Kafka", frase: "La desgracia de mi vida proviene de una carta de amor.", libro: "La Metamorfosis"},
+    "0101": {autor: "Arthur Conan Doyle", frase: "Cuando eliminas lo imposible, lo que queda debe ser la verdad.", libro: "Estudio en escarlata"},
+    "0110": {autor: "Julio Verne", frase: "La fuerza creadora de la naturaleza supera a la del hombre.", libro: "Veinte mil leguas de viaje submarino"},
+    "0111": {autor: "Robert Louis Stevenson", frase: "El hombre no es uno, sino dos.", libro: "Dr. Jekyll y Mr. Hyde"},
+    "1000": {autor: "Horacio Quiroga", frase: "Nuestro amor ha muerto; el sol no brilla más.", libro: "Cuentos de amor, de locura y de muerte"},
+    "1001": {autor: "Herman Melville", frase: "Hacia ti camino, ballena que lo destruyes todo.", libro: "Moby-Dick"},
+    "1010": {autor: "Alexandre Dumas", frase: "Esperar y confiar.", libro: "El conde de Montecristo"},
+    "1011": {autor: "Jack London", frase: "El dominio es para los fuertes.", libro: "La llamada de la selva"},
+    "1100": {autor: "Victor Hugo", frase: "Incluso la noche más oscura terminará y el sol saldrá.", libro: "Los miserables"},
+    "1101": {autor: "Mark Twain", frase: "No sabía lo que era el orgullo hasta que tuve algo de qué enorgullecerme.", libro: "Huckleberry Finn"},
+    "1110": {autor: "Friedrich Nietzsche", frase: "El hombre es algo que debe ser superado.", libro: "Así habló Zaratustra"},
+    "1111": {autor: "Walt Whitman", frase: "Me celebro y me canto a mí mismo.", libro: "Hojas de hierba"}
+};
