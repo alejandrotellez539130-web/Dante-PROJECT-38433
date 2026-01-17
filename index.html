@@ -4,217 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>SISTEMA DANTE | CAPÍTULO I</title>
-    <style>
-        body {
-            background-color: #05070a;
-            color: #00ff41;
-            font-family: 'Courier New', Courier, monospace;
-            padding: 20px;
-            overflow-x: hidden;
-            font-size: 14px;
-            padding-bottom: 60px;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            border: 1px solid #004400;
-            padding: 20px;
-            box-shadow: 0 0 15px rgba(0, 255, 65, 0.15);
-            background-color: rgba(5, 7, 10, 0.95);
-        }
-        h1 { 
-            text-align: center; 
-            text-shadow: 0 0 5px #00ff41; 
-            letter-spacing: 2px; 
-            border-bottom: 1px solid #004400; 
-            padding-bottom: 15px; 
-            font-size: 1.5em;
-            text-transform: uppercase;
-        }
-        .output { margin-top: 20px; white-space: pre-wrap; line-height: 1.4; min-height: 100px;}
-        .input-zone { margin-top: 20px; border-top: 1px dashed #004400; padding-top: 15px; }
-        
-        input, button {
-            background: #000;
-            color: #00ff41;
-            border: 1px solid #00ff41;
-            padding: 12px;
-            font-family: inherit;
-            width: 100%;
-            margin-bottom: 12px;
-            font-size: 16px;
-            box-sizing: border-box;
-        }
-        input:focus, button:focus { outline: none; box-shadow: 0 0 10px #00ff41; }
-        button { font-weight: bold; text-transform: uppercase; transition: 0.3s; cursor: pointer; }
-        button:hover { background: #00ff41; color: #000; }
-        button:disabled { border-color: #333; color: #555; cursor: not-allowed; background: #111; }
-        
-        .hidden { display: none; }
-        .alert { color: #ff3333; font-weight: bold; }
-        .success { color: #00ffff; font-weight: bold; }
-        .metadata { font-size: 0.75em; color: #005500; display: block; margin-top: 5px; letter-spacing: 1px; }
-        .separator { color: #004400; margin: 15px 0; border-bottom: 1px dotted #004400; }
-        
-        .next-chapter-btn {
-            border: 1px solid #00ffff;
-            color: #00ffff;
-            box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
-            margin-top: 20px;
-            padding: 15px;
-        }
-        .next-chapter-btn:hover { background: #00ffff; color: #000; }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="container">
-    <h1>SISTEMA DANTE<br><span style="font-size:0.6em; color:#00aa22;">CAPÍTULO I: EL FILTRO</span></h1>
-    <div id="console" class="output">>>> CARGANDO PROTOCOLO 1991...<br></div>
+    <h1>SISTEMA DANTE<br><span class="subtitle">CAPÍTULO I: EL FILTRO</span></h1>
+    <div id="console" class="output">>>> CARGANDO PROTOCOLO v8.0 MODULAR...<br></div>
     
     <div id="setup-form" class="input-zone hidden">
         <p>>>> IDENTIFICACIÓN REQUERIDA (FECHA DE ORIGEN):</p>
         <input type="date" id="birthdate">
-        <button onclick="iniciarEscaneo()">INICIAR ANCLAJE</button>
+        <button id="btn-scan">INICIAR ANCLAJE</button>
     </div>
 
     <div id="quiz-zone" class="input-zone hidden">
         <p class="alert">>>> ALERTA: FILTRO DE SABIDURÍA ACTIVADO.</p>
-        <p>FRASE INTERCEPTADA: <br><br><span id="quote-display" style="color: #fff; font-style: italic;"></span></p>
+        <p>FRASE INTERCEPTADA:</p>
+        <div id="quote-display" class="quote-box"></div>
         <input type="text" id="author-guess" placeholder="IDENTIFIQUE AL AUTOR (EJ. POE)" autocomplete="off">
-        <button id="btn-verificar" onclick="verificarAutor()">CONFIRMAR AUTORÍA</button>
+        <button id="btn-verificar">CONFIRMAR AUTORÍA</button>
         <p id="intentos-display" class="metadata">INTENTOS RESTANTES: 3</p>
     </div>
 
     <div id="next-level-zone" class="input-zone hidden">
-        <button class="next-chapter-btn" onclick="cargarCapitulo2()">>>> INICIAR CAPÍTULO II: EL DIARIO</button>
+        <button id="btn-cap2" class="next-chapter-btn">>>> INICIAR CAPÍTULO II: EL DIARIO</button>
     </div>
 </div>
 
-<script>
-    // --- LIBRERÍA DE FRASES (NODOS) ---
-    const LIBRERIA = {
-        "0000": {autor: "Edgar Allan Poe", frase: "Nada más.", libro: "El Cuervo"},
-        "0001": {autor: "Fyodor Dostoievski", frase: "Soy un hombre enfermo... Un hombre malo.", libro: "Memorias del subsuelo"},
-        "0010": {autor: "Mary Shelley", frase: "Nada es tan desalentador para el espíritu como un cambio repentino.", libro: "Frankenstein"},
-        "0011": {autor: "H.P. Lovecraft", frase: "En su morada de R'lyeh, el muerto Cthulhu espera soñando.", libro: "La llamada de Cthulhu"},
-        "0100": {autor: "Franz Kafka", frase: "La desgracia de mi vida proviene de una carta de amor.", libro: "La Metamorfosis"},
-        "0101": {autor: "Arthur Conan Doyle", frase: "Cuando eliminas lo imposible, lo que queda debe ser la verdad.", libro: "Estudio en escarlata"},
-        "0110": {autor: "Julio Verne", frase: "La fuerza creadora de la naturaleza supera a la del hombre.", libro: "Veinte mil leguas de viaje submarino"},
-        "0111": {autor: "Robert Louis Stevenson", frase: "El hombre no es uno, sino dos.", libro: "Dr. Jekyll y Mr. Hyde"},
-        "1000": {autor: "Horacio Quiroga", frase: "Nuestro amor ha muerto; el sol no brilla más.", libro: "Cuentos de amor, de locura y de muerte"},
-        "1001": {autor: "Herman Melville", frase: "Hacia ti camino, ballena que lo destruyes todo.", libro: "Moby-Dick"},
-        "1010": {autor: "Alexandre Dumas", frase: "Esperar y confiar.", libro: "El conde de Montecristo"},
-        "1011": {autor: "Jack London", frase: "El dominio es para los fuertes.", libro: "La llamada de la selva"},
-        "1100": {autor: "Victor Hugo", frase: "Incluso la noche más oscura terminará y el sol saldrá.", libro: "Los miserables"},
-        "1101": {autor: "Mark Twain", frase: "No sabía lo que era el orgullo hasta que tuve algo de qué enorgullecerme.", libro: "Huckleberry Finn"},
-        "1110": {autor: "Friedrich Nietzsche", frase: "El hombre es algo que debe ser superado.", libro: "Así habló Zaratustra"},
-        "1111": {autor: "Walt Whitman", frase: "Me celebro y me canto a mí mismo.", libro: "Hojas de hierba"}
-    };
+<div id="modal-cap2" class="modal hidden">
+    <div class="modal-content">
+        <h2 style="color:#00ff41; border-bottom:1px solid #004400; padding-bottom:10px;">CAPÍTULO II</h2>
+        <p style="color:#fff;">[EL DIARIO DE RODOLFO]</p>
+        <p style="font-size:0.8em; color:#00aa22; margin-top:20px;">Cargando módulos neuronales...</p>
+        <p style="font-size:0.8em; color:#555;">(Próximamente en v9.0)</p>
+        <button onclick="document.getElementById('modal-cap2').classList.add('hidden')" style="margin-top:20px; border-color:#555; color:#aaa;">CERRAR TRANSMISIÓN</button>
+    </div>
+</div>
 
-    let autorObjetivo = "", libroObjetivo = "", vectorActual = "";
-    let intentos = 0; const MAX_INTENTOS = 3;
-
-    const normalizar = s => s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
-
-    function typeWriter(text, elementId, callback) {
-        const el = document.getElementById(elementId);
-        let i = 0; el.innerHTML += "<br>"; 
-        function type() {
-            if (i < text.length) { el.innerHTML += text.charAt(i); i++; setTimeout(type, 10); } 
-            else if (callback) { callback(); }
-        }
-        type();
-    }
-
-    window.onload = function() {
-        if (localStorage.getItem("dante_cap1_complete") === "true") {
-            document.getElementById('console').innerHTML += ">>> REGISTRO: USUARIO INICIADO.<br>";
-            typeWriter(">>> CAPÍTULO I COMPLETADO. BIENVENIDO, ARQUITECTO.", "console");
-            document.getElementById('next-level-zone').classList.remove('hidden');
-        } else {
-            typeWriter(">>> SISTEMA NEUTRAL. ESPERANDO INPUT...", "console", () => {
-                document.getElementById('setup-form').classList.remove('hidden');
-            });
-        }
-    };
-
-    function calcularRaizAstral(dateString) {
-        const d = new Date(dateString);
-        if (isNaN(d.getTime())) return null;
-        const suma = d.getDate() + (d.getMonth() + 1) + d.getFullYear();
-        return (suma % 16).toString(2).padStart(4, "0");
-    }
-
-    function iniciarEscaneo() {
-        intentos = 0;
-        document.getElementById('intentos-display').innerText = `INTENTOS RESTANTES: ${MAX_INTENTOS}`;
-        document.getElementById('author-guess').value = "";
-        document.getElementById('author-guess').disabled = false;
-        document.getElementById('btn-verificar').innerText = "CONFIRMAR AUTORÍA";
-        document.getElementById('btn-verificar').disabled = false;
-        document.getElementById('quiz-zone').classList.add('hidden');
-        
-        const fecha = document.getElementById('birthdate').value;
-        const vectorBinario = calcularRaizAstral(fecha);
-
-        if (!vectorBinario) { alert(">>> ERROR: FECHA INVÁLIDA."); return; }
-
-        vectorActual = vectorBinario;
-        const data = LIBRERIA[vectorBinario];
-        autorObjetivo = data.autor;
-        libroObjetivo = data.libro;
-
-        document.getElementById('setup-form').classList.add('hidden');
-        const consola = document.getElementById('console');
-        consola.innerHTML += `<div class="separator"></div>`;
-        consola.innerHTML += `>>> VECTOR CALCULADO: [${vectorBinario}]<br>`;
-        
-        typeWriter(">>> ACCEDIENDO A LA CRIPTA LITERARIA...", "console", () => {
-            setTimeout(() => {
-                document.getElementById('quiz-zone').classList.remove('hidden');
-                document.getElementById('quote-display').innerText = `"${data.frase}"`;
-            }, 800);
-        });
-    }
-
-    function verificarAutor() {
-        const inputUsuario = document.getElementById('author-guess').value;
-        const consola = document.getElementById('console');
-        const btn = document.getElementById('btn-verificar');
-
-        if (inputUsuario.length > 3 && normalizar(autorObjetivo).includes(normalizar(inputUsuario))) {
-            consola.innerHTML += `<br><span class="success">>>> ACCESO CONCEDIDO.</span>`;
-            consola.innerHTML += `<br>>>> AUTOR: ${autorObjetivo}`;
-            consola.innerHTML += `<br>>>> LIBRO: ${libroObjetivo}`;
-            consola.innerHTML += `<span class="metadata">HASH: ${vectorActual}-CAP1-OK</span>`;
-            
-            typeWriter(">>> FILTRO SUPERADO. NIVEL DE CONCIENCIA: 1.", "console");
-            
-            localStorage.setItem("dante_cap1_complete", "true");
-            document.getElementById('quiz-zone').classList.add('hidden');
-            document.getElementById('next-level-zone').classList.remove('hidden');
-
-        } else {
-            intentos++;
-            document.getElementById('intentos-display').innerText = `INTENTOS RESTANTES: ${MAX_INTENTOS - intentos}`;
-            
-            if (intentos >= MAX_INTENTOS) {
-                consola.innerHTML += `<br><span class="alert">>>> ERROR CRÍTICO. SISTEMA BLOQUEADO.</span>`;
-                typeWriter(">>> VAYA A LEER UN LIBRO Y REGRESE MAÑANA.", "console");
-                document.getElementById('author-guess').disabled = true;
-                btn.disabled = true;
-                btn.innerText = "BLOQUEADO";
-            } else {
-                consola.innerHTML += `<br><span class="alert">>>> ERROR DE FRECUENCIA. INTENTO ${intentos}/${MAX_INTENTOS}.</span>`;
-            }
-        }
-    }
-
-    function cargarCapitulo2() {
-        alert(">>> SISTEMA DANTE: CAPÍTULO II\n\n[EL DIARIO DE RODOLFO]\n\nPróximamente...");
-    }
-</script>
+<script type="module" src="js/core.js"></script>
 
 </body>
 </html>
