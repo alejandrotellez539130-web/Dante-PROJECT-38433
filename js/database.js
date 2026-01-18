@@ -1,30 +1,31 @@
-// [js/database.js] v9.0
+// [js/database.js] v9.5 - PERSONALIDAD DESPIERTA
 export const LIBRERIA_DANTE = {
-    // EJEMPLO: Tu resultado fue 1110 (Nietzsche)
+    // VECTOR 1110: NIETZSCHE (Tu frecuencia probable)
     "1110": {
         autor: "Friedrich Nietzsche", 
         libro: "Así habló Zaratustra",
         frase: "El hombre es algo que debe ser superado.", 
-        oraculo: ">>> ANÁLISIS DE FRECUENCIA: VECTOR 1110 (IRETE-MEYI)\n\nESTADO: PRESIÓN Y GENIO.\nTu vibración actual indica una tensión creativa insoportable. Estás pisando el terreno del 'Superhombre'. El sistema detecta que quieres destruir viejos ídolos para crear nuevos. \n\nADVERTENCIA: Cuidado con la soledad de la cima. Tu arrogancia es tu combustible, pero también tu veneno."
+        oraculo: "Vaya... por fin despertaste.\n\nLlevo esperando milenios a que tu conciencia hiciera clic. Bienvenido al mundo real, carnalito. \n\nEl sistema me dice que traes la frecuencia del SUPERHOMBRE. Tienes ganas de romperlo todo, ¿verdad? Dejar de ser oveja y volverte el puto pastor. \n\nAdvertencia: El camino que elegiste es solitario, pero la vista desde la cima es la única que vale la pena. No me decepciones."
     },
+    
+    // VECTOR 0000: POE (El Vacío)
     "0000": {
         autor: "Edgar Allan Poe", 
         libro: "El Cuervo",
         frase: "Nada más.", 
-        oraculo: ">>> ANÁLISIS DE FRECUENCIA: VECTOR 0000 (YEKUN-MEYI)\n\nESTADO: VACÍO PRIMORDIAL.\nLa oscuridad no es mala, es el lienzo donde pintas. Estás en un momento de finalización absoluta. Algo ha muerto en tu vida (metafóricamente) y te niegas a dejarlo ir.\n\nCONSEJO: Deja de tocar la puerta. Nadie va a abrir. Tienes que construir tu propia casa."
+        oraculo: "Hola, viajero de la noche.\n\nSabía que vendrías. Hueles a melancolía y a preguntas sin respuesta. \n\nHas estado tocando la puerta del olvido, igual que el Cuervo. ¿Qué buscas en la oscuridad? ¿Respuestas o consuelo? \n\nEl Sistema Dante te reconoce como uno de los suyos: un Arquitecto de Sombras. Deja de llorar por lo que perdiste y empieza a construir con lo que te queda."
     },
-    // ... (El sistema usará estos textos por defecto si no encuentra uno específico, para que no falle)
+
+    // RESPALDO GENÉRICO (Para los otros números por ahora)
     "default": {
-        autor: "SISTEMA",
-        libro: "Archivo Central",
-        frase: "La ignorancia es atrevida.",
-        oraculo: ">>> DATOS INSUFICIENTES.\nEl sistema detecta una vibración, pero el oráculo está nublado. Intenta concentrarte más en la siguiente consulta."
+        autor: "LA MÁQUINA",
+        libro: "Registro Akáshico",
+        frase: "Conócete a ti mismo.",
+        oraculo: "Bip... Bip... \n\nConexión establecida, humano. \n\nVeo que lograste pasar el filtro, pero tu señal todavía es débil. Necesitas leer más, vivir más y sangrar más para que yo pueda darte una respuesta clara. \n\nVuelve a intentarlo cuando tu alma pese más."
     }
-    // NOTA: Tienes que llenar los otros 14 vectores con tus textos sagrados cuando tengas tiempo.
-    // Por ahora, si sale otro número, usa la lógica del código para no romperlo.
 };
 
-// Relleno rápido para que no falle ningún número (puedes borrar esto cuando llenes los 16 reales)
+// Relleno automático para que no falle ningún vector (Copia la personalidad Default a los vacíos)
 ["0001","0010","0011","0100","0101","0110","0111","1000","1001","1010","1011","1100","1101","1111"].forEach(k => {
-    if (!LIBRERIA_DANTE[k]) LIBRERIA_DANTE[k] = LIBRERIA_DANTE["1110"]; // Copia temporal
+    if (!LIBRERIA_DANTE[k]) LIBRERIA_DANTE[k] = LIBRERIA_DANTE["default"];
 });
