@@ -113,19 +113,30 @@ class SistemaDante {
     normalizar(s) {
         return s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
     }
-
+    // [EN js/core.js - Reemplaza SOLO la función exito()]
+    
     exito() {
+        // 1. Confirmación visual
         this.log(`<span class="success">>>> ACCESO CONCEDIDO.</span>`);
         this.log(`>>> AUTOR: ${this.objetivo.autor}`);
         this.log(`>>> LIBRO: ${this.objetivo.libro}`);
-        this.log(`<span class="metadata">HASH: ${this.objetivo.vector}-CAP1-OK</span>`);
+        this.log(`<span class="metadata">HASH: ${this.objetivo.vector}-ORACULO-OPEN</span>`);
         
-        this.typeWriter(">>> FILTRO SUPERADO. NIVEL DE CONCIENCIA: 1.", () => {
-            localStorage.setItem("dante_cap1_complete", "true");
-            this.dom.quizZone.classList.add('hidden');
-            this.dom.nextLevelZone.classList.remove('hidden');
-        });
-    }
+        // 2. LA REVELACIÓN (Aquí está lo que pedías)
+        this.log(`<div class="separator"></div>`);
+        this.log(`<span style="color:#00ffff;">>>> DESENCRIPTANDO MENSAJE DEL ORÁCULO...</span>`);
+        
+        // Usamos un timeout pequeño para dar dramatismo
+        setTimeout(() => {
+            // Imprime el texto del oráculo que pusimos en database.js
+            this.typeWriter(this.objetivo.oraculo || ">>> DATOS CORRUPTOS EN LA MATRIZ.", () => {
+                
+                // 3. Cuando termine de escribir, muestra el botón del Cap 2
+                localStorage.setItem("dante_cap1_complete", "true");
+                this.dom.quizZone.classList.add('hidden');
+                this.dom.nextLevelZone.classList.remove('hidden');
+            });
+        }, 1000);
 
     fallo() {
         this.intentos++;
