@@ -113,8 +113,7 @@ class SistemaDante {
     normalizar(s) {
         return s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
     }
-    // [EN js/core.js - Reemplaza SOLO la función exito()]
-    
+
     exito() {
         // 1. Confirmación visual
         this.log(`<span class="success">>>> ACCESO CONCEDIDO.</span>`);
@@ -137,6 +136,7 @@ class SistemaDante {
                 this.dom.nextLevelZone.classList.remove('hidden');
             });
         }, 1000);
+    }
 
     fallo() {
         this.intentos++;
