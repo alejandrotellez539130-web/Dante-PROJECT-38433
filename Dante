@@ -1,0 +1,133 @@
+# 1. Crear carpetas
+mkdir -p Dante_Diamante/js
+
+# 2. Crear index.html
+cat << 'EOF' > Dante_Diamante/index.html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SISTEMA DANTE DIAMANTE</title>
+    <style>
+        :root { --bg: #05070a; --main: #00ff41; --error: #ff3333; --panel: #0a0f14; }
+        body { background-color: var(--bg); color: var(--main); font-family: 'Courier New', monospace; text-align: center; padding: 20px; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; }
+        .terminal-box { border: 1px solid #333; background: var(--panel); padding: 25px; max-width: 500px; width: 100%; margin: auto; box-shadow: 0 0 15px rgba(0,255,65,0.1); border-radius: 12px; transition: 0.5s ease; }
+        h2 { margin-top: 0; letter-spacing: 2px; border-bottom: 1px solid #333; padding-bottom: 10px; }
+        input { width: 100%; padding: 12px; background: #000; border: 1px solid #333; color: #fff; border-radius: 6px; outline: none; margin-bottom: 15px; box-sizing: border-box; font-family: 'Courier New', monospace; }
+        input:focus { border-color: var(--main); }
+        button { width: 100%; padding: 15px; background: #1a4d2e; color: #fff; font-weight: bold; border: 1px solid var(--main); border-radius: 6px; cursor: pointer; transition: 0.3s; }
+        button:hover { background: #00ff41; color: #000; box-shadow: 0 0 15px var(--main); }
+        #console-output { margin-top: 25px; padding: 15px; border-left: 4px solid; display: none; background: #000; text-align: left; white-space: pre-wrap; border-radius: 4px; }
+        .error-msg { color: var(--error); border-color: var(--error) !important; }
+    </style>
+</head>
+<body>
+    <div class="terminal-box" id="mainBox">
+        <h2>💎 DANTE DIAMANTE</h2>
+        <p style="color:#666; font-size:0.75rem; margin-bottom: 20px;">[SISTEMA MODULAR ACTIVO]</p>
+        <label style="display:block; text-align:left; color:#888; font-size: 0.8rem;">🔐 FECHA (YYYYMMDD)</label>
+        <input type="number" id="seed" placeholder="Ej: 19980521">
+        <label style="display:block; text-align:left; color:#888; font-size: 0.8rem;">💭 ESTADO ACTUAL</label>
+        <input type="text" id="mood" placeholder="¿Cómo te sientes?">
+        <button id="btnAction">INICIAR ANCLAJE</button>
+        <div id="console-output"></div>
+    </div>
+    <script src="js/dante_dna.js"></script>
+    <script src="js/dante_zones.js"></script>
+    <script src="js/dante_engine.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
+EOF
+
+# 3. Crear dante_dna.js
+cat << 'EOF' > Dante_Diamante/js/dante_dna.js
+const ODU_DB = {
+    "Ogbe": {b:"1111", v:"Claridad", d:"Ego"}, "Yekun": {b:"0000", v:"Profundidad", d:"Muerte"},
+    "Iwori": {b:"0110", v:"Lógica", d:"Duda"}, "Odi": {b:"1001", v:"Libertad", d:"Bloqueo"},
+    "Irosun": {b:"0101", v:"Visión", d:"Ilusión"}, "Owonrin": {b:"1010", v:"Cambio", d:"Caos"},
+    "Obara": {b:"0111", v:"Voz", d:"Mentira"}, "Okanran": {b:"1000", v:"Justicia", d:"Ira"},
+    "Ogunda": {b:"1110", v:"Fuerza", d:"Violencia"}, "Osa": {b:"0100", v:"Viento", d:"Miedo"},
+    "Ika": {b:"1100", v:"Poder", d:"Maldad"}, "Oturupon": {b:"0011", v:"Salud", d:"Enfermedad"},
+    "Otura": {b:"1011", v:"Verdad", d:"Confusión"}, "Irete": {b:"0010", v:"Presión", d:"Crueldad"},
+    "Ose": {b:"1101", v:"Amor", d:"Celos"}, "Ofun": {b:"0001", v:"Milagro", d:"Avaricia"}
+};
+EOF
+
+# 4. Crear dante_zones.js
+cat << 'EOF' > Dante_Diamante/js/dante_zones.js
+function analizarZona(texto) {
+    const t = texto ? texto.toLowerCase() : "";
+    if(!t) return { zona: "VACÍO", color: "#888", jefe: "Nadie" };
+    if(t.match(/feliz|bien|amor|gracias|luz/)) return { zona: "CREDULIDAD", color: "#ff00ff", jefe: "Dionisio" };
+    if(t.match(/dios|poder|yo|mando|dinero/)) return { zona: "EGO", color: "#00d4ff", jefe: "Zeus" };
+    if(t.match(/triste|miedo|duda|no se|mal|dolor/)) return { zona: "IGNORANCIA", color: "#00ff41", jefe: "Tezcatlipoca" };
+    return { zona: "NEUTRAL", color: "#f1c40f", jefe: "Virgilio" };
+}
+EOF
+
+# 5. Crear dante_engine.js
+cat << 'EOF' > Dante_Diamante/js/dante_engine.js
+function calcularOduMaestro(fecha) {
+    const f = fecha.toString();
+    const claves = Object.keys(ODU_DB);
+    const indexP1 = parseInt(f.slice(-2)) % 16;
+    const indexP2 = parseInt(f.slice(4,6)) % 16;
+    return { padre: claves[indexP1], madre: claves[indexP2] };
+}
+EOF
+
+# 6. Crear main.js
+cat << 'EOF' > Dante_Diamante/js/main.js
+document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('btnAction');
+    const inputSeed = document.getElementById('seed');
+    const inputMood = document.getElementById('mood');
+
+    function ejecutarSistema() {
+        const box = document.getElementById('mainBox');
+        const output = document.getElementById('console-output');
+        const fecha = inputSeed.value;
+        const mood = inputMood.value;
+
+        if(fecha.length !== 8) {
+            output.style.display = "block";
+            output.className = "error-msg";
+            output.innerText = "❌ ERROR: La fecha debe ser YYYYMMDD (8 dígitos).";
+            box.style.borderColor = "#ff3333";
+            return;
+        }
+
+        const resultadoOdu = calcularOduMaestro(fecha);
+        const analisis = analizarZona(mood);
+        const d1 = ODU_DB[resultadoOdu.padre];
+        const d2 = ODU_DB[resultadoOdu.madre];
+
+        document.body.style.borderColor = analisis.color;
+        box.style.borderColor = analisis.color;
+        box.style.boxShadow = `0 0 25px ${analisis.color}40`;
+        output.className = "";
+        output.style.borderColor = analisis.color;
+        output.style.color = analisis.color;
+        output.style.display = "block";
+        output.innerHTML = `
+[VIRGILIO]: Sistema Diamante Cargado.
+---------------------------------------
+🆔 ODU: ${resultadoOdu.padre} - ${resultadoOdu.madre}
+💾 BIN: ${d1.b} :: ${d2.b}
+✨ VIRTUD: ${d1.v} + ${d2.v}
+💀 SOMBRA: ${d1.d} + ${d2.d}
+---------------------------------------
+📍 ESTADO: ZONA ${analisis.zona}
+⚠️ JEFE: ${analisis.jefe}
+        `.trim();
+    }
+
+    inputMood.addEventListener('keypress', (e) => { if(e.key === 'Enter') ejecutarSistema(); });
+    inputSeed.addEventListener('keypress', (e) => { if(e.key === 'Enter') ejecutarSistema(); });
+    btn.addEventListener('click', ejecutarSistema);
+});
+EOF
+
+echo "💎 ¡Carpeta Dante_Diamante creada con éxito! Revisa tus archivos."
