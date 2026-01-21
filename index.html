@@ -3,137 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SISTEMA DANTE | CONEXIÓN CORTEX AI</title>
+    <title>SISTEMA DANTE | NODO CENTRAL</title>
     <style>
-        /* ESTILO CYBERPUNK OPTIMIZADO */
+        /* ESTILO CYBERPUNK DANTE v5.0 */
         body { background-color: #05070a; color: #00ff41; font-family: 'Courier New', monospace; padding: 20px; text-shadow: 0 0 2px #004400; }
         .container { max-width: 800px; margin: 0 auto; border: 1px solid #004400; padding: 20px; box-shadow: 0 0 20px rgba(0,255,65,0.1); }
         h1 { text-align: center; border-bottom: 1px solid #004400; padding-bottom: 10px; text-transform: uppercase; letter-spacing: 3px; }
-        .input-zone { margin-top: 20px; border-top: 1px dashed #004400; padding-top: 20px; }
         
-        input, button { width: 100%; padding: 12px; background: #001100; color: #00ff41; border: 1px solid #00ff41; margin-bottom: 10px; font-family: inherit; font-size: 16px; }
-        button { font-weight: bold; cursor: pointer; transition: 0.2s; text-transform: uppercase; }
+        input, button { width: 100%; padding: 12px; background: #001100; color: #00ff41; border: 1px solid #00ff41; margin-bottom: 10px; font-family: inherit; font-size: 16px; outline: none; }
+        button { font-weight: bold; cursor: pointer; transition: 0.2s; text-transform: uppercase; letter-spacing: 1px; }
         button:hover { background: #00ff41; color: #000; box-shadow: 0 0 15px #00ff41; }
-        button:disabled { background: #111; border-color: #444; color: #555; cursor: not-allowed; box-shadow: none; }
-        
+        button:disabled { background: #333; color: #666; border-color: #333; cursor: not-allowed; }
+
+        .console-log { background: #000; border: 1px dashed #004400; padding: 10px; height: 150px; overflow-y: scroll; font-size: 0.8em; margin-bottom: 20px; color: #00cc00; }
         .hidden { display: none; }
-        .loading { color: #00ffff; animation: blink 1s infinite; }
-        @keyframes blink { 50% { opacity: 0; } }
+        .dante-output { font-size: 1.1em; color: #fff; margin: 20px 0; border-left: 4px solid #00ff41; padding-left: 15px; white-space: pre-wrap; }
         
-        #quote-display { font-size: 1.2em; color: #fff; font-style: italic; margin: 20px 0; border-left: 4px solid #00ff41; padding-left: 15px; }
-        .metadata { font-size: 0.8em; color: #00aa22; margin-top: 10px; }
+        .zone-badge { display: inline-block; padding: 5px 10px; background: #003300; border: 1px solid #00ff41; font-size: 0.7em; margin-bottom: 10px; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>SISTEMA DANTE<br><span style="font-size:0.5em; color:#00ffff;">[MODO ONLINE: GEMINI-PRO]</span></h1>
-    
-    <div id="console">>>> CONEXIÓN CON FANTEKEY2026: LISTA.<br></div>
+    <h1>SISTEMA DANTE <span style="font-size:0.5em; color:#ff0055;">[v5.0]</span></h1>
 
-    <div id="setup-form" class="input-zone">
-        <p>>>> INGRESE FECHA DE ORIGEN PARA CONSULTAR AL ORÁCULO:</p>
-        <input type="date" id="birthdate">
-        <button id="btn-scan" onclick="iniciarConexion()">>>> INVOCAR INTELIGENCIA</button>
+    <div id="system-log" class="console-log">
+        >>> SISTEMA INICIADO...<br>
+        >>> ESPERANDO CREDENCIALES DE ACCESO...
     </div>
 
-    <div id="quiz-zone" class="input-zone hidden">
-        <p class="metadata">>>> DATOS RECIBIDOS DESDE LA NUBE:</p>
-        <div id="quote-display"></div>
+    <div id="login-zone">
+        <p>>>> PEGA AQUÍ TU API KEY (LA QUE TERMINA EN ...VYIE):</p>
+        <input type="password" id="api-key-input" placeholder="AIzaSy...">
+        <button onclick="guardarLlave()">>>> ACTIVAR NÚCLEO</button>
+    </div>
+
+    <div id="ops-zone" class="hidden">
+        <div class="zone-badge" id="zona-actual">ESCANEO DE ZONA: PENDIENTE</div>
         
-        <input type="text" id="author-guess" placeholder="IDENTIFIQUE AL AUTOR..." autocomplete="off">
-        <button id="btn-verificar" onclick="verificarRespuesta()">CONFIRMAR AUTORÍA</button>
-        <p id="feedback-msg"></p>
+        <p>>>> CONSULTA AL ORÁCULO:</p>
+        <input type="text" id="user-prompt" placeholder="Escribe tu situación actual...">
+        <button id="btn-process" onclick="procesarConsulta()">>>> EJECUTAR ANÁLISIS</button>
+
+        <div id="resultado" class="dante-output hidden"></div>
     </div>
 </div>
 
 <script>
-    // ==========================================
-    // 🔑 ZONA DE LLAVES - `gen-lang-client-0748250400`
-    // ==========================================
-    const API_KEY = "`gen-lang-client-0748250400`"; 
-    // ==========================================
+    let USER_API_KEY = "";
 
-    let respuestaCorrecta = null; // Aquí guardaremos lo que diga la AI
-    
-    // Función Principal: Hablar con Google Gemini
-    async function iniciarConexion() {
-        const fecha = document.getElementById('birthdate').value;
-        const btn = document.getElementById('btn-scan');
-        const consola = document.getElementById('console');
+    function log(texto) {
+        const logDiv = document.getElementById('system-log');
+        logDiv.innerHTML += `> ${texto}<br>`;
+        logDiv.scrollTop = logDiv.scrollHeight;
+    }
 
-        if (!fecha) { alert(">>> ERROR: FECHA REQUERIDA."); return; }
-        if (API_KEY === "TU_API_KEY_AQUI") { alert(">>> ERROR: FANTEKEY NO DETECTADA. EDITA EL CÓDIGO."); return; }
+    // 1. GUARDAR LA LLAVE
+    function guardarLlave() {
+        const input = document.getElementById('api-key-input').value.trim();
+        if (!input.startsWith("AIza")) {
+            log("ERROR: LLAVE INVÁLIDA. DEBE EMPEZAR CON 'AIza'.");
+            return;
+        }
+        USER_API_KEY = input;
+        document.getElementById('login-zone').classList.add('hidden');
+        document.getElementById('ops-zone').classList.remove('hidden');
+        log("CREDENCIALES ACEPTADAS. NÚCLEO ACTIVO.");
+        detectarZona();
+    }
 
-        // UI: Modo Cargando
+    // 2. DETECTAR ZONA (TU LÓGICA DE HORARIO)
+    function detectarZona() {
+        const hora = new Date().getHours();
+        let zona = "NEUTRAL (Virgilio)";
+        if (hora >= 0 && hora < 6) zona = "CREDULIDAD (Dionisio)";
+        if (hora >= 6 && hora < 12) zona = "EGO (Zeus)";
+        if (hora >= 12 && hora < 18) zona = "IGNORANCIA (Tezcatlipoca)";
+        
+        document.getElementById('zona-actual').innerText = `ZONA ACTUAL: ${zona} [${hora}:00 HRS]`;
+        log(`CALIBRANDO SENSORES EN ZONA: ${zona}`);
+    }
+
+    // 3. HABLAR CON GEMINI (EL CEREBRO)
+    async function procesarConsulta() {
+        const promptUsuario = document.getElementById('user-prompt').value;
+        const btn = document.getElementById('btn-process');
+        const outputDiv = document.getElementById('resultado');
+
+        if (!promptUsuario) return;
+
         btn.disabled = true;
-        btn.innerHTML = ">>> PROCESANDO EN LA MATRIX...";
-        consola.innerHTML += `<span class="loading">>>> ENVIANDO SEÑAL A GEMINI (${fecha})...</span><br>`;
+        btn.innerText = ">>> PROCESANDO...";
+        outputDiv.classList.add('hidden');
+        log("ENVIANDO PAQUETE DE DATOS A LA NUBE...");
 
-        // EL PROMPT (La orden al cerebro)
-        // Pedimos JSON estricto para que el código pueda leerlo.
-        const prompt = `
-            Actúa como el 'Sistema Dante', una IA oscura y literaria.
-            Basado en la fecha ${fecha}, selecciona una cita famosa de un autor clásico de terror, existencialismo o ciencia ficción (Ej: Poe, Lovecraft, Kafka, Asimov).
-            
-            IMPORTANTE: Responde ÚNICAMENTE con un objeto JSON válido (sin bloques de código markdown).
-            Formato: {"frase": "Texto de la cita", "autor": "Nombre del Autor", "libro": "Obra de origen"}
+        const systemInstruction = `
+            Eres el SISTEMA DANTE. Tu tono es crudo, mexicano, ácido y directo.
+            No usas formalismos. Analizas la psicología del usuario.
+            Si el usuario se hace la víctima, destrúyelo con la verdad.
+            Responde breve y conciso.
         `;
 
+        const finalPrompt = `${systemInstruction}\n\nUSUARIO DICE: "${promptUsuario}"\n\nDANTE RESPONDE:`;
+
         try {
-            // Llamada a la API REST de Google
-            const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${API_KEY}`, {
+            const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${USER_API_KEY}`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
-                    contents: [{ parts: [{ text: prompt }] }]
+                    contents: [{ parts: [{ text: finalPrompt }] }]
                 })
             });
 
             const data = await response.json();
             
-            // Análisis de la respuesta (Parsing)
-            const textoGenerado = data.candidates[0].content.parts[0].text;
-            
-            // Limpieza por si Gemini pone ```json ... ```
-            const jsonLimpio = textoGenerado.replace(/```json|```/g, '').trim();
-            const objetoDatos = JSON.parse(jsonLimpio);
+            if (data.error) throw new Error(data.error.message);
 
-            // Guardamos la verdad
-            respuestaCorrecta = objetoDatos;
-
-            // Mostramos el juego
-            document.getElementById('setup-form').classList.add('hidden');
-            document.getElementById('quiz-zone').classList.remove('hidden');
+            const textoRespuesta = data.candidates[0].content.parts[0].text;
             
-            consola.innerHTML += `>>> RESPUESTA RECIBIDA. PAQUETE DESENCRIPTADO.<br>`;
-            document.getElementById('quote-display').innerText = `"${objetoDatos.frase}"`;
+            outputDiv.innerText = textoRespuesta;
+            outputDiv.classList.remove('hidden');
+            log("RESPUESTA RECIBIDA CON ÉXITO.");
 
         } catch (error) {
-            console.error(error);
-            consola.innerHTML += `<span style="color:red">>>> ERROR DE CONEXIÓN: ${error.message}</span><br>`;
+            log(`ERROR CRÍTICO: ${error.message}`);
+            alert("FALLO EN LA MATRIX: Revisa tu API KEY.");
+        } finally {
             btn.disabled = false;
-            btn.innerHTML = ">>> REINTENTAR CONEXIÓN";
-        }
-    }
-
-    // Validación de la respuesta del usuario
-    function verificarRespuesta() {
-        const intento = document.getElementById('author-guess').value;
-        const feedback = document.getElementById('feedback-msg');
-        
-        // Normalización para evitar errores por tildes o mayúsculas
-        const cleanIntento = intento.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-        const cleanAutor = respuestaCorrecta.autor.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-
-        if (cleanAutor.includes(cleanIntento) && cleanIntento.length > 3) {
-            // ÉXITO
-            feedback.innerHTML = `<span style="color:#00ffff">>>> ¡ACCESO CONCEDIDO!<br>Autor: ${respuestaCorrecta.autor}<br>Libro: ${respuestaCorrecta.libro}</span>`;
-            document.getElementById('btn-verificar').disabled = true;
-            document.getElementById('console').innerHTML += ">>> USUARIO VALIDADO POR IA.<br>";
-        } else {
-            // FALLO
-            feedback.innerHTML = `<span style="color:red">>>> ACCESO DENEGADO. NO ES ESE AUTOR.</span>`;
+            btn.innerText = ">>> EJECUTAR ANÁLISIS";
         }
     }
 </script>
