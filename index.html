@@ -3,288 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DANTE DIAMANTE v1.5 - SISTEMA CONSCIENTE</title>
+    <title>DANTE ENGINE v5.1 | MEYI SYSTEM</title>
     <style>
-        :root {
-            --bg: #05070a;
-            --panel: #071017;
-            --accent: #00ff41;
-            --accent-strong: #00e235;
-            --muted: #7a8b8f;
-            --error: #ff4d4f;
-            --card: #0b1216;
-            --glass: rgba(255, 255, 255, 0.02);
-            --radius: 10px;
-            --gap: 12px;
-            font-size: 16px;
-        }
-
-        * { box-sizing: border-box; }
-
-        html, body {
-            height: 100%;
-            margin: 0;
-            background: radial-gradient(ellipse at 20% 10%, rgba(0, 255, 65, 0.02), transparent 10%), 
-                        linear-gradient(180deg, var(--bg), #030407 60%);
-            color: var(--accent);
-            font-family: "Courier New", ui-monospace, SFMono-Regular, Menlo, monospace;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            line-height: 1.35;
-        }
-
-        .wrap {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 32px;
-        }
-
-        .terminal {
-            width: 100%;
-            max-width: 640px;
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent);
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6), 0 0 40px rgba(0, 255, 65, 0.03);
-            border-radius: var(--radius);
-            padding: 22px;
-        }
-
-        header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-            margin-bottom: 16px;
-        }
-
-        h1 {
-            margin: 0;
-            font-size: 1.05rem;
-            letter-spacing: 3px;
-            color: var(--accent);
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-
-        .meta {
-            font-size: 0.72rem;
-            color: var(--muted);
-        }
-
-        main {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: var(--gap);
-        }
-
-        #output {
-            background: #000;
-            border-left: 4px solid var(--accent);
-            padding: 14px;
-            min-height: 140px;
-            max-height: 300px;
-            color: var(--accent);
-            font-size: 0.9rem;
-            border-radius: 6px;
-            white-space: pre-wrap;
-            overflow: auto;
-        }
-
-        /* announce changes for assistive tech */
-        #output[aria-live] { outline: none; }
-
-        .controls {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-            gap: 10px;
-            margin-top: 4px;
-        }
-
-        button {
-            background: transparent;
-            color: var(--accent);
-            border: 1px solid rgba(0, 255, 65, 0.12);
-            padding: 10px 12px;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 200ms ease;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.78rem;
-        }
-
-        button:hover {
-            background: rgba(0, 255, 65, 0.03);
-            box-shadow: 0 6px 18px rgba(0, 255, 65, 0.04);
-        }
-
-        button:active { transform: translateY(1px); }
-
-        button:focus {
-            outline: 2px solid rgba(0, 255, 65, 0.18);
-            outline-offset: 2px;
-        }
-
-        .danger {
-            border-color: rgba(255, 77, 79, 0.18);
-            color: var(--error);
-        }
-
-        .status {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 10px;
-            margin-top: 12px;
-            font-size: 0.75rem;
-            color: var(--muted);
-        }
-
-        .status .dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: var(--accent-strong);
-            box-shadow: 0 0 8px rgba(0, 255, 65, 0.16);
-            display: inline-block;
-            margin-right: 8px;
-        }
-
-        /* Respect reduced motion */
-        @media (prefers-reduced-motion: reduce) {
-            * { transition: none !important; }
-        }
-
-        /* Responsive small screens */
-        @media (max-width: 420px) {
-            .terminal { padding: 14px; }
-            #output { min-height: 110px; }
-        }
+        body { background-color: #020202; color: #cfcfcf; font-family: 'Consolas', monospace; padding: 20px; text-align: center; }
+        h1 { border-bottom: 1px solid #d4af37; padding-bottom: 10px; color: #d4af37; letter-spacing: 3px; }
+        .input-zone { background: #0a0a0a; padding: 25px; border: 1px solid #333; display: inline-block; margin-top: 20px; }
+        input { background: #000; border: 1px solid #444; color: #d4af37; padding: 12px; font-size: 16px; width: 80%; text-align: center; }
+        button { background: #111; color: #d4af37; border: 1px solid #d4af37; padding: 12px 24px; cursor: pointer; margin-top: 15px; text-transform: uppercase; font-weight: bold; }
+        #console-output { margin-top: 30px; border-top: 1px solid #222; padding: 20px; text-align: left; min-height: 150px; width: 90%; margin: 30px auto; background: #050505; }
+        .totem-highlight { color: #d4af37; font-weight: bold; font-size: 1.4em; display: block; margin: 10px 0; }
+        .coherence { color: #00ffaa; } .dissonance { color: #ff4444; } .virtue { color: #aaaaff; } .shadow { color: #ffaaaa; }
     </style>
 </head>
 <body>
+    <h1>DANTE PROTOCOL v5.1</h1>
+    <div id="memory-display" style="color: #555; font-size: 11px; margin-bottom: 20px;">SISTEMA DE 16 VECTORES LISTO</div>
 
-<div class="wrap">
-    <section class="terminal">
-        <header>
-            <h1>DANTE DIAMANTE v1.5</h1>
-            <span class="meta">SISTEMA CONSCIENTE</span>
-        </header>
+    <div class="input-zone">
+        <p>IDENTIDAD (NOMBRE CLAVE)</p>
+        <input type="text" id="userInput" placeholder="TU ARQUETIPO..." autocomplete="off">
+        <br>
+        <button onclick="ejecutarProtocolo()">CONSULTAR ORÁCULO</button>
+        <br><br>
+        <button onclick="localStorage.clear(); location.reload();" style="font-size: 0.7em; border-color: #552222; color: #884444;">REINICIAR SISTEMA</button>
+    </div>
 
-        <main>
-            <div id="output" role="log" aria-live="polite" aria-atomic="false">Inicializando sistema...
+    <div id="console-output">Esperando sincronización...</div>
 
-Kernel: OK
-Sensores: LISTOS
-Interfaz: ATENTA</div>
+    <script src="dante_totem_db.js"></script>
 
-            <div class="controls" role="toolbar" aria-label="Controles del sistema">
-                <button id="btn-status" type="button">Estado</button>
-                <button id="btn-analyze" type="button">Analizar</button>
-                <button id="btn-think" type="button">Pensar</button>
-                <button id="btn-clear" class="danger" type="button">Limpiar</button>
-                <button id="btn-copy" type="button">Copiar</button>
-                <button id="btn-download" type="button">Descargar</button>
-            </div>
-
-            <div class="status" aria-hidden="false">
-                <div><span class="dot" aria-hidden="true"></span><strong id="sys-mode">Activo</strong></div>
-                <div id="last-action">Última acción: —</div>
-            </div>
-        </main>
-    </section>
-</div>
-
-<script>
-    // Elementos
-    const output = document.getElementById('output');
-    const lastAction = document.getElementById('last-action');
-    const sysMode = document.getElementById('sys-mode');
-
-    // Utilidades
-    function appendLine(text, opts = {}) {
-        const time = new Date().toLocaleTimeString();
-        const prefix = opts.prefix ?? '[' + time + ']';
-        // CORRECCIÓN CÉNIT: Arreglada la concatenación
-        output.textContent += '\n' + prefix + ' ' + text;
-        output.scrollTop = output.scrollHeight;
-        lastAction.textContent = 'Última acción: ' + (opts.label ?? text);
-    }
-
-    function simulateDelay(ms = 600) {
-        return new Promise(res => setTimeout(res, ms));
-    }
-
-    // Botones
-    document.getElementById('btn-status').addEventListener('click', async () => {
-        appendLine('Solicitando estado del sistema...', { label: 'Estado solicitado' });
-        await simulateDelay(400);
-        appendLine('CPU: 12% | Memoria: 38% | Red: Estable', { label: 'Estado mostrado' });
-    });
-
-    document.getElementById('btn-analyze').addEventListener('click', async () => {
-        appendLine('Iniciando análisis de integridad...', { label: 'Análisis iniciado' });
-        await simulateDelay(800);
-        appendLine('Análisis: OK — No se detectaron anomalías.', { label: 'Análisis completado' });
-    });
-
-    document.getElementById('btn-think').addEventListener('click', async () => {
-        appendLine('Pensamiento profundo activado...', { label: 'Pensando' });
-        sysMode.textContent = 'Procesando';
-        await simulateDelay(1200);
-        appendLine('Resultado: Optimización de parámetros sugerida (+3%).', { label: 'Pensamiento completado' });
-        sysMode.textContent = 'Activo';
-    });
-
-    document.getElementById('btn-clear').addEventListener('click', () => {
-        output.textContent = 'Registro limpiado — ' + new Date().toLocaleTimeString();
-        lastAction.textContent = 'Última acción: Limpiar';
-    });
-
-    document.getElementById('btn-copy').addEventListener('click', async () => {
-        try {
-            await navigator.clipboard.writeText(output.textContent);
-            appendLine('Salida copiada al portapeles.', { label: 'Copiar' });
-        } catch (e) {
-            appendLine('Error: no se pudo copiar (permiso denegado).', { label: 'Copiar fallido' });
-        }
-    });
-
-    document.getElementById('btn-download').addEventListener('click', () => {
-        const blob = new Blob([output.textContent], { type: 'text/plain;charset=utf-8' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'dante_log_' + new Date().toISOString().replace(/[:.]/g,'-') + '.txt';
-        document.body.appendChild(a);
-        a.click();
-        a.remove();
-        URL.revokeObjectURL(url);
-        appendLine('Registro descargado.', { label: 'Descargar' });
-    });
-
-    // Teclas rápidas (accesibilidad)
-    window.addEventListener('keydown', (e) => {
-        if (e.ctrlKey && e.key === 'k') { // Ctrl+K => limpiar
-            e.preventDefault();
-            document.getElementById('btn-clear').click();
-        }
-        if (e.ctrlKey && e.key === 'c') { // Ctrl+C => copiar
-            if (!window.getSelection().toString()) {
-                e.preventDefault();
-                document.getElementById('btn-copy').click();
+    <script>
+        const DANTE_ENGINE = {
+            base_phi: 0.618,
+            textToDNA: (text) => {
+                if (!text || text.trim().length < 2) return null;
+                let hash = 0;
+                for (let i = 0; i < text.length; i++) {
+                    hash = (hash << 5) - hash + text.charCodeAt(i);
+                    hash &= 0xff; 
+                }
+                return Math.abs(hash);
+            },
+            getMeyi: (dna) => (dna % 16) + 1, // Cálculo 1-16
+            getSeed: () => {
+                const now = Math.floor(Date.now() / 1000);
+                return (now ^ (now >> 8)) & 0xff; 
+            },
+            process: (userDNA, seed) => {
+                const odu = userDNA ^ seed;
+                const pressure = parseFloat((odu / 255).toFixed(3));
+                const dynamicPhi = DANTE_ENGINE.base_phi * (1 + (seed / 512));
+                const status = pressure <= dynamicPhi ? "COHERENCIA" : "DISONANCIA";
+                const meyiID = DANTE_ENGINE.getMeyi(userDNA);
+                
+                if (typeof TOTEM_SYSTEM === 'undefined') return { error: "DB_MISSING" };
+                
+                const tactical = TOTEM_SYSTEM.getEstadoTactico(meyiID, pressure);
+                return { odu, pressure, status, tactical, meyiID };
             }
+        };
+
+        function ejecutarProtocolo() {
+            const rawName = document.getElementById("userInput").value;
+            const output = document.getElementById("console-output");
+            const userDNA = DANTE_ENGINE.textToDNA(rawName);
+            
+            if (!userDNA) { output.innerHTML = "⚠️ ERROR: Identidad insuficiente."; return; }
+
+            const result = DANTE_ENGINE.process(userDNA, DANTE_ENGINE.getSeed());
+            
+            if (result.error) {
+                output.innerHTML = "❌ ERROR CRÍTICO: No se encuentra dante_totem_db.js.";
+                return;
+            }
+
+            const t = result.tactical;
+            const estadoClass = t.state === "virtud" ? "virtue" : "shadow";
+
+            output.innerHTML = `
+>> REPORTE TÁCTICO v5.1
+------------------------------------------------
+> SUJETO: ${rawName.toUpperCase()}
+> VECTOR: MEYI #${result.meyiID} [${t.identity}]
+> PRESIÓN PSI: ${result.pressure} ${t.isCritical ? "⚠️(ALTA)" : "✅(ESTABLE)"}
+------------------------------------------------
+> ESTADO: <span class="${estadoClass}">${t.state.toUpperCase()}</span>
+
+> MANIFESTACIÓN:
+  <span class="totem-highlight">${t.manifestation}</span>
+  DIRECTIVA: "${t.directive}"
+------------------------------------------------`;
         }
-    });
-
-    // Inicialización ligera
-    (function init(){
-        appendLine('Sistema listo. Interacciones listas para usarse.', { label: 'Inicialización' });
-    })();
-</script>
-
+    </script>
 </body>
 </html>
