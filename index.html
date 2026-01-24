@@ -3,97 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DANTE ENGINE v5.1 | MEYI SYSTEM</title>
+    <title>DANTE ENGINE v7.0 | BIBLIOTHECA</title>
+    <script type="importmap">
+      {
+        "imports": {
+          "@google/generative-ai": "https://esm.run/@google/generative-ai"
+        }
+      }
+    </script>
     <style>
         body { background-color: #020202; color: #cfcfcf; font-family: 'Consolas', monospace; padding: 20px; text-align: center; }
         h1 { border-bottom: 1px solid #d4af37; padding-bottom: 10px; color: #d4af37; letter-spacing: 3px; }
-        .input-zone { background: #0a0a0a; padding: 25px; border: 1px solid #333; display: inline-block; margin-top: 20px; }
-        input { background: #000; border: 1px solid #444; color: #d4af37; padding: 12px; font-size: 16px; width: 80%; text-align: center; }
-        button { background: #111; color: #d4af37; border: 1px solid #d4af37; padding: 12px 24px; cursor: pointer; margin-top: 15px; text-transform: uppercase; font-weight: bold; }
-        #console-output { margin-top: 30px; border-top: 1px solid #222; padding: 20px; text-align: left; min-height: 150px; width: 90%; margin: 30px auto; background: #050505; }
-        .totem-highlight { color: #d4af37; font-weight: bold; font-size: 1.4em; display: block; margin: 10px 0; }
+        .input-zone { background: #0a0a0a; padding: 25px; border: 1px solid #333; display: inline-block; margin-top: 20px; width: 90%; max-width: 400px; box-shadow: 0 0 15px rgba(212, 175, 55, 0.1); }
+        input { background: #000; border: 1px solid #444; color: #d4af37; padding: 12px; font-size: 16px; width: 90%; text-align: center; margin-bottom: 10px; }
+        .api-input { border-color: #00ff41; color: #00ff41; font-size: 12px; }
+        button { background: #111; color: #d4af37; border: 1px solid #d4af37; padding: 12px 24px; cursor: pointer; margin-top: 15px; text-transform: uppercase; font-weight: bold; width: 100%; transition: all 0.3s; }
+        button:hover { background: #d4af37; color: #000; }
+        
+        #console-output { margin-top: 30px; border-top: 1px solid #222; padding: 20px; text-align: left; min-height: 150px; width: 90%; margin: 30px auto; background: #050505; white-space: pre-wrap; border-left: 1px solid #333; }
+        
+        .totem-highlight { color: #d4af37; font-weight: bold; font-size: 1.4em; }
+        .ai-response { color: #00ff41; font-style: italic; border-left: 2px solid #00ff41; padding-left: 10px; margin-top: 10px; background: #001100; padding: 10px; }
+        .quote-box { margin-top: 15px; padding: 15px; border: 1px dashed #555; background: #080808; text-align: center; }
+        .quote-text { font-style: italic; color: #bbb; font-size: 0.9em; }
+        .quote-author { display: block; margin-top: 5px; color: #888; font-size: 0.8em; font-weight: bold; letter-spacing: 1px; }
+        
         .coherence { color: #00ffaa; } .dissonance { color: #ff4444; } .virtue { color: #aaaaff; } .shadow { color: #ffaaaa; }
     </style>
 </head>
 <body>
-    <h1>DANTE PROTOCOL v5.1</h1>
-    <div id="memory-display" style="color: #555; font-size: 11px; margin-bottom: 20px;">SISTEMA DE 16 VECTORES LISTO</div>
+    <h1>DANTE PROTOCOL v7.0</h1>
+    <div id="memory-display" style="color: #555; font-size: 11px; margin-bottom: 20px;">LIBRERÍA DE CITAS CARGADA</div>
 
     <div class="input-zone">
-        <p>IDENTIDAD (NOMBRE CLAVE)</p>
-        <input type="text" id="userInput" placeholder="TU ARQUETIPO..." autocomplete="off">
-        <br>
-        <button onclick="ejecutarProtocolo()">CONSULTAR ORÁCULO</button>
+        <input type="password" id="apiKeyInput" class="api-input" placeholder="PEGAR API KEY (Opcional)">
         <br><br>
-        <button onclick="localStorage.clear(); location.reload();" style="font-size: 0.7em; border-color: #552222; color: #884444;">REINICIAR SISTEMA</button>
+        <p style="font-size: 0.8em; color: #666;">IDENTIDAD</p>
+        <input type="text" id="userInput" placeholder="NOMBRE / ARQUETIPO" autocomplete="off">
+        <br>
+        <button onclick="ejecutarProtocolo()">INICIAR RITUAL</button>
     </div>
 
-    <div id="console-output">Esperando sincronización...</div>
+    <div id="console-output">Esperando conexión...</div>
 
     <script src="dante_totem_db.js"></script>
 
-    <script>
-        const DANTE_ENGINE = {
-            base_phi: 0.618,
-            textToDNA: (text) => {
-                if (!text || text.trim().length < 2) return null;
-                let hash = 0;
-                for (let i = 0; i < text.length; i++) {
-                    hash = (hash << 5) - hash + text.charCodeAt(i);
-                    hash &= 0xff; 
-                }
-                return Math.abs(hash);
-            },
-            getMeyi: (dna) => (dna % 16) + 1, // Cálculo 1-16
-            getSeed: () => {
-                const now = Math.floor(Date.now() / 1000);
-                return (now ^ (now >> 8)) & 0xff; 
-            },
-            process: (userDNA, seed) => {
-                const odu = userDNA ^ seed;
-                const pressure = parseFloat((odu / 255).toFixed(3));
-                const dynamicPhi = DANTE_ENGINE.base_phi * (1 + (seed / 512));
-                const status = pressure <= dynamicPhi ? "COHERENCIA" : "DISONANCIA";
-                const meyiID = DANTE_ENGINE.getMeyi(userDNA);
-                
-                if (typeof TOTEM_SYSTEM === 'undefined') return { error: "DB_MISSING" };
-                
-                const tactical = TOTEM_SYSTEM.getEstadoTactico(meyiID, pressure);
-                return { odu, pressure, status, tactical, meyiID };
-            }
-        };
+    <script type="module">
+        import { GoogleGenerativeAI } from "@google/generative-ai";
 
-        function ejecutarProtocolo() {
+        window.ejecutarProtocolo = async function() {
             const rawName = document.getElementById("userInput").value;
+            const apiKey = document.getElementById("apiKeyInput").value;
             const output = document.getElementById("console-output");
+
+            // 1. LÓGICA MATEMÁTICA (LOCAL)
+            const DANTE_ENGINE = {
+                base_phi: 0.618,
+                textToDNA: (text) => {
+                    if (!text || text.trim().length < 2) return null;
+                    let hash = 0;
+                    for (let i = 0; i < text.length; i++) { hash = (hash << 5) - hash + text.charCodeAt(i); hash &= 0xff; }
+                    return Math.abs(hash);
+                },
+                getMeyi: (dna) => (dna % 16) + 1,
+                getSeed: () => (Math.floor(Date.now() / 1000) ^ (Math.floor(Date.now() / 1000) >> 8)) & 0xff
+            };
+
+            if (!rawName) { output.innerHTML = "⚠️ ERROR: Falta nombre."; return; }
+            if (typeof TOTEM_SYSTEM === 'undefined') { output.innerHTML = "❌ ERROR CRÍTICO: dante_totem_db.js no encontrado."; return; }
+
+            // Procesamiento Local
             const userDNA = DANTE_ENGINE.textToDNA(rawName);
-            
-            if (!userDNA) { output.innerHTML = "⚠️ ERROR: Identidad insuficiente."; return; }
-
-            const result = DANTE_ENGINE.process(userDNA, DANTE_ENGINE.getSeed());
-            
-            if (result.error) {
-                output.innerHTML = "❌ ERROR CRÍTICO: No se encuentra dante_totem_db.js.";
-                return;
-            }
-
-            const t = result.tactical;
+            const seed = DANTE_ENGINE.getSeed();
+            const odu = userDNA ^ seed;
+            const pressure = parseFloat((odu / 255).toFixed(3));
+            const meyiID = DANTE_ENGINE.getMeyi(userDNA);
+            const t = TOTEM_SYSTEM.getEstadoTactico(meyiID, pressure);
             const estadoClass = t.state === "virtud" ? "virtue" : "shadow";
 
-            output.innerHTML = `
->> REPORTE TÁCTICO v5.1
-------------------------------------------------
+            // Reporte Base (Ahora incluye la Cita)
+            let log = `
+>> REPORTE TÁCTICO v7.0
+--------------------------
 > SUJETO: ${rawName.toUpperCase()}
-> VECTOR: MEYI #${result.meyiID} [${t.identity}]
-> PRESIÓN PSI: ${result.pressure} ${t.isCritical ? "⚠️(ALTA)" : "✅(ESTABLE)"}
-------------------------------------------------
+> VECTOR: MEYI #${meyiID} [${t.identity}]
+> PRESIÓN: ${pressure}
+--------------------------
 > ESTADO: <span class="${estadoClass}">${t.state.toUpperCase()}</span>
 
 > MANIFESTACIÓN:
   <span class="totem-highlight">${t.manifestation}</span>
   DIRECTIVA: "${t.directive}"
-------------------------------------------------`;
-        }
+
+<div class="quote-box">
+    <span class="quote-text">"${t.quote}"</span>
+    <span class="quote-author">— ${t.author}</span>
+</div>
+--------------------------`;
+
+            output.innerHTML = log + "\n> Sincronizando...";
+
+            // 2. CONEXIÓN AI (SI HAY LLAVE)
+            if (apiKey.trim().length > 10) {
+                try {
+                    const genAI = new GoogleGenerativeAI(apiKey);
+                    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+
+                    const prompt = `
+                        Actúa como el Oráculo Dante.
+                        El usuario está en el Meyi ${t.identity}.
+                        Su Tótem es: ${t.manifestation}.
+                        La cita que le rige hoy es de ${t.author}: "${t.quote}".
+                        Dame una interpretación breve y mística de por qué esta cita es relevante para su tótem hoy.
+                    `;
+
+                    const result = await model.generateContent(prompt);
+                    const response = await result.response;
+                    const text = response.text();
+
+                    output.innerHTML = log + `\n\n> PROFECÍA GEMINI:\n<div class="ai-response">${text}</div>`;
+
+                } catch (error) {
+                    output.innerHTML = log + `\n\n❌ ERROR AI: Llave inválida.\n(El sistema matemático sigue funcionando)`;
+                }
+            } else {
+                output.innerHTML = log;
+            }
+        };
     </script>
 </body>
 </html>
