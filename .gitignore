@@ -1,0 +1,11 @@
+# Ignorar archivos de entorno y secretos
+.env
+.DS_Store
+__pycache__/
+
+# Ignorar bases de datos locales sensibles (excepto nuestro JSON maestro)
+*.sqlite3
+*.db
+
+# Mantener nodos_bibliomancia.json porque es estructura, no secreto
+!nodos_bibliomancia.json
