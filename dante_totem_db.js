@@ -1,11 +1,11 @@
 /* ===============================================
    DANTE TOTEM DATABASE (DB)
-   Versión: 7.0 (The Bibliotheca Update)
-   Descripción: 16 Meyis + Librería de Citas Maestras
+   Versión: 9.0 (Tactical & Quotes)
+   Descripción: 16 Familias, Tótems por Presión y Citas de Autoridad
    ===============================================
 */
 
-// 1. MAPA TÁCTICO (ARQUETIPOS)
+// 1. MAPA DE ARQUETIPOS (ANIMALES Y ESTADOS)
 const MAPA_TOTEMS_MEYI = {
     1: { nombre: "ORIGEN (Ejiogbe)", totems: [ { animal: "Huevo", umbral: 0.25, estado: "virtud", sentido: "potencial puro" }, { animal: "Colibrí", umbral: 0.618, estado: "virtud", sentido: "inicio ligero" }, { animal: "Caballo", umbral: 0.85, estado: "sombra", sentido: "impulso sin forma" }, { animal: "Cometa", umbral: 1.0, estado: "sombra", sentido: "caos inicial" } ] },
     2: { nombre: "DUALIDAD (Oyeku)", totems: [ { animal: "Pez", umbral: 0.25, estado: "virtud", sentido: "adaptación" }, { animal: "Cisne", umbral: 0.618, estado: "virtud", sentido: "vínculo" }, { animal: "Pulpo", umbral: 0.85, estado: "sombra", sentido: "dependencia" }, { animal: "Sanguijuela", umbral: 1.0, estado: "sombra", sentido: "fusión tóxica" } ] },
@@ -25,7 +25,7 @@ const MAPA_TOTEMS_MEYI = {
     16: { nombre: "ENTUSIASMO (Ofun)", totems: [ { animal: "Chispa", umbral: 0.25, estado: "virtud", sentido: "alegría" }, { animal: "Mono", umbral: 0.618, estado: "virtud", sentido: "juego" }, { animal: "Fuego fatuo", umbral: 0.85, estado: "sombra", sentido: "euforia" }, { animal: "Explosión", umbral: 1.0, estado: "sombra", sentido: "pérdida total de control" } ] }
 };
 
-// 2. LIBRERÍA DE CITAS (AUTORIDAD CULTURAL)
+// 2. LIBRERÍA DE CITAS (FILOSOFÍA)
 const LIBRERIA_CITAS = {
     1: { luz: { autor: "LAO-TSÉ", cita: "Un viaje de mil millas comienza con un solo paso." }, sombra: { autor: "NIETZSCHE", cita: "Es preciso tener un caos dentro de sí para dar a luz a una estrella danzante." } },
     2: { luz: { autor: "SAINT-EXUPÉRY", cita: "Amar no es mirarse el uno al otro; es mirar juntos en la misma dirección." }, sombra: { autor: "SARTRE", cita: "El infierno son los otros." } },
@@ -45,18 +45,18 @@ const LIBRERIA_CITAS = {
     16: { luz: { autor: "EINSTEIN", cita: "La creatividad es la inteligencia divirtiéndose." }, sombra: { autor: "THE DARK KNIGHT", cita: "Algunos hombres solo quieren ver el mundo arder." } }
 };
 
-// 3. MOTOR DE INFERENCIA ACTUALIZADO
+// 3. MOTOR DE INFERENCIA
 const TOTEM_SYSTEM = {
     getEstadoTactico: (meyiInput, presion) => {
-        // Fallback robusto
+        // Fallback: Si no hay ID, usa el 1
         const id = MAPA_TOTEMS_MEYI[meyiInput] ? meyiInput : 1;
         const data = MAPA_TOTEMS_MEYI[id];
         
-        // Búsqueda del Tótem
+        // Buscar animal por presión
         const totem = data.totems.find(t => presion <= t.umbral) || data.totems[3];
         
-        // Selección de Cita (Luz vs Sombra)
-        const tipoEstado = totem.estado; // "virtud" o "sombra"
+        // Buscar cita por estado
+        const tipoEstado = totem.estado; 
         const citaObj = (tipoEstado === "virtud") ? LIBRERIA_CITAS[id].luz : LIBRERIA_CITAS[id].sombra;
 
         return {
@@ -65,7 +65,6 @@ const TOTEM_SYSTEM = {
             directive: totem.sentido.toUpperCase(),
             state: totem.estado,
             isCritical: presion > 0.618,
-            // Nuevos campos de autoridad
             quote: citaObj.cita,
             author: citaObj.autor
         };
