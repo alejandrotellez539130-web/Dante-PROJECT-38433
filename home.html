@@ -1,27 +1,101 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <title>DANTE — ORÁCULO</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DANTE ENGINE v5.1 | MEYI SYSTEM</title>
+    <style>
+        body { background-color: #020202; color: #cfcfcf; font-family: 'Consolas', monospace; padding: 20px; text-align: center; }
+        h1 { border-bottom: 1px solid #d4af37; padding-bottom: 10px; color: #d4af37; letter-spacing: 3px; }
+        .input-zone { background: #0a0a0a; padding: 25px; border: 1px solid #333; display: inline-block; margin-top: 20px; box-shadow: 0 0 10px rgba(212, 175, 55, 0.2); }
+        input { background: #000; border: 1px solid #444; color: #d4af37; padding: 12px; font-size: 16px; width: 80%; text-align: center; }
+        button { background: #111; color: #d4af37; border: 1px solid #d4af37; padding: 12px 24px; cursor: pointer; margin-top: 15px; text-transform: uppercase; font-weight: bold; }
+        #console-output { margin-top: 30px; border-top: 1px solid #222; padding: 20px; text-align: left; min-height: 150px; width: 90%; margin: 30px auto; background: #050505; border-radius: 4px; }
+        .totem-highlight { color: #d4af37; font-weight: bold; font-size: 1.4em; display: block; margin: 10px 0; }
+        .coherence { color: #00ffaa; } .dissonance { color: #ff4444; } .virtue { color: #aaaaff; } .shadow { color: #ffaaaa; }
+    </style>
 </head>
 <body>
+    <h1>DANTE PROTOCOL v5.1</h1>
+    <div id="memory-display" style="color: #555; font-size: 11px; margin-bottom: 20px;">SISTEMA DE 16 VECTORES LISTO</div>
 
-  <div id="terminal">
-    <h1>DANTE — ORÁCULO</h1>
-    <button id="start">Consultar Oráculo</button>
-    <pre id="output"></pre>
-    <canvas id="chiCanvas" width="300" height="300"></canvas>
-  </div>
+    <div class="input-zone">
+        <p>IDENTIDAD (NOMBRE CLAVE)</p>
+        <input type="text" id="userInput" placeholder="TU ARQUETIPO..." autocomplete="off">
+        <br>
+        <button onclick="ejecutarProtocolo()">CONSULTAR ORÁCULO</button>
+        <br><br>
+        <button onclick="localStorage.clear(); location.reload();" style="font-size: 0.7em; border-color: #552222; color: #884444;">REINICIAR SISTEMA</button>
+    </div>
 
-  <script type="module" src="main.js"></script>
-</body>
-</html>    </div>
+    <div id="console-output">Esperando sincronización...</div>
 
-    <div id="chi" class="hidden"></div>
-    <pre id="output" class="hidden"></pre>
-  </div>
+    <script src="dante_totem_db.js"></script>
 
-  <script type="module" src="main.js"></script>
+    <script>
+        const DANTE_ENGINE = {
+            base_phi: 0.618,
+            textToDNA: (text) => {
+                if (!text || text.trim().length < 2) return null;
+                let hash = 0;
+                for (let i = 0; i < text.length; i++) {
+                    hash = (hash << 5) - hash + text.charCodeAt(i);
+                    hash &= 0xff; 
+                }
+                return Math.abs(hash);
+            },
+            getMeyi: (dna) => (dna % 16) + 1, // Cálculo 1-16
+            getSeed: () => {
+                const now = Math.floor(Date.now() / 1000);
+                return (now ^ (now >> 8)) & 0xff; 
+            },
+            process: (userDNA, seed) => {
+                const odu = userDNA ^ seed;
+                const pressure = parseFloat((odu / 255).toFixed(3));
+                const dynamicPhi = DANTE_ENGINE.base_phi * (1 + (seed / 512));
+                const status = pressure <= dynamicPhi ? "COHERENCIA" : "DISONANCIA";
+                const meyiID = DANTE_ENGINE.getMeyi(userDNA);
+                
+                // LLAMADA SEGURA A LA DB
+                if (typeof TOTEM_SYSTEM === 'undefined') return { error: "DB_MISSING" };
+                
+                const tactical = TOTEM_SYSTEM.getEstadoTactico(meyiID, pressure);
+                return { odu, pressure, status, tactical, meyiID };
+            }
+        };
+
+        function ejecutarProtocolo() {
+            const rawName = document.getElementById("userInput").value;
+            const output = document.getElementById("console-output");
+            const userDNA = DANTE_ENGINE.textToDNA(rawName);
+            
+            if (!userDNA) { output.innerHTML = "⚠️ ERROR: Identidad insuficiente."; return; }
+
+            const result = DANTE_ENGINE.process(userDNA, DANTE_ENGINE.getSeed());
+            
+            if (result.error) {
+                output.innerHTML = "❌ ERROR CRÍTICO: No se encuentra dante_totem_db.js. Verifica el archivo.";
+                return;
+            }
+
+            const t = result.tactical;
+            const estadoClass = t.state === "virtud" ? "virtue" : "shadow";
+
+            output.innerHTML = `
+>> REPORTE TÁCTICO v5.1
+------------------------------------------------
+> SUJETO: ${rawName.toUpperCase()}
+> VECTOR: MEYI #${result.meyiID} [${t.identity}]
+> PRESIÓN PSI: ${result.pressure} ${t.isCritical ? "⚠️(ALTA)" : "✅(ESTABLE)"}
+------------------------------------------------
+> ESTADO: <span class="${estadoClass}">${t.state.toUpperCase()}</span>
+
+> MANIFESTACIÓN:
+  <span class="totem-highlight">${t.manifestation}</span>
+  DIRECTIVA: "${t.directive}"
+------------------------------------------------
+> Sistema Meyi Sincronizado.`;
+        }
+    </script>
 </body>
 </html>
