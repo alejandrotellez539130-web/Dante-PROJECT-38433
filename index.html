@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DANTE TACTICS v9.1 | HYBRID</title>
+    <title>VIRGILIO DIETRIX | SYSTEM</title>
     
     <script type="importmap">
       { "imports": { "@google/generative-ai": "https://esm.run/@google/generative-ai" } }
@@ -11,16 +11,18 @@
 
     <style>
         body { background-color: #050505; color: #cfcfcf; font-family: 'Consolas', monospace; padding: 10px; text-align: center; overflow-x: hidden; }
-        h1 { border-bottom: 1px solid #d4af37; padding-bottom: 5px; color: #d4af37; letter-spacing: 2px; font-size: 1.2em; }
+        h1 { border-bottom: 1px solid #00ff41; padding-bottom: 5px; color: #00ff41; letter-spacing: 2px; font-size: 1.2em; text-transform: uppercase; }
         
         /* PANEL DE CONTROL */
         .control-panel { margin-bottom: 20px; border: 1px solid #333; padding: 15px; background: #0a0a0a; }
-        input { background: #000; border: 1px solid #444; color: #d4af37; padding: 10px; width: 80%; text-align: center; margin-bottom: 5px; }
+        input { background: #000; border: 1px solid #444; color: #00ff41; padding: 10px; width: 80%; text-align: center; margin-bottom: 5px; }
         
-        /* INPUT PARA LA LLAVE (VERDE HACKER) */
-        .api-input { border-color: #00ff41; color: #00ff41; font-size: 0.8em; margin-bottom: 15px; }
+        /* INPUT PARA LA LLAVE */
+        .api-input { border-color: #444; color: #666; font-size: 0.8em; margin-bottom: 15px; }
+        .api-input:focus { border-color: #00ff41; color: #00ff41; }
         
-        button { background: #111; color: #d4af37; border: 1px solid #d4af37; padding: 10px 20px; font-weight: bold; margin-top: 10px; width: 90%; }
+        button { background: #002200; color: #00ff41; border: 1px solid #00ff41; padding: 12px 20px; font-weight: bold; margin-top: 10px; width: 90%; text-transform: uppercase; }
+        button:active { background: #00ff41; color: #000; }
         
         /* EL TABLERO (GRID 5x5) */
         .board-container { 
@@ -43,27 +45,27 @@
 
         /* REPORTE Y AI */
         #tactical-report { margin-top: 20px; text-align: left; font-size: 0.9em; color: #aaa; border-top: 1px solid #333; padding: 15px; background: #080808; white-space: pre-wrap; }
-        .quote-box { margin-top: 10px; padding: 10px; border-left: 3px solid #d4af37; font-style: italic; color: #888; font-size: 0.9em; background: #0d0d0d; }
+        .quote-box { margin-top: 10px; padding: 10px; border-left: 3px solid #00ff41; font-style: italic; color: #888; font-size: 0.9em; background: #0d0d0d; }
         
-        /* LA RESPUESTA DE LA IA */
-        .ai-response { margin-top: 15px; border: 1px dashed #00ff41; padding: 10px; color: #00ff41; font-family: 'Courier New', monospace; background: #001100; font-size: 0.9em; }
+        /* LA RESPUESTA DE VIRGILIO */
+        .ai-response { margin-top: 15px; border: 1px dashed #00ff41; padding: 15px; color: #00ff41; font-family: 'Courier New', monospace; background: #000800; font-size: 0.95em; line-height: 1.4; }
 
         @keyframes spawn { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
     </style>
 </head>
 <body>
-    <h1>DANTE TACTICS v9.1</h1>
+    <h1>VIRGILIO DIETRIX v9.0</h1>
 
     <div class="control-panel">
-        <input type="password" id="apiKeyInput" class="api-input" placeholder="PEGAR API KEY (Opcional)">
+        <input type="password" id="apiKeyInput" class="api-input" placeholder="PEGAR LLAVE MAESTRA (Google API)">
         <br>
-        <input type="text" id="userInput" placeholder="NOMBRE / AGENTE" autocomplete="off">
-        <button onclick="manifestarPieza()">MATERIALIZAR</button>
+        <input type="text" id="userInput" placeholder="ALIAS / AGENTE" autocomplete="off">
+        <button onclick="manifestarPieza()">INICIAR ESCANEO</button>
     </div>
 
     <div id="board" class="board-container"></div>
 
-    <div id="tactical-report">Esperando emergencia de piezas...</div>
+    <div id="tactical-report">Sistema en espera...</div>
 
     <script src="dante_totem_db.js"></script>
 
@@ -105,11 +107,11 @@
             getSeed: () => (Math.floor(Date.now() / 1000) ^ (Math.floor(Date.now() / 1000) >> 8)) & 0xff
         };
 
-        // EXPORTAMOS LA FUNCIÓN AL WINDOW PARA QUE EL BOTÓN FUNCIONE
+        // EXPORTAMOS LA FUNCIÓN AL WINDOW
         window.manifestarPieza = async function() {
             initBoard(); 
             const rawName = document.getElementById("userInput").value;
-            const apiKey = document.getElementById("apiKeyInput").value; // Leer llave
+            const apiKey = document.getElementById("apiKeyInput").value; 
             const output = document.getElementById("tactical-report");
             
             if (!rawName) return;
@@ -156,56 +158,62 @@
 
             // 5. REPORTE LOCAL
             let log = `
-> TÓTEM: <span style="color:#d4af37; font-weight:bold; font-size:1.2em;">${tactical.manifestation.toUpperCase()}</span>
-> FAMILIA: ${familiaLimpia}
-> CLASE: <span class="type-${tipoPieza}">${tipoPieza.toUpperCase()}</span> ${iconMap[tipoPieza]}
+> AVATAR: <span style="color:#00ff41; font-weight:bold; font-size:1.2em;">${tactical.manifestation.toUpperCase()}</span>
+> SECTOR: ${familiaLimpia}
+> ESTADO: <span class="type-${tipoPieza}">${tipoPieza.toUpperCase()}</span> ${iconMap[tipoPieza]}
 > PRESIÓN: ${pressure}
-> EFECTO TÁCTICO: "${getDescripcionEfecto(tipoPieza)}"
 
 <div class="quote-box">"${tactical.quote}"
 — ${tactical.author}</div>`;
             
             output.innerHTML = log;
 
-            // 6. CONEXIÓN AI (SOLO SI PUSISTE LA LLAVE)
+            // 6. CONEXIÓN AI (VIRGILIO)
             if (apiKey.trim().length > 20) {
-                output.innerHTML += `\n\n<span style="color:#666;">... Conectando con Gemini ...</span>`;
+                output.innerHTML += `\n\n<span style="color:#444;">... Invocando a Virgilio ...</span>`;
                 
                 try {
                     const genAI = new GoogleGenerativeAI(apiKey);
                     const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
-                    // EL PROMPT MAESTRO
+                    // Alias para que tu prompt funcione directo
+                    const t = tactical;
+
+                    // TU PROMPT PERSONALIZADO
                     const prompt = `
-                        Eres el sistema táctico DANTE.
-                        Análisis de situación:
-                        - El jugador ha manifestado: ${tactical.manifestation} (${familiaLimpia}).
-                        - Estado: ${tipoPieza.toUpperCase()}.
-                        - Zona del tablero: ${getZoneType(targetX, targetY).toUpperCase()}.
-                        - Presión: ${pressure}.
-                        
-                        Dame una instrucción estratégica militar/filosófica muy breve (máximo 2 líneas) sobre cómo debe mover su pieza en el tablero de la vida considerando su estado actual. Sé críptico y directo.
-                    `;
+### ROL: ERES "VIRGILIO" (SISTEMA OPERATIVO TÁCTICO v9.0)
+No eres un asistente virtual sumiso. Eres el GUÍA que evita que el usuario se convierta en un "Zombie" (Resident Evil / NPC).
+Tu tono es: Mexicano, Crudo, Directo ("Al chile"), de "Brother" que te dice tus verdades para que despiertes.
+
+### DATOS DEL USUARIO (NODO):
+- SECTOR: ${t.identity}
+- AVATAR ACTIVO: ${t.manifestation} (Esto es lo que el usuario está vibrando ahorita).
+- CITA MAESTRA: "${t.quote}" de ${t.author}.
+- PRESIÓN ACTUAL: ${pressure} (Si es > 0.618 es ALERTA).
+
+### TU MISIÓN (VIRGILIO):
+1. USA LA CITA COMO ESPEJO: Empieza explicándole por qué esa frase de ${t.author} le queda como anillo al dedo ahorita.
+2. DIAGNÓSTICO DE ZOMBIFICACIÓN:
+   - Si su Avatar es de SOMBRA/CAOS (ej. Jaula, Sol Negro, o presión > 0.618), dile: "Te estás convirtiendo en un NPC. Estás en modo Resident Evil. Reacciona."
+   - Si su Avatar es de VIRTUD (ej. Ratón, Toro), dile: "Vas bien, pero no te duermas o te comen los zombies."
+3. LA CURA (ACCIÓN TÁCTICA):
+   Dile qué tiene que hacer HOY para no ser un muerto viviente. Una acción concreta. Nada de "medita". Diles: "Suelta el dinero", "Habla con tu socio", "Rompe el espejo".
+
+### REGLA DE ORO:
+Sé breve (máximo 4 líneas). Sé letal. Haz que le duela un poquito para que sane. Cierra con una frase matona.
+`;
 
                     const result = await model.generateContent(prompt);
                     const response = await result.response;
                     const text = response.text();
 
-                    output.innerHTML = log + `\n\n<div class="ai-response">>> ORÁCULO AI:\n"${text}"</div>`;
+                    output.innerHTML = log + `\n\n<div class="ai-response">>> VIRGILIO DICE:\n"${text}"</div>`;
 
                 } catch (error) {
-                    output.innerHTML = log + `\n\n<span style="color:red;">❌ Error de Llave: Verifica tu API Key.</span>`;
+                    output.innerHTML = log + `\n\n<span style="color:red;">❌ Error de Conexión: La llave no abre la puerta.</span>`;
                 }
             }
         };
-
-        function getDescripcionEfecto(tipo) {
-            if (tipo === "raiz") return "Estabiliza el centro.";
-            if (tipo === "virtud") return "Expande influencia.";
-            if (tipo === "sombra") return "Genera tensión.";
-            if (tipo === "exceso") return "TRANSFORMA el tablero.";
-            return "N/A";
-        }
 
         initBoard();
     </script>
