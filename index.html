@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DANTE TACTICS v9.0</title>
+    <title>DANTE TACTICS</title>
     <style>
         body { background-color: #050505; color: #cfcfcf; font-family: 'Consolas', monospace; padding: 10px; text-align: center; overflow-x: hidden; }
         h1 { border-bottom: 1px solid #d4af37; padding-bottom: 5px; color: #d4af37; letter-spacing: 2px; font-size: 1.2em; }
         
-        /* ZONA DE INPUT */
+        /* PANEL DE CONTROL */
         .control-panel { margin-bottom: 20px; border: 1px solid #333; padding: 15px; background: #0a0a0a; }
         input { background: #000; border: 1px solid #444; color: #d4af37; padding: 10px; width: 70%; text-align: center; }
         button { background: #111; color: #d4af37; border: 1px solid #d4af37; padding: 10px 20px; font-weight: bold; margin-top: 10px; }
@@ -36,52 +36,52 @@
             position: relative;
         }
         
-        /* ZONAS DEL TABLERO (VISUAL) */
+        /* ZONAS DEL TABLERO */
         .zone-virgilio { background: #0f1a0f; box-shadow: inset 0 0 10px #002200; } /* Centro */
         .zone-interaccion { background: #1a1a10; } /* Medio */
         .zone-caos { background: #1a0f0f; } /* Borde */
 
-        /* ESTILOS DE PIEZAS */
+        /* PIEZAS */
         .piece { animation: spawn 0.5s ease-out; font-size: 0.7em; text-align: center; line-height: 1; }
         .type-raiz { color: #88ff88; text-shadow: 0 0 5px #00ff00; }
         .type-virtud { color: #88ffff; text-shadow: 0 0 5px #00ffff; }
         .type-sombra { color: #ff8888; text-shadow: 0 0 5px #ff0000; }
         .type-exceso { color: #ff00ff; text-shadow: 0 0 5px #ff00ff; font-weight: bold; }
 
-        /* REPORTE */
-        #tactical-report { margin-top: 20px; text-align: left; font-size: 0.8em; color: #888; border-top: 1px solid #333; padding-top: 10px; }
+        /* REPORTE DE TEXTO */
+        #tactical-report { margin-top: 20px; text-align: left; font-size: 0.9em; color: #aaa; border-top: 1px solid #333; padding: 15px; background: #080808; white-space: pre-wrap; }
+        .quote-box { margin-top: 10px; padding: 10px; border-left: 3px solid #d4af37; font-style: italic; color: #888; font-size: 0.9em; background: #0d0d0d; }
 
         @keyframes spawn { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
     </style>
 </head>
 <body>
-    <h1>DANTE TACTICS v9.0</h1>
+    <h1>DANTE TACTICS</h1>
 
     <div class="control-panel">
         <input type="text" id="userInput" placeholder="NOMBRE / AGENTE" autocomplete="off">
         <button onclick="manifestarPieza()">MATERIALIZAR</button>
     </div>
 
-    <div id="board" class="board-container">
-        </div>
+    <div id="board" class="board-container"></div>
 
     <div id="tactical-report">Esperando emergencia de piezas...</div>
 
     <script src="dante_totem_db.js"></script>
-    <script>
-        // CONFIGURACIÓN DEL MOTOR
-        const BOARD_SIZE = 5;
-        const CENTER = 2; // Índice 2 (0,1,2,3,4)
 
-        // Definición de Zonas (Lógica espacial)
+    <script>
+        // --- CONFIGURACIÓN DEL TABLERO ---
+        const BOARD_SIZE = 5;
+        const CENTER = 2; // El centro de 0 a 4 es 2
+
+        // Definir Zonas (Centro, Interacción, Caos)
         function getZoneType(x, y) {
             const dist = Math.max(Math.abs(x - CENTER), Math.abs(y - CENTER));
-            if (dist === 0) return "virgilio"; // Centro exacto
-            if (dist === 1) return "interaccion"; // Anillo medio
-            return "caos"; // Borde exterior
+            if (dist === 0) return "virgilio";
+            if (dist === 1) return "interaccion";
+            return "caos";
         }
 
-        // GENERADOR DE TABLERO INICIAL
         function initBoard() {
             const board = document.getElementById("board");
             board.innerHTML = "";
@@ -90,8 +90,6 @@
                     const cell = document.createElement("div");
                     cell.className = `cell zone-${getZoneType(x, y)}`;
                     cell.id = `cell-${x}-${y}`;
-                    // Coordenadas sutiles
-                    // cell.innerHTML = `<span style="font-size:0.2em; opacity:0.3; position:absolute; top:2px; left:2px;">${x},${y}</span>`;
                     board.appendChild(cell);
                 }
             }
@@ -109,57 +107,48 @@
             getSeed: () => (Math.floor(Date.now() / 1000) ^ (Math.floor(Date.now() / 1000) >> 8)) & 0xff
         };
 
+        // --- FUNCIÓN PRINCIPAL ---
         function manifestarPieza() {
-            // 1. Limpieza
             initBoard(); 
             const rawName = document.getElementById("userInput").value;
             const output = document.getElementById("tactical-report");
             
             if (!rawName) return;
 
-            // 2. Cálculo
+            // 1. Cálculo Oculto
             const userDNA = DANTE_ENGINE.textToDNA(rawName);
             const seed = DANTE_ENGINE.getSeed();
             const odu = userDNA ^ seed;
             const pressure = parseFloat((odu / 255).toFixed(3));
             const meyiID = DANTE_ENGINE.getMeyi(userDNA);
 
-            // 3. Consultar DB
-            if (typeof TOTEM_SYSTEM === 'undefined') { output.innerHTML = "❌ ERROR: DB no cargada"; return; }
+            // 2. Consultar Base de Datos
+            if (typeof TOTEM_SYSTEM === 'undefined') { output.innerHTML = "❌ ERROR: Base de datos no cargada."; return; }
             const tactical = TOTEM_SYSTEM.getEstadoTactico(meyiID, pressure);
 
-            // 4. CLASIFICACIÓN DE PIEZA (Tu Regla #2)
-            let tipoPieza = "raiz"; // Default
+            // 3. Limpiar Nombre de Familia (Quitar lo que está entre paréntesis)
+            const familiaLimpia = tactical.identity.split(" (")[0];
+
+            // 4. Clasificar Tipo de Pieza (Reglas de Presión)
+            let tipoPieza = "raiz"; 
             if (pressure > 0.38 && pressure <= 0.618) tipoPieza = "virtud";
             if (pressure > 0.618 && pressure <= 0.85) tipoPieza = "sombra";
             if (pressure > 0.85) tipoPieza = "exceso";
 
-            // 5. LÓGICA DE SPAWN (Regla #5 - Zonas)
-            // ¿Dónde aparece la pieza según su naturaleza?
+            // 5. Determinar Posición en Tablero
             let targetX, targetY;
-            
             if (tipoPieza === "raiz") { 
-                // Raíz busca estabilidad (Centro)
-                targetX = CENTER; targetY = CENTER;
+                targetX = CENTER; targetY = CENTER; // Siempre al centro
             } else if (tipoPieza === "virtud") {
-                // Virtud busca expansión (Anillo Medio - Aleatorio)
-                // Genera coordenadas que disten 1 del centro
-                do {
-                    targetX = Math.floor(Math.random() * BOARD_SIZE);
-                    targetY = Math.floor(Math.random() * BOARD_SIZE);
-                } while (getZoneType(targetX, targetY) !== "interaccion");
-            } else {
-                // Sombra y Exceso buscan el Caos (Bordes - Aleatorio)
-                do {
-                    targetX = Math.floor(Math.random() * BOARD_SIZE);
-                    targetY = Math.floor(Math.random() * BOARD_SIZE);
-                } while (getZoneType(targetX, targetY) !== "caos");
+                do { targetX = Math.floor(Math.random() * BOARD_SIZE); targetY = Math.floor(Math.random() * BOARD_SIZE); } 
+                while (getZoneType(targetX, targetY) !== "interaccion");
+            } else { // Sombra y Exceso
+                do { targetX = Math.floor(Math.random() * BOARD_SIZE); targetY = Math.floor(Math.random() * BOARD_SIZE); } 
+                while (getZoneType(targetX, targetY) !== "caos");
             }
 
-            // 6. RENDERIZADO
+            // 6. Dibujar Pieza
             const targetCell = document.getElementById(`cell-${targetX}-${targetY}`);
-            
-            // Iconografía simple según tipo
             const iconMap = { "raiz": "🌱", "virtud": "✨", "sombra": "👁️", "exceso": "🔥" };
             
             targetCell.innerHTML = `
@@ -169,25 +158,28 @@
                 </div>
             `;
 
-            // Reporte
+            // 7. Generar Reporte Limpio
             output.innerHTML = `
-> MEYI #${meyiID}: ${tactical.identity}
+> TÓTEM: <span style="color:#d4af37; font-weight:bold; font-size:1.2em;">${tactical.manifestation.toUpperCase()}</span>
+> FAMILIA: ${familiaLimpia}
+> CLASE: <span class="type-${tipoPieza}">${tipoPieza.toUpperCase()}</span> ${iconMap[tipoPieza]}
 > PRESIÓN: ${pressure}
-> CLASE: ${tipoPieza.toUpperCase()}
-> EFECTO: ${getDescripcionEfecto(tipoPieza)}
-> ZONA DE APARICIÓN: ${getZoneType(targetX, targetY).toUpperCase()}
+> EFECTO TÁCTICO: "${getDescripcionEfecto(tipoPieza)}"
+
+<div class="quote-box">"${tactical.quote}"
+— ${tactical.author}</div>
             `;
         }
 
         function getDescripcionEfecto(tipo) {
-            if (tipo === "raiz") return "Estabiliza el centro. Inmune.";
+            if (tipo === "raiz") return "Estabiliza el centro. Punto de anclaje.";
             if (tipo === "virtud") return "Expande influencia a casillas vecinas.";
             if (tipo === "sombra") return "Genera tensión. Bloquea paso.";
-            if (tipo === "exceso") return "TRANSFORMA el tablero. Peligro.";
+            if (tipo === "exceso") return "TRANSFORMA el tablero. Peligro inminente.";
             return "N/A";
         }
 
-        // Iniciar vacío
+        // Cargar tablero vacío al inicio
         initBoard();
     </script>
 </body>
