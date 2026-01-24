@@ -3,133 +3,192 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DANTE ENGINE v7.0 | BIBLIOTHECA</title>
-    <script type="importmap">
-      {
-        "imports": {
-          "@google/generative-ai": "https://esm.run/@google/generative-ai"
-        }
-      }
-    </script>
+    <title>DANTE TACTICS v9.0</title>
     <style>
-        body { background-color: #020202; color: #cfcfcf; font-family: 'Consolas', monospace; padding: 20px; text-align: center; }
-        h1 { border-bottom: 1px solid #d4af37; padding-bottom: 10px; color: #d4af37; letter-spacing: 3px; }
-        .input-zone { background: #0a0a0a; padding: 25px; border: 1px solid #333; display: inline-block; margin-top: 20px; width: 90%; max-width: 400px; box-shadow: 0 0 15px rgba(212, 175, 55, 0.1); }
-        input { background: #000; border: 1px solid #444; color: #d4af37; padding: 12px; font-size: 16px; width: 90%; text-align: center; margin-bottom: 10px; }
-        .api-input { border-color: #00ff41; color: #00ff41; font-size: 12px; }
-        button { background: #111; color: #d4af37; border: 1px solid #d4af37; padding: 12px 24px; cursor: pointer; margin-top: 15px; text-transform: uppercase; font-weight: bold; width: 100%; transition: all 0.3s; }
-        button:hover { background: #d4af37; color: #000; }
+        body { background-color: #050505; color: #cfcfcf; font-family: 'Consolas', monospace; padding: 10px; text-align: center; overflow-x: hidden; }
+        h1 { border-bottom: 1px solid #d4af37; padding-bottom: 5px; color: #d4af37; letter-spacing: 2px; font-size: 1.2em; }
         
-        #console-output { margin-top: 30px; border-top: 1px solid #222; padding: 20px; text-align: left; min-height: 150px; width: 90%; margin: 30px auto; background: #050505; white-space: pre-wrap; border-left: 1px solid #333; }
+        /* ZONA DE INPUT */
+        .control-panel { margin-bottom: 20px; border: 1px solid #333; padding: 15px; background: #0a0a0a; }
+        input { background: #000; border: 1px solid #444; color: #d4af37; padding: 10px; width: 70%; text-align: center; }
+        button { background: #111; color: #d4af37; border: 1px solid #d4af37; padding: 10px 20px; font-weight: bold; margin-top: 10px; }
         
-        .totem-highlight { color: #d4af37; font-weight: bold; font-size: 1.4em; }
-        .ai-response { color: #00ff41; font-style: italic; border-left: 2px solid #00ff41; padding-left: 10px; margin-top: 10px; background: #001100; padding: 10px; }
-        .quote-box { margin-top: 15px; padding: 15px; border: 1px dashed #555; background: #080808; text-align: center; }
-        .quote-text { font-style: italic; color: #bbb; font-size: 0.9em; }
-        .quote-author { display: block; margin-top: 5px; color: #888; font-size: 0.8em; font-weight: bold; letter-spacing: 1px; }
+        /* EL TABLERO (GRID 5x5) */
+        .board-container { 
+            display: grid; 
+            grid-template-columns: repeat(5, 1fr); 
+            gap: 4px; 
+            max-width: 400px; 
+            margin: 0 auto; 
+            background: #111;
+            padding: 5px;
+            border: 2px solid #333;
+        }
         
-        .coherence { color: #00ffaa; } .dissonance { color: #ff4444; } .virtue { color: #aaaaff; } .shadow { color: #ffaaaa; }
+        .cell { 
+            aspect-ratio: 1; 
+            background: #080808; 
+            border: 1px solid #222; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-size: 1.5em;
+            position: relative;
+        }
+        
+        /* ZONAS DEL TABLERO (VISUAL) */
+        .zone-virgilio { background: #0f1a0f; box-shadow: inset 0 0 10px #002200; } /* Centro */
+        .zone-interaccion { background: #1a1a10; } /* Medio */
+        .zone-caos { background: #1a0f0f; } /* Borde */
+
+        /* ESTILOS DE PIEZAS */
+        .piece { animation: spawn 0.5s ease-out; font-size: 0.7em; text-align: center; line-height: 1; }
+        .type-raiz { color: #88ff88; text-shadow: 0 0 5px #00ff00; }
+        .type-virtud { color: #88ffff; text-shadow: 0 0 5px #00ffff; }
+        .type-sombra { color: #ff8888; text-shadow: 0 0 5px #ff0000; }
+        .type-exceso { color: #ff00ff; text-shadow: 0 0 5px #ff00ff; font-weight: bold; }
+
+        /* REPORTE */
+        #tactical-report { margin-top: 20px; text-align: left; font-size: 0.8em; color: #888; border-top: 1px solid #333; padding-top: 10px; }
+
+        @keyframes spawn { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
     </style>
 </head>
 <body>
-    <h1>DANTE PROTOCOL v7.0</h1>
-    <div id="memory-display" style="color: #555; font-size: 11px; margin-bottom: 20px;">LIBRERÍA DE CITAS CARGADA</div>
+    <h1>DANTE TACTICS v9.0</h1>
 
-    <div class="input-zone">
-        <input type="password" id="apiKeyInput" class="api-input" placeholder="PEGAR API KEY (Opcional)">
-        <br><br>
-        <p style="font-size: 0.8em; color: #666;">IDENTIDAD</p>
-        <input type="text" id="userInput" placeholder="NOMBRE / ARQUETIPO" autocomplete="off">
-        <br>
-        <button onclick="ejecutarProtocolo()">INICIAR RITUAL</button>
+    <div class="control-panel">
+        <input type="text" id="userInput" placeholder="NOMBRE / AGENTE" autocomplete="off">
+        <button onclick="manifestarPieza()">MATERIALIZAR</button>
     </div>
 
-    <div id="console-output">Esperando conexión...</div>
+    <div id="board" class="board-container">
+        </div>
+
+    <div id="tactical-report">Esperando emergencia de piezas...</div>
 
     <script src="dante_totem_db.js"></script>
+    <script>
+        // CONFIGURACIÓN DEL MOTOR
+        const BOARD_SIZE = 5;
+        const CENTER = 2; // Índice 2 (0,1,2,3,4)
 
-    <script type="module">
-        import { GoogleGenerativeAI } from "@google/generative-ai";
+        // Definición de Zonas (Lógica espacial)
+        function getZoneType(x, y) {
+            const dist = Math.max(Math.abs(x - CENTER), Math.abs(y - CENTER));
+            if (dist === 0) return "virgilio"; // Centro exacto
+            if (dist === 1) return "interaccion"; // Anillo medio
+            return "caos"; // Borde exterior
+        }
 
-        window.ejecutarProtocolo = async function() {
+        // GENERADOR DE TABLERO INICIAL
+        function initBoard() {
+            const board = document.getElementById("board");
+            board.innerHTML = "";
+            for (let y = 0; y < BOARD_SIZE; y++) {
+                for (let x = 0; x < BOARD_SIZE; x++) {
+                    const cell = document.createElement("div");
+                    cell.className = `cell zone-${getZoneType(x, y)}`;
+                    cell.id = `cell-${x}-${y}`;
+                    // Coordenadas sutiles
+                    // cell.innerHTML = `<span style="font-size:0.2em; opacity:0.3; position:absolute; top:2px; left:2px;">${x},${y}</span>`;
+                    board.appendChild(cell);
+                }
+            }
+        }
+
+        // --- MOTOR MATEMÁTICO ---
+        const DANTE_ENGINE = {
+            textToDNA: (text) => {
+                if (!text || text.trim().length < 2) return null;
+                let hash = 0;
+                for (let i = 0; i < text.length; i++) { hash = (hash << 5) - hash + text.charCodeAt(i); hash &= 0xff; }
+                return Math.abs(hash);
+            },
+            getMeyi: (dna) => (dna % 16) + 1,
+            getSeed: () => (Math.floor(Date.now() / 1000) ^ (Math.floor(Date.now() / 1000) >> 8)) & 0xff
+        };
+
+        function manifestarPieza() {
+            // 1. Limpieza
+            initBoard(); 
             const rawName = document.getElementById("userInput").value;
-            const apiKey = document.getElementById("apiKeyInput").value;
-            const output = document.getElementById("console-output");
+            const output = document.getElementById("tactical-report");
+            
+            if (!rawName) return;
 
-            // 1. LÓGICA MATEMÁTICA (LOCAL)
-            const DANTE_ENGINE = {
-                base_phi: 0.618,
-                textToDNA: (text) => {
-                    if (!text || text.trim().length < 2) return null;
-                    let hash = 0;
-                    for (let i = 0; i < text.length; i++) { hash = (hash << 5) - hash + text.charCodeAt(i); hash &= 0xff; }
-                    return Math.abs(hash);
-                },
-                getMeyi: (dna) => (dna % 16) + 1,
-                getSeed: () => (Math.floor(Date.now() / 1000) ^ (Math.floor(Date.now() / 1000) >> 8)) & 0xff
-            };
-
-            if (!rawName) { output.innerHTML = "⚠️ ERROR: Falta nombre."; return; }
-            if (typeof TOTEM_SYSTEM === 'undefined') { output.innerHTML = "❌ ERROR CRÍTICO: dante_totem_db.js no encontrado."; return; }
-
-            // Procesamiento Local
+            // 2. Cálculo
             const userDNA = DANTE_ENGINE.textToDNA(rawName);
             const seed = DANTE_ENGINE.getSeed();
             const odu = userDNA ^ seed;
             const pressure = parseFloat((odu / 255).toFixed(3));
             const meyiID = DANTE_ENGINE.getMeyi(userDNA);
-            const t = TOTEM_SYSTEM.getEstadoTactico(meyiID, pressure);
-            const estadoClass = t.state === "virtud" ? "virtue" : "shadow";
 
-            // Reporte Base (Ahora incluye la Cita)
-            let log = `
->> REPORTE TÁCTICO v7.0
---------------------------
-> SUJETO: ${rawName.toUpperCase()}
-> VECTOR: MEYI #${meyiID} [${t.identity}]
-> PRESIÓN: ${pressure}
---------------------------
-> ESTADO: <span class="${estadoClass}">${t.state.toUpperCase()}</span>
+            // 3. Consultar DB
+            if (typeof TOTEM_SYSTEM === 'undefined') { output.innerHTML = "❌ ERROR: DB no cargada"; return; }
+            const tactical = TOTEM_SYSTEM.getEstadoTactico(meyiID, pressure);
 
-> MANIFESTACIÓN:
-  <span class="totem-highlight">${t.manifestation}</span>
-  DIRECTIVA: "${t.directive}"
+            // 4. CLASIFICACIÓN DE PIEZA (Tu Regla #2)
+            let tipoPieza = "raiz"; // Default
+            if (pressure > 0.38 && pressure <= 0.618) tipoPieza = "virtud";
+            if (pressure > 0.618 && pressure <= 0.85) tipoPieza = "sombra";
+            if (pressure > 0.85) tipoPieza = "exceso";
 
-<div class="quote-box">
-    <span class="quote-text">"${t.quote}"</span>
-    <span class="quote-author">— ${t.author}</span>
-</div>
---------------------------`;
-
-            output.innerHTML = log + "\n> Sincronizando...";
-
-            // 2. CONEXIÓN AI (SI HAY LLAVE)
-            if (apiKey.trim().length > 10) {
-                try {
-                    const genAI = new GoogleGenerativeAI(apiKey);
-                    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
-
-                    const prompt = `
-                        Actúa como el Oráculo Dante.
-                        El usuario está en el Meyi ${t.identity}.
-                        Su Tótem es: ${t.manifestation}.
-                        La cita que le rige hoy es de ${t.author}: "${t.quote}".
-                        Dame una interpretación breve y mística de por qué esta cita es relevante para su tótem hoy.
-                    `;
-
-                    const result = await model.generateContent(prompt);
-                    const response = await result.response;
-                    const text = response.text();
-
-                    output.innerHTML = log + `\n\n> PROFECÍA GEMINI:\n<div class="ai-response">${text}</div>`;
-
-                } catch (error) {
-                    output.innerHTML = log + `\n\n❌ ERROR AI: Llave inválida.\n(El sistema matemático sigue funcionando)`;
-                }
+            // 5. LÓGICA DE SPAWN (Regla #5 - Zonas)
+            // ¿Dónde aparece la pieza según su naturaleza?
+            let targetX, targetY;
+            
+            if (tipoPieza === "raiz") { 
+                // Raíz busca estabilidad (Centro)
+                targetX = CENTER; targetY = CENTER;
+            } else if (tipoPieza === "virtud") {
+                // Virtud busca expansión (Anillo Medio - Aleatorio)
+                // Genera coordenadas que disten 1 del centro
+                do {
+                    targetX = Math.floor(Math.random() * BOARD_SIZE);
+                    targetY = Math.floor(Math.random() * BOARD_SIZE);
+                } while (getZoneType(targetX, targetY) !== "interaccion");
             } else {
-                output.innerHTML = log;
+                // Sombra y Exceso buscan el Caos (Bordes - Aleatorio)
+                do {
+                    targetX = Math.floor(Math.random() * BOARD_SIZE);
+                    targetY = Math.floor(Math.random() * BOARD_SIZE);
+                } while (getZoneType(targetX, targetY) !== "caos");
             }
-        };
+
+            // 6. RENDERIZADO
+            const targetCell = document.getElementById(`cell-${targetX}-${targetY}`);
+            
+            // Iconografía simple según tipo
+            const iconMap = { "raiz": "🌱", "virtud": "✨", "sombra": "👁️", "exceso": "🔥" };
+            
+            targetCell.innerHTML = `
+                <div class="piece type-${tipoPieza}">
+                    <div style="font-size:2em">${iconMap[tipoPieza]}</div>
+                    <div>${tactical.manifestation}</div>
+                </div>
+            `;
+
+            // Reporte
+            output.innerHTML = `
+> MEYI #${meyiID}: ${tactical.identity}
+> PRESIÓN: ${pressure}
+> CLASE: ${tipoPieza.toUpperCase()}
+> EFECTO: ${getDescripcionEfecto(tipoPieza)}
+> ZONA DE APARICIÓN: ${getZoneType(targetX, targetY).toUpperCase()}
+            `;
+        }
+
+        function getDescripcionEfecto(tipo) {
+            if (tipo === "raiz") return "Estabiliza el centro. Inmune.";
+            if (tipo === "virtud") return "Expande influencia a casillas vecinas.";
+            if (tipo === "sombra") return "Genera tensión. Bloquea paso.";
+            if (tipo === "exceso") return "TRANSFORMA el tablero. Peligro.";
+            return "N/A";
+        }
+
+        // Iniciar vacío
+        initBoard();
     </script>
 </body>
 </html>
